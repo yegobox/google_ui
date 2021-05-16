@@ -14,7 +14,18 @@ class GoogleList extends StatelessWidget {
   final bool enableDivider;
   final EdgeInsetsGeometry? padding;
 
-  List<Widget> buildItem(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: padding,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: _createItem(context),
+      ),
+    );
+  }
+
+  List<Widget> _createItem(BuildContext context) {
     final List<Widget> widgets = [];
 
     for (int i = 0; i < itemCount; i++) {
@@ -24,16 +35,5 @@ class GoogleList extends StatelessWidget {
       }
     }
     return widgets;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: padding,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: buildItem(context),
-      ),
-    );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:google_ui/google_ui.dart';
+import '../../google_ui.dart';
 
 class GoogleAppBar extends StatelessWidget implements PreferredSizeWidget {
   const GoogleAppBar({
@@ -56,7 +56,7 @@ class GoogleAppBar extends StatelessWidget implements PreferredSizeWidget {
         centerTitle: centerTitle,
         textColor: textColor,
       ),
-      backgroundColor: backgroundColor ?? colorScheme.background,
+      backgroundColor: backgroundColor ?? colorScheme.surface,
       centerTitle: centerTitle,
       elevation: elevation,
       bottom: bottom,
@@ -70,7 +70,7 @@ class GoogleAppBar extends StatelessWidget implements PreferredSizeWidget {
       shadowColor: shadowColor,
       shape: shape,
       brightness: brightness,
-      iconTheme: IconThemeData(color: textColor ?? colorScheme.onBackground),
+      iconTheme: IconThemeData(color: textColor ?? colorScheme.onSurface),
     );
   }
 

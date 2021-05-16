@@ -6,5 +6,6 @@ export 'google_drawer.dart';
 export 'google_grid.dart';
 export 'google_list.dart';
 export 'google_list_view.dart';
+export 'google_switch.dart';
 export 'google_text.dart';
 export 'google_text_form_field.dart';

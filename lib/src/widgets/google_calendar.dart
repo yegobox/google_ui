@@ -1,4 +1,4 @@
-import 'package:date_format/date_format.dart' as dateFormat;
+import 'package:date_format/date_format.dart' as date_format;
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -56,7 +56,7 @@ class GoogleCalendar extends HookWidget {
         availableCalendarFormats: const {CalendarFormat.month: 'Month'},
         daysOfWeekStyle: DaysOfWeekStyle(
           dowTextFormatter: (date, locale) =>
-              dateFormat.formatDate(date, [dateFormat.D]),
+              date_format.formatDate(date, [date_format.D]),
           weekdayStyle: TextStyle(color: colorScheme.onBackground),
           weekendStyle: TextStyle(color: colorScheme.onBackground),
         ),

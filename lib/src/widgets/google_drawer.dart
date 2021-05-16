@@ -16,7 +16,7 @@ class GoogleDrawer extends StatelessWidget {
 
     return Theme(
       data: Theme.of(context)
-          .copyWith(canvasColor: backgroundColor ?? colorScheme.background),
+          .copyWith(canvasColor: backgroundColor ?? colorScheme.surface),
       child: Drawer(
         child: SafeArea(
           child: SingleChildScrollView(

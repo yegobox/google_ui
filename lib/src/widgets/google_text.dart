@@ -36,7 +36,7 @@ class GoogleText extends StatelessWidget {
   final int? maxLines;
   final bool? softWrap;
 
-  TextStyle _generateTextStyle(BuildContext context) {
+  TextStyle _textStyle(BuildContext context) {
     switch (variant) {
       case GoogleTextVariant.headline1:
         return Theme.of(context).textTheme.headline1!;
@@ -86,7 +86,7 @@ class GoogleText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: _generateTextStyle(context).copyWith(color: color),
+      style: _textStyle(context).copyWith(color: color),
       overflow: textOverflow,
       textAlign: textAlign,
       maxLines: maxLines,

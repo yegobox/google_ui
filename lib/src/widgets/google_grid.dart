@@ -24,46 +24,57 @@ class GoogleGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> widgets = [];
-
-    final childrenLength = children.length;
-    final rowCount = (childrenLength / columnCount).ceil();
-    for (int i = 0; i < rowCount; i++) {
-      final List<Widget> row = [];
-      for (int x = 0; x < columnCount; x++) {
-        final index = i * columnCount + x;
-        if (index <= childrenLength - 1) {
-          row.add(Expanded(child: children[index]));
-        } else {
-          row.add(Expanded(child: Container()));
-        }
-        if (x != columnCount - 1) {
-          row.add(SizedBox(width: gap));
-        }
-      }
-      widgets.add(expanded
-          ? Expanded(
-              child: Row(
-                mainAxisAlignment: rowMainAxisAlignment,
-                crossAxisAlignment: rowCrossAxisAlignment,
-                children: row,
-              ),
-            )
-          : Row(
-              mainAxisAlignment: rowMainAxisAlignment,
-              crossAxisAlignment: rowCrossAxisAlignment,
-              children: row,
-            ));
-
-      if (i != rowCount - 1) {
-        widgets.add(SizedBox(height: gap));
-      }
-    }
-
     return Container(
       padding: padding,
       margin: margin,
-      child: Column(children: widgets),
+      child: Column(children: _createRows()),
     );
+  }
+
+  List<Widget> _createRows() {
+    final List<Widget> rows = [];
+    final childrenLength = children.length;
+    final rowCount = (childrenLength / columnCount).ceil();
+
+    for (int i = 0; i < rowCount; i++) {
+      final List<Widget> columns = _createColumns(i, childrenLength);
+
+      rows.add(
+        expanded
+            ? Expanded(
+                child: Row(
+                  mainAxisAlignment: rowMainAxisAlignment,
+                  crossAxisAlignment: rowCrossAxisAlignment,
+                  children: columns,
+                ),
+              )
+            : Row(
+                mainAxisAlignment: rowMainAxisAlignment,
+                crossAxisAlignment: rowCrossAxisAlignment,
+                children: columns,
+              ),
+      );
+
+      if (i != rowCount - 1) rows.add(SizedBox(height: gap));
+    }
+
+    return rows;
+  }
+
+  List<Widget> _createColumns(int rowIndex, int childrenLength) {
+    final List<Widget> columns = [];
+
+    for (int x = 0; x < columnCount; x++) {
+      final index = rowIndex * columnCount + x;
+      if (index <= childrenLength - 1) {
+        columns.add(Expanded(child: children[index]));
+      } else {
+        columns.add(Expanded(child: Container()));
+      }
+
+      if (x != columnCount - 1) columns.add(SizedBox(width: gap));
+    }
+
+    return columns;
   }
 }

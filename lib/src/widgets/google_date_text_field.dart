@@ -1,4 +1,4 @@
-import 'package:date_format/date_format.dart' as dateFormat;
+import 'package:date_format/date_format.dart' as date_format;
 import 'package:flutter/material.dart';
 
 import 'google_text_form_field.dart';
@@ -27,17 +27,16 @@ class GoogleDateTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const datePattern = r"^(0[1-9]|[12]\d|30|31)\/(0[1-9]|1[0-2])\/(\d{4})$";
     final dateDefaultValue = initialValue != null
-        ? dateFormat.formatDate(initialValue!, [
-            dateFormat.dd,
+        ? date_format.formatDate(initialValue!, [
+            date_format.dd,
             '/',
-            dateFormat.mm,
+            date_format.mm,
             '/',
-            dateFormat.yyyy,
+            date_format.yyyy,
           ])
         : null;
-
-    const datePattern = r"^(0[1-9]|[12]\d|30|31)\/(0[1-9]|1[0-2])\/(\d{4})$";
 
     return GoogleTextFormField(
       labelText: labelText,
@@ -45,9 +44,7 @@ class GoogleDateTextFormField extends StatelessWidget {
       initialValue: dateDefaultValue,
       keyboardType: TextInputType.datetime,
       onSaved: (value) {
-        if (value != null) {
-          onSavedCallback(datePattern, value);
-        }
+        if (value != null) _onSaved(datePattern, value);
       },
       validator: (value) {
         bool isValid = false;
@@ -57,7 +54,7 @@ class GoogleDateTextFormField extends StatelessWidget {
     );
   }
 
-  void onSavedCallback(String datePattern, String value) {
+  void _onSaved(String datePattern, String value) {
     DateTime? date;
     final isValid = RegExp(datePattern).hasMatch(value);
     if (isValid) {

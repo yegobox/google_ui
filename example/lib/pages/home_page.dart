@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_ui/google_ui.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:date_format/date_format.dart' as dateFormat;
+import 'package:google_ui/google_ui.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import '../providers/theme_provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -99,12 +101,36 @@ class _PageBody extends HookWidget {
         children: const [
           GoogleCalendar(),
           Divider(),
+          _Switch(),
+          Divider(),
           _Button(),
           Divider(),
           _Form(),
           Divider(),
           Typography()
         ],
+      ),
+    );
+  }
+}
+
+class _Switch extends HookWidget {
+  const _Switch({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final themeProviderConsumer = useProvider(themeProvider);
+
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: GoogleSwitch(
+        label: "Dark mode",
+        value: themeProviderConsumer.state,
+        onChanged: (value) {
+          themeProviderConsumer.state = value;
+        },
       ),
     );
   }
@@ -251,7 +277,10 @@ class _Button extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       gap: 10,
       children: [
-        GoogleButton("Elevated", onPressed: () {}),
+        GoogleButton(
+          "Elevated",
+          onPressed: () {},
+        ),
         GoogleButton(
           "Text",
           onPressed: () {},
@@ -261,6 +290,23 @@ class _Button extends StatelessWidget {
           "Outlined",
           onPressed: () {},
           variant: GoogleButtonVariant.outlined,
+        ),
+        GoogleButton(
+          "Elevated",
+          onPressed: () {},
+          icon: const Icon(Icons.add),
+        ),
+        GoogleButton(
+          "Text",
+          onPressed: () {},
+          variant: GoogleButtonVariant.text,
+          icon: const Icon(Icons.add),
+        ),
+        GoogleButton(
+          "Outlined",
+          onPressed: () {},
+          variant: GoogleButtonVariant.outlined,
+          icon: const Icon(Icons.add),
         ),
       ],
     );

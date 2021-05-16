@@ -1,33 +1,42 @@
 import 'package:flutter/material.dart';
 
-import 'google_text.dart';
-
-enum GoogleButtonVariant { primary, outlined, text }
+enum GoogleButtonVariant { elevated, outlined, text }
 
 class GoogleButton extends StatelessWidget {
   const GoogleButton(
-    this.text, {
+    this.label, {
     Key? key,
     required this.onPressed,
-    this.variant = GoogleButtonVariant.primary,
+    this.variant = GoogleButtonVariant.elevated,
+    this.icon,
   }) : super(key: key);
 
-  final String text;
+  final String label;
   final void Function()? onPressed;
   final GoogleButtonVariant variant;
+  final Widget? icon;
 
   @override
   Widget build(BuildContext context) {
     switch (variant) {
-      case GoogleButtonVariant.primary:
-        return _PrimaryButton(onPressed: onPressed, text: text.toUpperCase());
+      case GoogleButtonVariant.elevated:
+        return _ElevatedButton(
+          onPressed: onPressed,
+          label: label.toUpperCase(),
+          icon: icon,
+        );
       case GoogleButtonVariant.outlined:
-        return _OutlinedButton(onPressed: onPressed, text: text.toUpperCase());
+        return _OutlinedButton(
+          onPressed: onPressed,
+          label: label.toUpperCase(),
+          icon: icon,
+        );
       case GoogleButtonVariant.text:
-        return _TextButton(onPressed: onPressed, text: text.toUpperCase());
-
-      default:
-        return _PrimaryButton(onPressed: onPressed, text: text.toUpperCase());
+        return _TextButton(
+          onPressed: onPressed,
+          label: label.toUpperCase(),
+          icon: icon,
+        );
     }
   }
 }
@@ -36,24 +45,26 @@ class _TextButton extends StatelessWidget {
   const _TextButton({
     Key? key,
     this.onPressed,
-    required this.text,
+    required this.label,
+    this.icon,
   }) : super(key: key);
 
   final void Function()? onPressed;
-  final String text;
+  final String label;
+  final Widget? icon;
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
-    return TextButton(
-      onPressed: onPressed,
-      child: GoogleText(
-        text,
-        variant: GoogleTextVariant.button,
-        color: colorScheme.primary,
-      ),
-    );
+    return icon == null
+        ? TextButton(
+            onPressed: onPressed,
+            child: Text(label),
+          )
+        : TextButton.icon(
+            onPressed: onPressed,
+            icon: icon!,
+            label: Text(label),
+          );
   }
 }
 
@@ -61,45 +72,52 @@ class _OutlinedButton extends StatelessWidget {
   const _OutlinedButton({
     Key? key,
     this.onPressed,
-    required this.text,
+    required this.label,
+    this.icon,
   }) : super(key: key);
 
   final void Function()? onPressed;
-  final String text;
+  final String label;
+  final Widget? icon;
 
   @override
   Widget build(BuildContext context) {
-    return OutlinedButton(
-      onPressed: onPressed,
-      child: GoogleText(
-        text,
-        variant: GoogleTextVariant.button,
-      ),
-    );
+    return icon == null
+        ? OutlinedButton(
+            onPressed: onPressed,
+            child: Text(label),
+          )
+        : OutlinedButton.icon(
+            onPressed: onPressed,
+            icon: icon!,
+            label: Text(label),
+          );
   }
 }
 
-class _PrimaryButton extends StatelessWidget {
-  const _PrimaryButton({
+class _ElevatedButton extends StatelessWidget {
+  const _ElevatedButton({
     Key? key,
     this.onPressed,
-    required this.text,
+    required this.label,
+    this.icon,
   }) : super(key: key);
 
   final void Function()? onPressed;
-  final String text;
+  final String label;
+  final Widget? icon;
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
-    return ElevatedButton(
-      onPressed: onPressed,
-      child: GoogleText(
-        text,
-        variant: GoogleTextVariant.button,
-        color: colorScheme.onPrimary,
-      ),
-    );
+    return icon == null
+        ? ElevatedButton(
+            onPressed: onPressed,
+            child: Text(label),
+          )
+        : ElevatedButton.icon(
+            onPressed: onPressed,
+            icon: icon!,
+            label: Text(label),
+          );
   }
 }
