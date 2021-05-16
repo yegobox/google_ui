@@ -32,10 +32,16 @@ const ColorScheme darkColorScheme = ColorScheme(
     brightness: Brightness.dark);
 
 class GoogleTheme {
+  const GoogleTheme({
+    this.customLightColorScheme,
+    this.customDarkColorScheme,
+  });
+
+  final ColorScheme? customLightColorScheme;
+  final ColorScheme? customDarkColorScheme;
+
   ThemeData apply({
     bool darkMode = false,
-    ColorScheme? customLightColorScheme,
-    ColorScheme? customDarkColorScheme,
   }) {
     final colorScheme = darkMode
         ? (customDarkColorScheme ?? darkColorScheme)
