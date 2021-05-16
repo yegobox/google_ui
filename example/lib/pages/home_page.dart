@@ -43,49 +43,53 @@ class _PageDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GoogleDrawer(children: [
-      ListTile(
-        title: const GoogleText("Accounts"),
-        leading: const Icon(Icons.people_alt_outlined),
-        trailing: const Icon(Icons.chevron_right),
-        onTap: () {},
+    return GoogleDrawer(
+      child: Column(
+        children: [
+          ListTile(
+            title: const GoogleText("Accounts"),
+            leading: const Icon(Icons.people_alt_outlined),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () {},
+          ),
+          const Divider(),
+          ListTile(
+            title: const GoogleText("username@gmail.com"),
+            subtitle: const GoogleText(
+              "111-111-1111",
+              color: Colors.grey,
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const GoogleText("Campaign"),
+            leading: const Icon(Icons.home_outlined),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const GoogleText("Billing Payments"),
+            leading: const Icon(Icons.account_balance_outlined),
+            onTap: () {},
+          ),
+          const Divider(),
+          ListTile(
+            title: const GoogleText("Settings"),
+            leading: const Icon(Icons.settings_outlined),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const GoogleText("Feedback"),
+            leading: const Icon(Icons.feedback_outlined),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const GoogleText("Support"),
+            leading: const Icon(Icons.help_outlined),
+            onTap: () {},
+          ),
+        ],
       ),
-      const Divider(),
-      ListTile(
-        title: const GoogleText("username@gmail.com"),
-        subtitle: const GoogleText(
-          "111-111-1111",
-          color: Colors.grey,
-        ),
-        onTap: () {},
-      ),
-      ListTile(
-        title: const GoogleText("Campaign"),
-        leading: const Icon(Icons.home_outlined),
-        onTap: () {},
-      ),
-      ListTile(
-        title: const GoogleText("Billing Payments"),
-        leading: const Icon(Icons.account_balance_outlined),
-        onTap: () {},
-      ),
-      const Divider(),
-      ListTile(
-        title: const GoogleText("Settings"),
-        leading: const Icon(Icons.settings_outlined),
-        onTap: () {},
-      ),
-      ListTile(
-        title: const GoogleText("Feedback"),
-        leading: const Icon(Icons.feedback_outlined),
-        onTap: () {},
-      ),
-      ListTile(
-        title: const GoogleText("Support"),
-        leading: const Icon(Icons.help_outlined),
-        onTap: () {},
-      ),
-    ]);
+    );
   }
 }
 

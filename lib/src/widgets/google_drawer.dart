@@ -4,12 +4,12 @@ class GoogleDrawer extends StatelessWidget {
   const GoogleDrawer({
     Key? key,
     this.backgroundColor,
-    required this.children,
+    required this.child,
     this.custom = false,
   }) : super(key: key);
 
   final Color? backgroundColor;
-  final List<Widget> children;
+  final Widget child;
   final bool custom;
 
   @override
@@ -21,15 +21,13 @@ class GoogleDrawer extends StatelessWidget {
         canvasColor: backgroundColor ?? colorScheme.surface,
       ),
       child: Drawer(
-        child: custom
+        child: !custom
             ? SafeArea(
                 child: SingleChildScrollView(
-                  child: Column(children: children),
+                  child: child,
                 ),
               )
-            : Column(
-                children: children,
-              ),
+            : child,
       ),
     );
   }
