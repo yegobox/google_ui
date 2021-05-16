@@ -192,7 +192,7 @@ class _Form extends HookWidget {
               validator: dateValidator,
               onSaved: onDateSave,
             ),
-            GoogleButton("login", onPressed: submit),
+            GoogleButton("Login", onPressed: submit),
             if (username.value.isNotEmpty || password.value.isNotEmpty)
               GoogleText(
                   "${username.value}\n${password.value}\n${dateTime.value.toString()}"),
@@ -282,32 +282,32 @@ class _Button extends StatelessWidget {
       gap: 10,
       children: [
         GoogleButton(
-          "Elevated",
+          "Elevated".toUpperCase(),
           onPressed: () {},
         ),
         GoogleButton(
-          "Text",
+          "Text".toUpperCase(),
           onPressed: () {},
           variant: GoogleButtonVariant.text,
         ),
         GoogleButton(
-          "Outlined",
+          "Outlined".toUpperCase(),
           onPressed: () {},
           variant: GoogleButtonVariant.outlined,
         ),
         GoogleButton(
-          "Elevated",
+          "Elevated".toUpperCase(),
           onPressed: () {},
           icon: const Icon(Icons.add),
         ),
         GoogleButton(
-          "Text",
+          "Text".toUpperCase(),
           onPressed: () {},
           variant: GoogleButtonVariant.text,
           icon: const Icon(Icons.add),
         ),
         GoogleButton(
-          "Outlined",
+          "Outlined".toUpperCase(),
           onPressed: () {},
           variant: GoogleButtonVariant.outlined,
           icon: const Icon(Icons.add),

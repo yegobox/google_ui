@@ -22,19 +22,19 @@ class GoogleButton extends StatelessWidget {
       case GoogleButtonVariant.elevated:
         return _ElevatedButton(
           onPressed: onPressed,
-          label: label.toUpperCase(),
+          label: label,
           icon: icon,
         );
       case GoogleButtonVariant.outlined:
         return _OutlinedButton(
           onPressed: onPressed,
-          label: label.toUpperCase(),
+          label: label,
           icon: icon,
         );
       case GoogleButtonVariant.text:
         return _TextButton(
           onPressed: onPressed,
-          label: label.toUpperCase(),
+          label: label,
           icon: icon,
         );
     }
