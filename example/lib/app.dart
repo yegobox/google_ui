@@ -10,11 +10,12 @@ class App extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final themeProviderState = useProvider(themeProvider).state;
+    const theme = GoogleTheme();
 
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: GoogleTheme().apply(),
-      darkTheme: GoogleTheme().apply(darkMode: true),
+      theme: theme.apply(),
+      darkTheme: theme.apply(darkMode: true),
       themeMode: themeProviderState ? ThemeMode.dark : ThemeMode.light,
       home: const HomePage(),
     );
