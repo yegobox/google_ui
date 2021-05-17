@@ -1,4 +1,5 @@
 export 'google_appbar.dart';
+export 'google_bottom_bar.dart';
 export 'google_button.dart';
 export 'google_calendar.dart';
 export 'google_date_text_field.dart';
