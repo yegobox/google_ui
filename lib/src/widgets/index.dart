@@ -5,6 +5,7 @@ export 'google_calendar.dart';
 export 'google_date_text_form_field.dart';
 export 'google_drawer.dart';
 export 'google_grid.dart';
+export 'google_select_box.dart';
 export 'google_switch.dart';
 export 'google_text.dart';
 export 'google_text_form_field.dart';

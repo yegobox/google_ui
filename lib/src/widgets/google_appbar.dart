@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../google_ui.dart';
+import 'index.dart';
 
 class GoogleAppBar extends StatelessWidget implements PreferredSizeWidget {
   const GoogleAppBar({
