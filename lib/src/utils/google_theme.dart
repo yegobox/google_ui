@@ -53,6 +53,7 @@ class GoogleTheme {
       accentColor: colorScheme.primary,
       toggleableActiveColor: colorScheme.primary,
       scaffoldBackgroundColor: colorScheme.background,
+      popupMenuTheme: PopupMenuThemeData(color: colorScheme.surface),
       iconTheme: IconThemeData(color: colorScheme.onBackground),
       elevatedButtonTheme: _elevatedButtonTheme(colorScheme),
       textTheme: _textTheme(colorScheme),
