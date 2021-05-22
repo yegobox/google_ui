@@ -2,6 +2,7 @@ export 'google_appbar.dart';
 export 'google_bottom_bar.dart';
 export 'google_button.dart';
 export 'google_calendar.dart';
+export 'google_conditional.dart';
 export 'google_date_text_form_field.dart';
 export 'google_drawer.dart';
 export 'google_grid.dart';
