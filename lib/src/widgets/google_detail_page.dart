@@ -240,7 +240,7 @@ class PopupMenuButtonWidget extends HookWidget {
           if (inputPage != null)
             PopupMenuItem(
               value: () => _onEditPressed(context: context),
-              child: const GoogleText(popupEditLabel),
+              child: GoogleText(popupEditLabel),
             ),
           if (googlePopupItems != null)
             ...googlePopupItems!.map((e) => PopupMenuItem(
@@ -250,7 +250,7 @@ class PopupMenuButtonWidget extends HookWidget {
           if (onDeleted != null)
             PopupMenuItem(
               value: () => _onDeletePressed(context: context),
-              child: const GoogleText(popupDeleteLabel),
+              child: GoogleText(popupDeleteLabel),
             ),
         ];
       },
