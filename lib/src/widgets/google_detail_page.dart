@@ -17,9 +17,12 @@ class GoogleDetailPage extends HookWidget {
     this.googlePopupItems,
     this.onDeleted,
     required this.onRefresh,
+    this.popupEditLabel = "Edit",
+    this.popupDeleteLabel = "Delete",
     this.deleteDialogTitlePrefix = "Delete",
     this.deleteDialogSubtitleSufix = "will be permanently deleted",
     this.deleteDialogConfirmLabel = "DELETE",
+    this.deleteDialogCancelLabel = "CANCEL",
   }) : super(key: key);
 
   final String? title;
@@ -32,9 +35,12 @@ class GoogleDetailPage extends HookWidget {
   final List<GooglePopupItem>? googlePopupItems;
   final Future<GoogleListItem?> Function()? onDeleted;
   final Future Function() onRefresh;
+  final String popupEditLabel;
+  final String popupDeleteLabel;
   final String deleteDialogTitlePrefix;
   final String deleteDialogSubtitleSufix;
   final String deleteDialogConfirmLabel;
+  final String deleteDialogCancelLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -56,9 +62,12 @@ class GoogleDetailPage extends HookWidget {
           onDeleted: onDeleted,
           onRefresh: onRefresh,
           result: result,
+          popupEditLabel: popupEditLabel,
+          popupDeleteLabel: popupDeleteLabel,
           deleteDialogTitlePrefix: deleteDialogTitlePrefix,
           deleteDialogSubtitleSufix: deleteDialogSubtitleSufix,
           deleteDialogConfirmLabel: deleteDialogConfirmLabel,
+          deleteDialogCancelLabel: deleteDialogCancelLabel,
         ),
         body: _PageBody(
           title: title,
@@ -85,9 +94,12 @@ class _PageAppBar extends HookWidget implements PreferredSizeWidget {
     required this.onDeleted,
     required this.onRefresh,
     required this.result,
+    required this.popupEditLabel,
+    required this.popupDeleteLabel,
     required this.deleteDialogTitlePrefix,
     required this.deleteDialogSubtitleSufix,
     required this.deleteDialogConfirmLabel,
+    required this.deleteDialogCancelLabel,
   }) : super(key: key);
 
   final String? title;
@@ -99,9 +111,12 @@ class _PageAppBar extends HookWidget implements PreferredSizeWidget {
   final Future<GoogleListItem?> Function()? onDeleted;
   final Future Function() onRefresh;
   final ValueNotifier<GoogleListItem?> result;
+  final String popupEditLabel;
+  final String popupDeleteLabel;
   final String deleteDialogTitlePrefix;
   final String deleteDialogSubtitleSufix;
   final String deleteDialogConfirmLabel;
+  final String deleteDialogCancelLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -122,9 +137,12 @@ class _PageAppBar extends HookWidget implements PreferredSizeWidget {
               onDeleted: onDeleted,
               onRefresh: onRefresh,
               result: result,
+              popupEditLabel: popupEditLabel,
+              popupDeleteLabel: popupDeleteLabel,
               deleteDialogTitlePrefix: deleteDialogTitlePrefix,
               deleteDialogSubtitleSufix: deleteDialogSubtitleSufix,
               deleteDialogConfirmLabel: deleteDialogConfirmLabel,
+              deleteDialogCancelLabel: deleteDialogCancelLabel,
             )
         ],
       ),
@@ -193,9 +211,12 @@ class PopupMenuButtonWidget extends HookWidget {
     required this.onDeleted,
     required this.onRefresh,
     required this.result,
+    required this.popupEditLabel,
+    required this.popupDeleteLabel,
     required this.deleteDialogTitlePrefix,
     required this.deleteDialogSubtitleSufix,
     required this.deleteDialogConfirmLabel,
+    required this.deleteDialogCancelLabel,
   }) : super(key: key);
 
   final String? title;
@@ -204,9 +225,12 @@ class PopupMenuButtonWidget extends HookWidget {
   final Future<GoogleListItem?> Function()? onDeleted;
   final Future Function() onRefresh;
   final ValueNotifier<GoogleListItem?> result;
+  final String popupEditLabel;
+  final String popupDeleteLabel;
   final String deleteDialogTitlePrefix;
   final String deleteDialogSubtitleSufix;
   final String deleteDialogConfirmLabel;
+  final String deleteDialogCancelLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -216,7 +240,7 @@ class PopupMenuButtonWidget extends HookWidget {
           if (inputPage != null)
             PopupMenuItem(
               value: () => _onEditPressed(context: context),
-              child: const GoogleText("Edit"),
+              child: const GoogleText(popupEditLabel),
             ),
           if (googlePopupItems != null)
             ...googlePopupItems!.map((e) => PopupMenuItem(
@@ -226,7 +250,7 @@ class PopupMenuButtonWidget extends HookWidget {
           if (onDeleted != null)
             PopupMenuItem(
               value: () => _onDeletePressed(context: context),
-              child: const GoogleText("Delete"),
+              child: const GoogleText(popupDeleteLabel),
             ),
         ];
       },
@@ -249,6 +273,7 @@ class PopupMenuButtonWidget extends HookWidget {
       title: "$deleteDialogTitlePrefix ${(title ?? "").toLowerCase()}",
       subtitle: "$title $deleteDialogSubtitleSufix",
       confirmLabel: deleteDialogConfirmLabel,
+      cancelLabel: deleteDialogCancelLabel,
       onConfirm: () async {
         final navigator = Navigator.of(context);
         navigator.pop();
