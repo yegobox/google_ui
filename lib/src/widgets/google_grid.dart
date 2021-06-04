@@ -4,23 +4,23 @@ class GoogleGrid extends StatelessWidget {
   const GoogleGrid({
     Key? key,
     this.columnCount = 2,
-    required this.children,
     this.gap,
     this.padding,
     this.margin,
     this.expanded = false,
     this.rowMainAxisAlignment = MainAxisAlignment.start,
     this.rowCrossAxisAlignment = CrossAxisAlignment.center,
+    required this.children,
   }) : super(key: key);
 
   final int columnCount;
-  final List<Widget> children;
   final double? gap;
   final EdgeInsets? padding;
   final EdgeInsets? margin;
   final bool expanded;
   final MainAxisAlignment rowMainAxisAlignment;
   final CrossAxisAlignment rowCrossAxisAlignment;
+  final List<Widget> children;
 
   @override
   Widget build(BuildContext context) {

@@ -7,15 +7,15 @@ import '../utils/google_list_util.dart';
 class GoogleListPage extends StatelessWidget {
   const GoogleListPage({
     Key? key,
-    this.title,
+    required this.title,
     this.subtitle,
-    this.isLoading = false,
+    required this.isLoading,
     required this.googleListItems,
-    this.searchPage,
-    this.inputPage,
-    this.errorPage,
+    required this.searchPage,
+    required this.inputPage,
+    required this.errorPage,
     required this.onRefresh,
-    this.onChanged,
+    required this.onChanged,
   }) : super(key: key);
 
   final String? title;

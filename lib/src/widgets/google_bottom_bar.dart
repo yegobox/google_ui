@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 class GoogleBottomBar extends StatelessWidget {
   const GoogleBottomBar({
     Key? key,
-    this.child,
     this.color,
     this.padding,
+    this.child,
   }) : super(key: key);
 
-  final Widget? child;
   final Color? color;
   final EdgeInsetsGeometry? padding;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {

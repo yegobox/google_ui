@@ -6,14 +6,14 @@ import '../../google_ui.dart';
 class GoogleSearchPage extends StatelessWidget {
   const GoogleSearchPage({
     Key? key,
-    this.title,
+    required this.title,
     this.searchHintPrefix = "Search",
-    this.isLoading = false,
+    required this.isLoading,
     required this.googleListItems,
-    this.errorPage,
-    this.keyboardType,
-    this.onFieldSubmitted,
-    this.onClearPressed,
+    required this.errorPage,
+    required this.keyboardType,
+    required this.onFieldSubmitted,
+    required this.onClearPressed,
   }) : super(key: key);
 
   final String? title;

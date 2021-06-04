@@ -5,14 +5,14 @@ import '../../google_ui.dart';
 class GoogleInputPage extends StatelessWidget {
   const GoogleInputPage({
     Key? key,
-    this.title,
+    required this.title,
     this.subtitle,
-    this.isEdit = false,
-    this.isLoading = false,
-    this.isProgressLoading = false,
-    this.errorPage,
-    this.child,
+    required this.isEdit,
+    required this.isLoading,
+    required this.isProgressLoading,
+    required this.errorPage,
     required this.onSaved,
+    required this.child,
   }) : super(key: key);
 
   final String? title;
@@ -21,8 +21,8 @@ class GoogleInputPage extends StatelessWidget {
   final bool isLoading;
   final bool isProgressLoading;
   final Widget? errorPage;
-  final Widget? child;
   final Future<GoogleListItem?> Function() onSaved;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {

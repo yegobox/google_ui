@@ -4,13 +4,13 @@ class GoogleDrawer extends StatelessWidget {
   const GoogleDrawer({
     Key? key,
     this.backgroundColor,
-    required this.child,
     this.custom = false,
+    required this.child,
   }) : super(key: key);
 
   final Color? backgroundColor;
-  final Widget child;
   final bool custom;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {

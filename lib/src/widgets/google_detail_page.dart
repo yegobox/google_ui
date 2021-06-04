@@ -7,15 +7,14 @@ import 'index.dart';
 class GoogleDetailPage extends HookWidget {
   const GoogleDetailPage({
     Key? key,
-    this.title,
+    required this.title,
     this.subtitle,
-    this.inputPage,
-    this.errorPage,
-    this.isProgressLoading = false,
-    this.isLoading = false,
-    this.child,
+    required this.inputPage,
+    required this.errorPage,
+    required this.isProgressLoading,
+    required this.isLoading,
     this.googlePopupItems,
-    this.onDeleted,
+    required this.onDeleted,
     required this.onRefresh,
     this.popupEditLabel = "Edit",
     this.popupDeleteLabel = "Delete",
@@ -23,6 +22,7 @@ class GoogleDetailPage extends HookWidget {
     this.deleteDialogSubtitleSufix = "will be permanently deleted",
     this.deleteDialogConfirmLabel = "DELETE",
     this.deleteDialogCancelLabel = "CANCEL",
+    required this.child,
   }) : super(key: key);
 
   final String? title;
@@ -31,7 +31,6 @@ class GoogleDetailPage extends HookWidget {
   final Widget? errorPage;
   final bool isProgressLoading;
   final bool isLoading;
-  final Widget? child;
   final List<GooglePopupItem>? googlePopupItems;
   final Future<GoogleListItem?> Function()? onDeleted;
   final Future Function() onRefresh;
@@ -41,6 +40,7 @@ class GoogleDetailPage extends HookWidget {
   final String deleteDialogSubtitleSufix;
   final String deleteDialogConfirmLabel;
   final String deleteDialogCancelLabel;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
