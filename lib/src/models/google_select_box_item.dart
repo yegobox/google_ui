@@ -9,7 +9,7 @@ class GoogleSelectBoxItem {
 
   GoogleSelectBoxItem copyWith({
     String? label,
-    dynamic? value,
+    dynamic value,
   }) {
     return GoogleSelectBoxItem(
       label: label ?? this.label,
