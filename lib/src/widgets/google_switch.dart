@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../google_ui.dart';
+import 'index.dart';
 
 class GoogleSwitch extends StatelessWidget {
   const GoogleSwitch({
