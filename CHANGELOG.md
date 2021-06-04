@@ -1,3 +1,7 @@
+## [0.1.1]
+- Fix flutter_hooks version
+- Fix some Google*Page widget
+
 ## [0.1.0]
 - Add GoogleSelectBox
 - Add GoogleConditional
