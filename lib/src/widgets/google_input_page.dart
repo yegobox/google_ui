@@ -7,6 +7,8 @@ class GoogleInputPage extends StatelessWidget {
     Key? key,
     required this.title,
     this.subtitle,
+    this.appBarTitleOnEditPrefix = "Edit",
+    this.appBarTitleOnAddPrefix = "Add",
     required this.isEdit,
     required this.isLoading,
     required this.isProgressLoading,
@@ -17,6 +19,8 @@ class GoogleInputPage extends StatelessWidget {
 
   final String? title;
   final String? subtitle;
+  final String? appBarTitleOnEditPrefix;
+  final String? appBarTitleOnAddPrefix;
   final bool isEdit;
   final bool isLoading;
   final bool isProgressLoading;
@@ -30,8 +34,10 @@ class GoogleInputPage extends StatelessWidget {
       appBar: _PageAppBar(
         title: title,
         subtitle: subtitle,
-        errorPage: errorPage,
+        appBarTitleOnEditPrefix: appBarTitleOnEditPrefix,
+        appBarTitleOnAddPrefix: appBarTitleOnAddPrefix,
         isLoading: isLoading,
+        errorPage: errorPage,
         isEdit: isEdit,
         onSaved: onSaved,
       ),
@@ -79,18 +85,22 @@ class _SaveIconButton extends StatelessWidget {
 class _PageAppBar extends StatelessWidget implements PreferredSizeWidget {
   const _PageAppBar({
     Key? key,
-    this.title,
+    required this.title,
+    required this.subtitle,
+    required this.appBarTitleOnEditPrefix,
+    required this.appBarTitleOnAddPrefix,
+    required this.errorPage,
     required this.isLoading,
-    this.subtitle,
-    this.errorPage,
     required this.isEdit,
     required this.onSaved,
   }) : super(key: key);
 
   final String? title;
-  final bool isLoading;
   final String? subtitle;
+  final String? appBarTitleOnEditPrefix;
+  final String? appBarTitleOnAddPrefix;
   final Widget? errorPage;
+  final bool isLoading;
   final bool isEdit;
   final Future<GoogleListItem?> Function() onSaved;
 
@@ -100,7 +110,8 @@ class _PageAppBar extends StatelessWidget implements PreferredSizeWidget {
       condition: isLoading || errorPage != null,
       onTrue: const GoogleAppBar(),
       onFalse: GoogleAppBar(
-        title: "${isEdit ? "Sunting" : "Tambah"} $title",
+        title:
+            "${isEdit ? appBarTitleOnEditPrefix : appBarTitleOnAddPrefix} $title",
         subtitle: subtitle,
         actions: [_SaveIconButton(onSaved: onSaved, isEdit: isEdit)],
       ),
@@ -114,8 +125,8 @@ class _PageAppBar extends StatelessWidget implements PreferredSizeWidget {
 class _PageBody extends StatelessWidget {
   const _PageBody({
     Key? key,
-    this.title,
-    this.errorPage,
+    required this.title,
+    required this.errorPage,
     required this.isLoading,
     required this.isProgressLoading,
     this.child,
