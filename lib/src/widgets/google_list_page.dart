@@ -44,8 +44,8 @@ class GoogleListPage extends StatelessWidget {
         title: title,
         subtitle: subtitle,
         isLoading: isLoading,
-        googleListItems: googleListItems,
         searchPage: searchPage,
+        errorPage: errorPage,
         onChanged: onChangedGenerateNewList,
       ),
       body: _PageBody(
@@ -58,8 +58,7 @@ class GoogleListPage extends StatelessWidget {
         onChanged: onChangedGenerateNewList,
       ),
       floatingActionButton: GoogleConditional.isTrue(
-        condition:
-            !isLoading && googleListItems.isNotEmpty && inputPage != null,
+        condition: !isLoading && errorPage == null && inputPage != null,
         onTrue: _PageFAB(
           inputPage: inputPage ?? Container(),
           onChanged: onChangedGenerateNewList,
@@ -75,22 +74,22 @@ class _PageAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     required this.subtitle,
     required this.isLoading,
-    required this.googleListItems,
     required this.searchPage,
+    required this.errorPage,
     required this.onChanged,
   }) : super(key: key);
 
   final String? title;
   final String? subtitle;
   final bool isLoading;
-  final List<GoogleListItem> googleListItems;
   final Widget? searchPage;
+  final Widget? errorPage;
   final Function(GoogleListItem) onChanged;
 
   @override
   Widget build(BuildContext context) {
     return GoogleConditional(
-      condition: isLoading || googleListItems.isEmpty,
+      condition: isLoading || errorPage != null,
       onTrue: const GoogleAppBar(),
       onFalse: GoogleAppBar(
         title: title,

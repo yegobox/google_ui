@@ -39,6 +39,7 @@ class GoogleSearchPage extends StatelessWidget {
         title: title,
         isLoading: isLoading,
         googleListItems: googleListItems,
+        errorPage: errorPage,
       ),
     );
   }
@@ -100,7 +101,7 @@ class _PageBody extends StatelessWidget {
     this.title,
     required this.isLoading,
     required this.googleListItems,
-    this.errorPage,
+    required this.errorPage,
   }) : super(key: key);
 
   final String? title;
