@@ -8,14 +8,14 @@ class GoogleErrorPage extends StatelessWidget {
     required this.icon,
     required this.title,
     required this.subtitle1,
-    required this.label,
+    this.label,
     this.onPressed,
   }) : super(key: key);
 
   final IconData icon;
   final String title;
   final String subtitle1;
-  final String label;
+  final String? label;
   final void Function()? onPressed;
 
   @override
@@ -48,7 +48,8 @@ class GoogleErrorPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 if (onPressed != null) const SizedBox(height: 32),
-                if (onPressed != null) GoogleButton(label, onPressed: onPressed)
+                if (onPressed != null)
+                  GoogleButton(label ?? "", onPressed: onPressed)
               ],
             ),
           ),
