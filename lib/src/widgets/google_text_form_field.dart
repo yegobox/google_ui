@@ -71,10 +71,8 @@ class GoogleTextFormField extends HookWidget {
 }
 
 class _TogglePasswordButton extends StatelessWidget {
-  const _TogglePasswordButton({
-    Key? key,
-    required this.isShowPassword,
-  }) : super(key: key);
+  const _TogglePasswordButton({Key? key, required this.isShowPassword})
+      : super(key: key);
 
   final ValueNotifier<bool> isShowPassword;
 

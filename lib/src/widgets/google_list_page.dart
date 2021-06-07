@@ -25,8 +25,8 @@ class GoogleListPage extends StatelessWidget {
   final Widget? searchPage;
   final Widget? inputPage;
   final Widget? errorPage;
-  final Future Function() onRefresh;
-  final Function(List<GoogleListItem>)? onChanged;
+  final Future<void> Function() onRefresh;
+  final void Function(List<GoogleListItem>)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +84,7 @@ class _PageAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isLoading;
   final Widget? searchPage;
   final Widget? errorPage;
-  final Function(GoogleListItem) onChanged;
+  final void Function(GoogleListItem) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -117,7 +117,7 @@ class _SearchIconButton extends StatelessWidget {
   }) : super(key: key);
 
   final Widget searchPage;
-  final Function(GoogleListItem) onChanged;
+  final void Function(GoogleListItem) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -153,8 +153,8 @@ class _PageBody extends StatelessWidget {
   final List<GoogleListItem> googleListItems;
   final Widget? inputPage;
   final Widget? errorPage;
-  final Future Function() onRefresh;
-  final Function(GoogleListItem) onChanged;
+  final Future<void> Function() onRefresh;
+  final void Function(GoogleListItem) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -184,7 +184,7 @@ class _ListView extends StatelessWidget {
   }) : super(key: key);
 
   final List<GoogleListItem> googleListItems;
-  final Function(GoogleListItem) onChanged;
+  final void Function(GoogleListItem) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -192,10 +192,8 @@ class _ListView extends StatelessWidget {
       itemCount: googleListItems.length,
       itemBuilder: (context, index) {
         final googleListItem = googleListItems[index];
-
         return _ListItem(
           index: index,
-          googleListItems: googleListItems,
           googleListItem: googleListItem,
           onChanged: onChanged,
         );
@@ -208,15 +206,13 @@ class _ListItem extends StatelessWidget {
   const _ListItem({
     Key? key,
     required this.index,
-    required this.googleListItems,
     required this.googleListItem,
     required this.onChanged,
   }) : super(key: key);
 
   final int index;
-  final List<GoogleListItem> googleListItems;
   final GoogleListItem googleListItem;
-  final Function(GoogleListItem) onChanged;
+  final void Function(GoogleListItem) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -225,7 +221,10 @@ class _ListItem extends StatelessWidget {
       title: GoogleText(googleListItem.title),
       subtitle: GoogleConditional.isTrue(
         condition: googleListItem.subtitle != null,
-        onTrue: GoogleText(googleListItem.subtitle ?? ""),
+        onTrue: GoogleText(
+          googleListItem.subtitle ?? "",
+          variant: GoogleTextVariant.bodyText2,
+        ),
       ),
       onTap: () => _onListTilePressed(context),
     );
@@ -248,7 +247,7 @@ class _PageFAB extends StatelessWidget {
   }) : super(key: key);
 
   final Widget inputPage;
-  final Function(GoogleListItem) onChanged;
+  final void Function(GoogleListItem) onChanged;
 
   @override
   Widget build(BuildContext context) {

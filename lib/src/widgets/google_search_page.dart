@@ -142,7 +142,10 @@ class _ListView extends StatelessWidget {
           title: GoogleText(googleListItem.title),
           subtitle: GoogleConditional.isTrue(
             condition: googleListItem.subtitle != null,
-            onTrue: GoogleText(googleListItem.subtitle ?? ""),
+            onTrue: GoogleText(
+              googleListItem.subtitle ?? "",
+              variant: GoogleTextVariant.bodyText2,
+            ),
           ),
           onTap: () => _onListTilePressed(context, googleListItem.page!),
         );
