@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'index.dart';
 
 class GoogleDialog {
-  void showConfirmation(
+  static void showConfirmation(
     BuildContext context, {
     required String title,
     required String subtitle,
@@ -33,7 +33,7 @@ class GoogleDialog {
     );
   }
 
-  void showAlert(
+  static void showAlert(
     BuildContext context, {
     required String title,
     required String subtitle,
