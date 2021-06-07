@@ -22,7 +22,7 @@ class GoogleSearchPage extends StatelessWidget {
   final List<GoogleListItem> googleListItems;
   final Widget? errorPage;
   final TextInputType? keyboardType;
-  final Future Function(String)? onFieldSubmitted;
+  final void Function(String)? onFieldSubmitted;
   final void Function()? onClearPressed;
 
   @override
@@ -58,7 +58,7 @@ class _PageAppBar extends HookWidget implements PreferredSizeWidget {
   final String? title;
   final String searchHintPrefix;
   final TextInputType? keyboardType;
-  final Future Function(String)? onFieldSubmitted;
+  final void Function(String)? onFieldSubmitted;
   final void Function()? onClearPressed;
 
   @override
