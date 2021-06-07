@@ -18,9 +18,6 @@ class GoogleConditional extends StatelessWidget {
     return onFalse;
   }
 
-  static Widget? isTrue({
-    required bool condition,
-    required Widget onTrue,
-  }) =>
+  static Widget? isTrue({required bool condition, required Widget onTrue}) =>
       condition ? onTrue : null;
 }

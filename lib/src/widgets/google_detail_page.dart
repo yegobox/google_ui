@@ -33,7 +33,7 @@ class GoogleDetailPage extends HookWidget {
   final bool isLoading;
   final List<GooglePopupItem>? googlePopupItems;
   final Future<GoogleListItem?> Function()? onDeleted;
-  final Future Function() onRefresh;
+  final Future<void> Function() onRefresh;
   final String popupEditLabel;
   final String popupDeleteLabel;
   final String deleteDialogTitlePrefix;
@@ -109,7 +109,7 @@ class _PageAppBar extends HookWidget implements PreferredSizeWidget {
   final bool isLoading;
   final List<GooglePopupItem>? googlePopupItems;
   final Future<GoogleListItem?> Function()? onDeleted;
-  final Future Function() onRefresh;
+  final Future<void> Function() onRefresh;
   final ValueNotifier<GoogleListItem?> result;
   final String popupEditLabel;
   final String popupDeleteLabel;
@@ -168,7 +168,7 @@ class _PageBody extends StatelessWidget {
   final Widget? errorPage;
   final bool isProgressLoading;
   final bool isLoading;
-  final Future Function() onRefresh;
+  final Future<void> Function() onRefresh;
   final Widget? child;
 
   @override
@@ -223,7 +223,7 @@ class PopupMenuButtonWidget extends HookWidget {
   final Widget? inputPage;
   final List<GooglePopupItem>? googlePopupItems;
   final Future<GoogleListItem?> Function()? onDeleted;
-  final Future Function() onRefresh;
+  final Future<void> Function() onRefresh;
   final ValueNotifier<GoogleListItem?> result;
   final String popupEditLabel;
   final String popupDeleteLabel;
@@ -268,7 +268,7 @@ class PopupMenuButtonWidget extends HookWidget {
   }
 
   void _onDeletePressed({required BuildContext context}) {
-    return GoogleDialog().showConfirmation(
+    return GoogleDialog.showConfirmation(
       context,
       title: "$deleteDialogTitlePrefix ${(title ?? "").toLowerCase()}",
       subtitle: "$title $deleteDialogSubtitleSufix",

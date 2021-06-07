@@ -12,7 +12,7 @@ class GoogleCalendar extends HookWidget {
     this.padding = const EdgeInsets.all(8.0),
   }) : super(key: key);
 
-  final Function(DateTime selectedDay, DateTime focusedDay)? onDaySelected;
+  final void Function(DateTime selectedDay, DateTime focusedDay)? onDaySelected;
   final EdgeInsets padding;
 
   @override
