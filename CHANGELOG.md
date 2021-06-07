@@ -1,3 +1,9 @@
+## [0.1.2]
+- Remove required from label property [GoogleErrorPage]
+- Change dynamic return type to void
+- Change property name [GoogleDrawer]
+- Change GoogleTextVariant from bodyText1 to bodyText2 [GoogleListPage, GoogleSearchPage] 
+
 ## [0.1.1]
 - Fix flutter_hooks version
 - Fix some Google*Page widget
