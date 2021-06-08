@@ -8,6 +8,27 @@ I created this project to speed up my application development process by creatin
 |:---:|:---:|
 |![](screenshots/light_mode.jpg)|![](screenshots/dark_mode.jpg)|
 
+## Installing
+
+Run this command:
+``` powershell
+$ flutter pub add google_ui
+```
+This will add a line like this to your package's pubspec.yaml (and run an implicit dart pub get):
+
+``` yaml
+dependencies:
+  google_ui: ^0.1.2
+```
+
+Alternatively, your editor might support flutter pub get. Check the docs for your editor to learn more.
+
+Import it
+Now in your Dart code, you can use:
+``` dart
+import 'package:google_ui/google_ui.dart';
+```
+
 ## Getting Started
 
 Apply google_ui theme to your app
