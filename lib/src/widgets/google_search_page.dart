@@ -67,6 +67,7 @@ class _PageAppBar extends HookWidget implements PreferredSizeWidget {
 
     return GoogleAppBar(
       customTitle: TextFormField(
+        autofocus: true,
         controller: searchFieldController.value,
         keyboardType: keyboardType,
         decoration: InputDecoration(
