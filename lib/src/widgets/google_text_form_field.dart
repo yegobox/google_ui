@@ -17,6 +17,9 @@ class GoogleTextFormField extends HookWidget {
     this.onSaved,
     this.onTap,
     this.readOnly = false,
+    this.hideCounterText = true,
+    this.maxLength,
+    this.maxLines = 1,
     this.suffixIcon,
     this.prefixIcon,
     this.validator,
@@ -35,6 +38,9 @@ class GoogleTextFormField extends HookWidget {
   final void Function(String?)? onSaved;
   final void Function()? onTap;
   final bool readOnly;
+  final bool hideCounterText;
+  final int? maxLength;
+  final int? maxLines;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final String? Function(String?)? validator;
@@ -55,8 +61,11 @@ class GoogleTextFormField extends HookWidget {
       onSaved: onSaved,
       onTap: onTap,
       readOnly: readOnly,
+      maxLength: maxLength,
+      maxLines: maxLines,
       decoration: InputDecoration(
         isDense: true,
+        counterText: hideCounterText ? "" : null,
         labelText: labelText,
         hintText: hintText,
         border: const OutlineInputBorder(),
