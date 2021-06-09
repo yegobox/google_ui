@@ -16,6 +16,7 @@ class GoogleListPage extends StatelessWidget {
     required this.errorPage,
     required this.onRefresh,
     required this.onChanged,
+    this.actions,
   }) : super(key: key);
 
   final String? title;
@@ -27,6 +28,7 @@ class GoogleListPage extends StatelessWidget {
   final Widget? errorPage;
   final Future<void> Function() onRefresh;
   final void Function(List<GoogleListItem>)? onChanged;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +49,7 @@ class GoogleListPage extends StatelessWidget {
         searchPage: searchPage,
         errorPage: errorPage,
         onChanged: onChangedGenerateNewList,
+        actions: actions,
       ),
       body: _PageBody(
         title: title,
@@ -77,6 +80,7 @@ class _PageAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.searchPage,
     required this.errorPage,
     required this.onChanged,
+    required this.actions,
   }) : super(key: key);
 
   final String? title;
@@ -85,6 +89,7 @@ class _PageAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? searchPage;
   final Widget? errorPage;
   final void Function(GoogleListItem) onChanged;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +104,8 @@ class _PageAppBar extends StatelessWidget implements PreferredSizeWidget {
             _SearchIconButton(
               searchPage: searchPage!,
               onChanged: onChanged,
-            )
+            ),
+          if (actions != null) ...actions!
         ],
       ),
     );

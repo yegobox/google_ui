@@ -14,6 +14,7 @@ class GoogleInputPage extends StatelessWidget {
     required this.isProgressLoading,
     required this.errorPage,
     required this.onSaved,
+    this.actions,
     required this.child,
   }) : super(key: key);
 
@@ -26,6 +27,7 @@ class GoogleInputPage extends StatelessWidget {
   final bool isProgressLoading;
   final Widget? errorPage;
   final Future<GoogleListItem?> Function() onSaved;
+  final List<Widget>? actions;
   final Widget? child;
 
   @override
@@ -40,6 +42,7 @@ class GoogleInputPage extends StatelessWidget {
         errorPage: errorPage,
         isEdit: isEdit,
         onSaved: onSaved,
+        actions: actions,
       ),
       body: _PageBody(
         title: title,
@@ -93,6 +96,7 @@ class _PageAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.isLoading,
     required this.isEdit,
     required this.onSaved,
+    required this.actions,
   }) : super(key: key);
 
   final String? title;
@@ -103,6 +107,7 @@ class _PageAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isLoading;
   final bool isEdit;
   final Future<GoogleListItem?> Function() onSaved;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +118,10 @@ class _PageAppBar extends StatelessWidget implements PreferredSizeWidget {
         title:
             "${isEdit ? appBarTitleOnEditPrefix : appBarTitleOnAddPrefix} $title",
         subtitle: subtitle,
-        actions: [_SaveIconButton(onSaved: onSaved, isEdit: isEdit)],
+        actions: [
+          _SaveIconButton(onSaved: onSaved, isEdit: isEdit),
+          if (actions != null) ...actions!
+        ],
       ),
     );
   }

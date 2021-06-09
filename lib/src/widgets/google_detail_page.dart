@@ -14,6 +14,7 @@ class GoogleDetailPage extends HookWidget {
     required this.isProgressLoading,
     required this.isLoading,
     this.googlePopupItems,
+    this.actions,
     required this.onDeleted,
     required this.onRefresh,
     this.popupEditLabel = "Edit",
@@ -32,6 +33,7 @@ class GoogleDetailPage extends HookWidget {
   final bool isProgressLoading;
   final bool isLoading;
   final List<GooglePopupItem>? googlePopupItems;
+  final List<Widget>? actions;
   final Future<GoogleListItem?> Function()? onDeleted;
   final Future<void> Function() onRefresh;
   final String popupEditLabel;
@@ -59,6 +61,7 @@ class GoogleDetailPage extends HookWidget {
           subtitle: subtitle,
           inputPage: inputPage,
           googlePopupItems: googlePopupItems,
+          actions: actions,
           onDeleted: onDeleted,
           onRefresh: onRefresh,
           result: result,
@@ -91,6 +94,7 @@ class _PageAppBar extends HookWidget implements PreferredSizeWidget {
     required this.errorPage,
     required this.isLoading,
     required this.googlePopupItems,
+    required this.actions,
     required this.onDeleted,
     required this.onRefresh,
     required this.result,
@@ -108,6 +112,7 @@ class _PageAppBar extends HookWidget implements PreferredSizeWidget {
   final Widget? errorPage;
   final bool isLoading;
   final List<GooglePopupItem>? googlePopupItems;
+  final List<Widget>? actions;
   final Future<GoogleListItem?> Function()? onDeleted;
   final Future<void> Function() onRefresh;
   final ValueNotifier<GoogleListItem?> result;
@@ -127,6 +132,7 @@ class _PageAppBar extends HookWidget implements PreferredSizeWidget {
         title: title,
         subtitle: subtitle,
         actions: [
+          if (actions != null) ...actions!,
           if (inputPage != null ||
               googlePopupItems != null ||
               onDeleted != null)

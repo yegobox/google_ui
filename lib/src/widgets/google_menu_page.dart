@@ -9,16 +9,18 @@ class GoogleMenuPage extends StatelessWidget {
     this.title,
     this.subtitle,
     required this.googleMenuItems,
+    this.actions,
   }) : super(key: key);
 
   final String? title;
   final String? subtitle;
   final List<GoogleMenuItem> googleMenuItems;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: GoogleAppBar(title: title, subtitle: subtitle),
+      appBar: GoogleAppBar(title: title, subtitle: subtitle, actions: actions),
       body: ListView.builder(
         itemCount: googleMenuItems.length,
         itemBuilder: (context, index) {
