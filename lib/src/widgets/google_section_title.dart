@@ -30,6 +30,7 @@ class GoogleSectionTitle extends StatelessWidget {
             title,
             variant: GoogleTextVariant.bodyText2,
             color: colorScheme.onBackground.withOpacity(.75),
+            fontWeight: FontWeight.w600,
           ),
           const Spacer(),
           if (trailing != null) trailing!
