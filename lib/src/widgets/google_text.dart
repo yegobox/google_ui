@@ -27,6 +27,7 @@ class GoogleText extends StatelessWidget {
     this.maxLines,
     this.softWrap,
     this.fontSize,
+    this.fontWeight,
   }) : super(key: key);
 
   final String text;
@@ -37,6 +38,7 @@ class GoogleText extends StatelessWidget {
   final int? maxLines;
   final bool? softWrap;
   final double? fontSize;
+  final FontWeight? fontWeight;
 
   TextStyle _textStyle(BuildContext context) {
     switch (variant) {
@@ -88,7 +90,11 @@ class GoogleText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: _textStyle(context).copyWith(color: color, fontSize: fontSize),
+      style: _textStyle(context).copyWith(
+        color: color,
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+      ),
       overflow: textOverflow,
       textAlign: textAlign,
       maxLines: maxLines,
