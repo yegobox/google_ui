@@ -47,8 +47,9 @@ class GoogleDateTextFormField extends StatelessWidget {
         if (value != null) _onSaved(datePattern, value);
       },
       validator: (value) {
-        bool isValid = false;
-        if (value != null) isValid = RegExp(datePattern).hasMatch(value);
+        bool isValid = true;
+        if (!(value == null || value.trim() == ''))
+          isValid = RegExp(datePattern).hasMatch(value);
         if (validator != null) return validator!(value, isValid);
       },
     );
