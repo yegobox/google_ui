@@ -64,10 +64,12 @@ class _PageAppBar extends HookWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final searchFieldController = useState(TextEditingController());
+    final focusNode = useState(FocusNode());
 
     return GoogleAppBar(
       customTitle: TextFormField(
         autofocus: true,
+        focusNode: focusNode.value,
         controller: searchFieldController.value,
         keyboardType: keyboardType,
         decoration: InputDecoration(
@@ -85,6 +87,7 @@ class _PageAppBar extends HookWidget implements PreferredSizeWidget {
           icon: const Icon(Icons.close),
           onPressed: () {
             searchFieldController.value.clear();
+            focusNode.value.requestFocus();
             if (onClearPressed != null) onClearPressed!();
           },
         )
