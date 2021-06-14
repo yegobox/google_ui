@@ -265,12 +265,11 @@ class PopupMenuButtonWidget extends HookWidget {
   }
 
   Future _onEditPressed({required BuildContext context}) async {
-    final GoogleListItem? result = await Navigator.of(context).push(
+    result.value = await Navigator.of(context).push(
       MaterialPageRoute(builder: (context) => inputPage!),
     );
 
-    if (result != null) await onRefresh();
-    this.result.value = result;
+    if (result.value != null) await onRefresh();
   }
 
   void _onDeletePressed({required BuildContext context}) {
