@@ -5,7 +5,7 @@ import 'index.dart';
 class GoogleAppBar extends StatelessWidget implements PreferredSizeWidget {
   const GoogleAppBar({
     Key? key,
-    this.title,
+    required this.title,
     this.subtitle,
     this.centerTitle,
     this.backgroundColor,

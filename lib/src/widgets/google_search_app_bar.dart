@@ -6,12 +6,13 @@ import 'index.dart';
 class GoogleSearchAppBar extends HookWidget implements PreferredSizeWidget {
   const GoogleSearchAppBar({
     Key? key,
-    this.title,
+    required this.title,
     this.subtitle,
     this.centerTitle,
     required this.hintText,
     this.keyboardType,
-    this.onFieldSubmitted,
+    required this.onFieldSubmitted,
+    required this.onClosePressed,
     this.backgroundColor,
     this.textColor,
     this.elevation,
@@ -34,6 +35,7 @@ class GoogleSearchAppBar extends HookWidget implements PreferredSizeWidget {
   final String hintText;
   final TextInputType? keyboardType;
   final void Function(String)? onFieldSubmitted;
+  final void Function()? onClosePressed;
   final Color? backgroundColor;
   final Color? textColor;
   final double? elevation;
@@ -73,7 +75,10 @@ class GoogleSearchAppBar extends HookWidget implements PreferredSizeWidget {
       actions: [
         IconButton(
           icon: Icon(!isSearch.value ? Icons.search : Icons.close),
-          onPressed: () => isSearch.value = !isSearch.value,
+          onPressed: () {
+            if (isSearch.value && onClosePressed != null) onClosePressed!();
+            isSearch.value = !isSearch.value;
+          },
         ),
         if (!isSearch.value && actions != null) ...actions!
       ],
