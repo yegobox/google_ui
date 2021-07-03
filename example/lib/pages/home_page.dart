@@ -66,7 +66,16 @@ class _PageDrawer extends StatelessWidget {
                         builder: (context) => const CalendarPage()),
                   );
               }),
-          ListTile(title: const Text("Typography"), onTap: () {}),
+          ListTile(
+              title: const Text("Typography"),
+              onTap: () {
+                Navigator.of(context)
+                  ..pop()
+                  ..push(
+                    MaterialPageRoute(
+                        builder: (context) => const TypographyPage()),
+                  );
+              }),
         ],
       ),
     );
