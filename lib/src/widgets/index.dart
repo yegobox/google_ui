@@ -9,6 +9,8 @@ export 'google_dialog.dart';
 export 'google_drawer.dart';
 export 'google_error_page.dart';
 export 'google_grid.dart';
+// export 'google_grouped_drawer.dart';
+export 'google_icon_button.dart';
 export 'google_popup_menu_button.dart';
 export 'google_search_app_bar.dart';
 export 'google_section_title.dart';
