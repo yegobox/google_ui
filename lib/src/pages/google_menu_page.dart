@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/index.dart';
-import 'index.dart';
+import '../widgets/index.dart';
 
 class GoogleMenuPage extends StatelessWidget {
   const GoogleMenuPage({

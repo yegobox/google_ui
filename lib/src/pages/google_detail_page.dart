@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../models/index.dart';
-import 'index.dart';
+import '../widgets/index.dart';
 
 class GoogleDetailPage extends HookWidget {
   const GoogleDetailPage({

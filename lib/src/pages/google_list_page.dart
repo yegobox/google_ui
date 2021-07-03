@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../google_ui.dart';
 import '../models/google_list_item.dart';
-import '../utils/google_list_util.dart';
+import 'google_list_util.dart';
 
 class GoogleListPage extends StatelessWidget {
   const GoogleListPage({
@@ -101,10 +101,7 @@ class _PageAppBar extends StatelessWidget implements PreferredSizeWidget {
         subtitle: subtitle,
         actions: [
           if (searchPage != null)
-            _SearchIconButton(
-              searchPage: searchPage!,
-              onChanged: onChanged,
-            ),
+            _SearchIconButton(searchPage: searchPage!, onChanged: onChanged),
           if (actions != null) ...actions!
         ],
       ),
@@ -198,6 +195,7 @@ class _ListView extends StatelessWidget {
       itemCount: googleListItems.length,
       itemBuilder: (context, index) {
         final googleListItem = googleListItems[index];
+
         return _ListItem(
           index: index,
           googleListItem: googleListItem,

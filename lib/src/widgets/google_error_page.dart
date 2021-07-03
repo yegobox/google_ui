@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'index.dart';
 
-class GoogleErrorPage extends StatelessWidget {
-  const GoogleErrorPage({
+class GoogleErrorMessage extends StatelessWidget {
+  const GoogleErrorMessage({
     Key? key,
     required this.icon,
     required this.title,
