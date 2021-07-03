@@ -1,2 +1,4 @@
-export 'src/models/index.dart';
+library google_ui;
+
+export 'src/index.dart';
 export 'src/widgets/index.dart';
