@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'index.dart';
-
-class GoogleAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const GoogleAppBar({
+class GoogleCustomAppBar extends StatelessWidget
+    implements PreferredSizeWidget {
+  const GoogleCustomAppBar({
     Key? key,
-    this.title,
-    this.subtitle,
+    required this.title,
     this.centerTitle,
     this.backgroundColor,
     this.textColor,
@@ -24,8 +22,7 @@ class GoogleAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.brightness,
   }) : super(key: key);
 
-  final String? title;
-  final String? subtitle;
+  final Widget title;
   final bool? centerTitle;
   final Color? backgroundColor;
   final Color? textColor;
@@ -47,7 +44,7 @@ class GoogleAppBar extends StatelessWidget implements PreferredSizeWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return AppBar(
-      title: _createTitle(),
+      title: title,
       backgroundColor: backgroundColor ?? colorScheme.surface,
       centerTitle: centerTitle,
       elevation: elevation,
@@ -63,27 +60,6 @@ class GoogleAppBar extends StatelessWidget implements PreferredSizeWidget {
       shape: shape,
       brightness: brightness,
       iconTheme: IconThemeData(color: textColor ?? colorScheme.onSurface),
-    );
-  }
-
-  Widget _createTitle() {
-    return Column(
-      crossAxisAlignment: centerTitle != null && centerTitle!
-          ? CrossAxisAlignment.center
-          : CrossAxisAlignment.start,
-      children: [
-        GoogleText(
-          title ?? "",
-          variant: GoogleTextVariant.headline6,
-          color: textColor,
-        ),
-        if (subtitle != null)
-          GoogleText(
-            subtitle!,
-            variant: GoogleTextVariant.bodyText2,
-            color: textColor,
-          ),
-      ],
     );
   }
 
