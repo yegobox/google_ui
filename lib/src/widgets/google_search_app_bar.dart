@@ -58,7 +58,7 @@ class GoogleSearchAppBar extends HookWidget implements PreferredSizeWidget {
     final isSearch = useState(false);
 
     return AppBar(
-      title: isSearch.value ? _createSearchBar() : _createTitle(),
+      title: isSearch.value ? _createSearchBar() : _createTitle(colorScheme),
       backgroundColor: backgroundColor ?? colorScheme.surface,
       centerTitle: centerTitle,
       elevation: elevation,
@@ -103,7 +103,7 @@ class GoogleSearchAppBar extends HookWidget implements PreferredSizeWidget {
     );
   }
 
-  Widget _createTitle() {
+  Widget _createTitle(ColorScheme colorScheme) {
     return Column(
       crossAxisAlignment: centerTitle != null && centerTitle!
           ? CrossAxisAlignment.center
@@ -112,13 +112,13 @@ class GoogleSearchAppBar extends HookWidget implements PreferredSizeWidget {
         GoogleText(
           title ?? "",
           variant: GoogleTextVariant.headline6,
-          color: textColor,
+          color: textColor ?? colorScheme.onSurface,
         ),
         if (subtitle != null)
           GoogleText(
             subtitle!,
             variant: GoogleTextVariant.bodyText2,
-            color: textColor,
+            color: textColor ?? colorScheme.onSurface,
           ),
       ],
     );

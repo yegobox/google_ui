@@ -47,7 +47,7 @@ class GoogleAppBar extends StatelessWidget implements PreferredSizeWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return AppBar(
-      title: _createTitle(),
+      title: _createTitle(colorScheme),
       backgroundColor: backgroundColor ?? colorScheme.surface,
       centerTitle: centerTitle,
       elevation: elevation,
@@ -66,7 +66,7 @@ class GoogleAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  Widget _createTitle() {
+  Widget _createTitle(ColorScheme colorScheme) {
     return Column(
       crossAxisAlignment: centerTitle != null && centerTitle!
           ? CrossAxisAlignment.center
@@ -75,13 +75,13 @@ class GoogleAppBar extends StatelessWidget implements PreferredSizeWidget {
         GoogleText(
           title ?? "",
           variant: GoogleTextVariant.headline6,
-          color: textColor,
+          color: textColor ?? colorScheme.onSurface,
         ),
         if (subtitle != null)
           GoogleText(
             subtitle!,
             variant: GoogleTextVariant.bodyText2,
-            color: textColor,
+            color: textColor ?? colorScheme.onSurface,
           ),
       ],
     );
