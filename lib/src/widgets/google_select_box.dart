@@ -1,7 +1,26 @@
 import 'package:flutter/material.dart';
 
-import '../models/index.dart';
 import 'index.dart';
+
+class GoogleSelectBoxItem {
+  final String label;
+  final dynamic value;
+
+  GoogleSelectBoxItem({
+    required this.label,
+    required this.value,
+  });
+
+  GoogleSelectBoxItem copyWith({
+    String? label,
+    dynamic value,
+  }) {
+    return GoogleSelectBoxItem(
+      label: label ?? this.label,
+      value: value ?? this.value,
+    );
+  }
+}
 
 class GoogleSelectBox extends StatelessWidget {
   const GoogleSelectBox({
