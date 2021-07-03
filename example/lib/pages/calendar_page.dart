@@ -8,7 +8,7 @@ class CalendarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: GoogleAppBar(title: "Calendar"),
-      body: GoogleCalendar(),
+      body: SingleChildScrollView(child: GoogleCalendar()),
     );
   }
 }
