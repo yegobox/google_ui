@@ -28,7 +28,7 @@ class GoogleTheme {
       elevatedButtonTheme: _elevatedButtonTheme(colorScheme),
       textTheme: textTheme.apply(
         displayColor: colorScheme.onBackground,
-        bodyColor: colorScheme.background,
+        bodyColor: colorScheme.onBackground,
       ),
     );
   }
