@@ -46,9 +46,26 @@ class _PageDrawer extends StatelessWidget {
                         builder: (context) => const TextFieldPage()),
                   );
               }),
-          ListTile(title: const Text("App Bar"), onTap: () {}),
+          ListTile(
+              title: const Text("App Bar"),
+              onTap: () {
+                Navigator.of(context)
+                  ..pop()
+                  ..push(
+                    MaterialPageRoute(builder: (context) => const AppBarPage()),
+                  );
+              }),
           ListTile(title: const Text("Drawer"), onTap: () {}),
-          ListTile(title: const Text("Calendar"), onTap: () {}),
+          ListTile(
+              title: const Text("Calendar"),
+              onTap: () {
+                Navigator.of(context)
+                  ..pop()
+                  ..push(
+                    MaterialPageRoute(
+                        builder: (context) => const CalendarPage()),
+                  );
+              }),
           ListTile(title: const Text("Typography"), onTap: () {}),
         ],
       ),
