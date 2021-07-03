@@ -9,6 +9,7 @@ class GoogleTextFormField extends HookWidget {
     this.initialValue,
     this.controller,
     this.keyboardType,
+    this.textInputAction,
     this.obscureText = false,
     this.passwordField = false,
     this.onChanged,
@@ -30,6 +31,7 @@ class GoogleTextFormField extends HookWidget {
   final String? initialValue;
   final TextEditingController? controller;
   final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
   final bool obscureText;
   final bool passwordField;
   final void Function(String)? onChanged;
@@ -53,6 +55,7 @@ class GoogleTextFormField extends HookWidget {
       controller: controller,
       initialValue: initialValue,
       keyboardType: keyboardType,
+      textInputAction: textInputAction,
       obscureText: passwordField ? !isShowPassword.value : obscureText,
       validator: validator,
       onChanged: onChanged,

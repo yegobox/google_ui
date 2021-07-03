@@ -9,6 +9,7 @@ class GoogleDateTextFormField extends StatelessWidget {
     this.labelText,
     this.initialValue,
     this.controller,
+    this.textInputAction,
     this.onSaved,
     this.readOnly = false,
     this.suffixIcon,
@@ -19,6 +20,7 @@ class GoogleDateTextFormField extends StatelessWidget {
   final String? labelText;
   final DateTime? initialValue;
   final TextEditingController? controller;
+  final TextInputAction? textInputAction;
   final void Function(DateTime? value)? onSaved;
   final bool readOnly;
   final Widget? suffixIcon;
@@ -43,6 +45,7 @@ class GoogleDateTextFormField extends StatelessWidget {
       hintText: "DD/MM/YYYY",
       initialValue: dateDefaultValue,
       keyboardType: TextInputType.datetime,
+      textInputAction: textInputAction,
       onSaved: (value) {
         if (value != null) _onSaved(datePattern, value);
       },

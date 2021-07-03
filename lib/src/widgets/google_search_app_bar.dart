@@ -56,13 +56,9 @@ class GoogleSearchAppBar extends HookWidget implements PreferredSizeWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     final isSearch = useState(false);
-    final focusNode = useState(FocusNode());
-    final searchBarController = useState(TextEditingController());
 
     return AppBar(
-      title: isSearch.value
-          ? _createSearchBar(searchBarController.value, focusNode.value)
-          : _createTitle(),
+      title: isSearch.value ? _createSearchBar() : _createTitle(),
       backgroundColor: backgroundColor ?? colorScheme.surface,
       centerTitle: centerTitle,
       elevation: elevation,
@@ -90,13 +86,11 @@ class GoogleSearchAppBar extends HookWidget implements PreferredSizeWidget {
     );
   }
 
-  Widget _createSearchBar(
-    TextEditingController searchBarController,
-    FocusNode focusNode,
-  ) {
+  Widget _createSearchBar() {
     return TextFormField(
       autofocus: true,
       keyboardType: keyboardType,
+      textInputAction: TextInputAction.search,
       decoration: InputDecoration(
         border: InputBorder.none,
         focusedBorder: InputBorder.none,
