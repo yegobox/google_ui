@@ -1,9 +1,7 @@
+import 'package:example/pages/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_ui/google_ui.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import '../providers/theme_provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,27 +9,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: _PageAppBar(),
+      appBar: GoogleAppBar(title: "Google UI"),
       drawer: _PageDrawer(),
       body: _PageBody(),
-    );
-  }
-}
-
-class _PageAppBar extends GoogleAppBar {
-  const _PageAppBar({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GoogleAppBar(
-      title: "Google UI",
-      subtitle: "Awesome Flutter",
-      actions: [
-        IconButton(icon: const Icon(Icons.favorite), onPressed: () {}),
-        IconButton(icon: const Icon(Icons.more_vert), onPressed: () {}),
-      ],
     );
   }
 }
@@ -47,46 +27,29 @@ class _PageDrawer extends StatelessWidget {
       child: Column(
         children: [
           ListTile(
-            title: const GoogleText("Accounts"),
-            leading: const Icon(Icons.people_alt_outlined),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () {},
-          ),
-          const Divider(),
-          ListTile(
-            title: const GoogleText("username@gmail.com"),
-            subtitle: const GoogleText(
-              "111-111-1111",
-              color: Colors.grey,
-            ),
-            onTap: () {},
+            title: const Text("Button"),
+            onTap: () {
+              Navigator.of(context)
+                ..pop()
+                ..push(
+                  MaterialPageRoute(builder: (context) => const ButtonPage()),
+                );
+            },
           ),
           ListTile(
-            title: const GoogleText("Campaign"),
-            leading: const Icon(Icons.home_outlined),
-            onTap: () {},
-          ),
-          ListTile(
-            title: const GoogleText("Billing Payments"),
-            leading: const Icon(Icons.account_balance_outlined),
-            onTap: () {},
-          ),
-          const Divider(),
-          ListTile(
-            title: const GoogleText("Settings"),
-            leading: const Icon(Icons.settings_outlined),
-            onTap: () {},
-          ),
-          ListTile(
-            title: const GoogleText("Feedback"),
-            leading: const Icon(Icons.feedback_outlined),
-            onTap: () {},
-          ),
-          ListTile(
-            title: const GoogleText("Support"),
-            leading: const Icon(Icons.help_outlined),
-            onTap: () {},
-          ),
+              title: const Text("Text Field"),
+              onTap: () {
+                Navigator.of(context)
+                  ..pop()
+                  ..push(
+                    MaterialPageRoute(
+                        builder: (context) => const TextFieldPage()),
+                  );
+              }),
+          ListTile(title: const Text("App Bar"), onTap: () {}),
+          ListTile(title: const Text("Drawer"), onTap: () {}),
+          ListTile(title: const Text("Calendar"), onTap: () {}),
+          ListTile(title: const Text("Typography"), onTap: () {}),
         ],
       ),
     );
@@ -105,36 +68,11 @@ class _PageBody extends HookWidget {
         children: const [
           GoogleCalendar(),
           Divider(),
-          _Switch(),
-          Divider(),
-          _Button(),
           Divider(),
           _Form(),
           Divider(),
           Typography()
         ],
-      ),
-    );
-  }
-}
-
-class _Switch extends HookWidget {
-  const _Switch({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final themeProviderConsumer = useProvider(themeProvider);
-
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: GoogleSwitch(
-        label: "Dark mode",
-        value: themeProviderConsumer.state,
-        onChanged: (value) {
-          themeProviderConsumer.state = value;
-        },
       ),
     );
   }
@@ -266,53 +204,6 @@ class Typography extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class _Button extends StatelessWidget {
-  const _Button({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GoogleGrid(
-      padding: const EdgeInsets.all(16),
-      gap: 10,
-      children: [
-        GoogleButton(
-          "Elevated".toUpperCase(),
-          onPressed: () {},
-        ),
-        GoogleButton(
-          "Text".toUpperCase(),
-          onPressed: () {},
-          variant: GoogleButtonVariant.text,
-        ),
-        GoogleButton(
-          "Outlined".toUpperCase(),
-          onPressed: () {},
-          variant: GoogleButtonVariant.outlined,
-        ),
-        GoogleButton(
-          "Elevated".toUpperCase(),
-          onPressed: () {},
-          icon: const Icon(Icons.add),
-        ),
-        GoogleButton(
-          "Text".toUpperCase(),
-          onPressed: () {},
-          variant: GoogleButtonVariant.text,
-          icon: const Icon(Icons.add),
-        ),
-        GoogleButton(
-          "Outlined".toUpperCase(),
-          onPressed: () {},
-          variant: GoogleButtonVariant.outlined,
-          icon: const Icon(Icons.add),
-        ),
-      ],
     );
   }
 }

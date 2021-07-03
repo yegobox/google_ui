@@ -46,6 +46,9 @@ class GoogleDateTextFormField extends StatelessWidget {
       onSaved: (value) {
         if (value != null) _onSaved(datePattern, value);
       },
+      readOnly: readOnly,
+      suffixIcon: suffixIcon,
+      prefixIcon: prefixIcon,
       validator: (value) {
         bool isValid = true;
         if (!(value == null || value.trim() == '')) {
