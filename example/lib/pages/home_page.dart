@@ -55,7 +55,7 @@ class _PageDrawer extends StatelessWidget {
                   );
               }),
           ListTile(
-              title: const Text("Drawer"),
+              title: const Text("Grouped Drawer"),
               onTap: () {
                 Navigator.of(context)
                   ..pop()

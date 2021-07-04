@@ -5,6 +5,7 @@ class GoogleGroupedDrawer extends StatelessWidget {
   const GoogleGroupedDrawer({
     Key? key,
     this.backgroundColor,
+    this.isEnd = false,
     required this.index,
     required this.actions,
     this.secondaryActions,
@@ -12,6 +13,7 @@ class GoogleGroupedDrawer extends StatelessWidget {
   }) : super(key: key);
 
   final Color? backgroundColor;
+  final bool isEnd;
   final int index;
   final List<Widget> actions;
   final List<Widget>? secondaryActions;
@@ -31,14 +33,25 @@ class GoogleGroupedDrawer extends StatelessWidget {
         child: Drawer(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _ActionBar(
-                  backgroundColor: backgroundColor,
-                  actions: actions,
-                  secondaryActions: secondaryActions),
-              const VerticalDivider(width: 0),
-              Expanded(child: SafeArea(child: children[index]))
-            ],
+            children: !isEnd
+                ? [
+                    _ActionBar(
+                      backgroundColor: backgroundColor,
+                      actions: actions,
+                      secondaryActions: secondaryActions,
+                    ),
+                    const VerticalDivider(width: 0),
+                    Expanded(child: SafeArea(child: children[index])),
+                  ]
+                : [
+                    Expanded(child: SafeArea(child: children[index])),
+                    const VerticalDivider(width: 0),
+                    _ActionBar(
+                      backgroundColor: backgroundColor,
+                      actions: actions,
+                      secondaryActions: secondaryActions,
+                    ),
+                  ],
           ),
         ),
       ),

@@ -7,37 +7,174 @@ class DrawerPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final drawerIndex = useState(0);
 
     return Scaffold(
-      appBar: const GoogleAppBar(title: "Button"),
-      // drawer: GoogleGroupedDrawer(
-      //   index: drawerIndex.value,
-      //   onChanged: (int index) => drawerIndex.value = index,
-      //   groups: const [
-      //     Icons.shopping_cart,
-      //     Icons.inbox,
-      //   ],
-      //   groupViews: const [
-      //     Text("Page 1"),
-      //     Text("Page 2"),
-      //   ],
-      // ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Builder(
-            builder: (context) => Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                GoogleButton(
-                  "Open Drawer".toUpperCase(),
-                  onPressed: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                ),
-              ],
-            ),
+      appBar: GoogleAppBar(
+        title: "Grouped Drawer",
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          onPressed: () => Navigator.of(context).pop(),
+          icon: const Icon(Icons.arrow_back),
+        ),
+      ),
+      drawer: _GroupedDrawer(
+        drawerIndex: drawerIndex,
+        colorScheme: colorScheme,
+      ),
+      endDrawer: _GroupedDrawer(
+        isEnd: true,
+        drawerIndex: drawerIndex,
+        colorScheme: colorScheme,
+      ),
+      body: const _PageBody(),
+    );
+  }
+}
+
+class _GroupedDrawer extends StatelessWidget {
+  const _GroupedDrawer({
+    Key? key,
+    this.isEnd = false,
+    required this.drawerIndex,
+    required this.colorScheme,
+  }) : super(key: key);
+
+  final bool isEnd;
+  final ValueNotifier<int> drawerIndex;
+  final ColorScheme colorScheme;
+
+  @override
+  Widget build(BuildContext context) {
+    return GoogleGroupedDrawer(
+      isEnd: isEnd,
+      index: drawerIndex.value,
+      actions: [
+        const SizedBox(height: 8),
+        _ActionButton(
+          index: 0,
+          drawerIndex: drawerIndex,
+          icons: Icons.shopping_cart,
+        ),
+        const SizedBox(height: 8),
+        _ActionButton(
+          index: 1,
+          drawerIndex: drawerIndex,
+          icons: Icons.dashboard,
+        ),
+        const SizedBox(height: 8),
+        _ActionButton(
+          index: 2,
+          drawerIndex: drawerIndex,
+          icons: Icons.language,
+        ),
+      ],
+      secondaryActions: [
+        GoogleIconButton(
+          icon: Icon(
+            Icons.play_circle_outline,
+            color: GoogleColorUtil.lighten(colorScheme.onSurface, 20),
+          ),
+          onPressed: () {},
+        ),
+        GoogleIconButton(
+          icon: Icon(
+            Icons.help_outline,
+            color: GoogleColorUtil.lighten(colorScheme.onSurface, 20),
+          ),
+          onPressed: () {},
+        ),
+        GoogleIconButton(
+          icon: Icon(
+            Icons.settings,
+            color: GoogleColorUtil.lighten(colorScheme.onSurface, 20),
+          ),
+          onPressed: () {},
+        ),
+      ],
+      children: const [
+        _DrawerMenu(pageNumber: 1),
+        _DrawerMenu(pageNumber: 2),
+        _DrawerMenu(pageNumber: 3),
+      ],
+    );
+  }
+}
+
+class _ActionButton extends StatelessWidget {
+  const _ActionButton({
+    Key? key,
+    required this.index,
+    required this.drawerIndex,
+    required this.icons,
+  }) : super(key: key);
+
+  final int index;
+  final ValueNotifier<int> drawerIndex;
+  final IconData icons;
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return GoogleIconButton(
+      icon: Icon(
+        icons,
+        color: drawerIndex.value == index
+            ? colorScheme.primary
+            : GoogleColorUtil.lighten(colorScheme.onSurface, 20),
+      ),
+      onPressed: () => drawerIndex.value = index,
+    );
+  }
+}
+
+class _DrawerMenu extends StatelessWidget {
+  const _DrawerMenu({Key? key, required this.pageNumber}) : super(key: key);
+
+  final int pageNumber;
+
+  @override
+  Widget build(BuildContext context) {
+    final links = <Widget>[];
+    for (int i = 0; i < 20; i++) {
+      links.add(ListTile(title: Text("Link ${i + 1}")));
+    }
+
+    return SingleChildScrollView(
+      child: Column(
+        children: [GoogleSectionTitle("Page $pageNumber"), ...links],
+      ),
+    );
+  }
+}
+
+class _PageBody extends StatelessWidget {
+  const _PageBody({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Builder(
+          builder: (context) => Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "Grouped drawer is inspired by the drawer in microsoft outlook apk",
+              ),
+              const SizedBox(height: 8),
+              GoogleButton(
+                "Open grouped drawer",
+                onPressed: () => Scaffold.of(context).openDrawer(),
+              ),
+              GoogleButton(
+                "Open end grouped drawer",
+                onPressed: () => Scaffold.of(context).openEndDrawer(),
+              ),
+            ],
           ),
         ),
       ),
