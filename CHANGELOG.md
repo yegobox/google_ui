@@ -3,6 +3,7 @@
 - Add GoogleSearchAppBar
 - Add GoogleGroupedDrawer
 - Add GoogleIconButton
+- Add GoogleGridBuilder
 - Change example app
 
 ## [0.1.2]

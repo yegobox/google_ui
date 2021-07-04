@@ -61,6 +61,7 @@ All Google UI class has `Google` prefix e.g `GoogleButton`
 - GoogleDrawer
 - GoogleErrorMessage
 - GoogleGrid
+- GoogleGridBuilder
 - GoogleGroupedDrawer
 - GoogleIconButton
 - GooglePopupMenuButton

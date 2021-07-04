@@ -1,6 +1,7 @@
-import 'package:example/pages/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_ui/google_ui.dart';
+
+import 'index.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
