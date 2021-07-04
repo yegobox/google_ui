@@ -45,6 +45,26 @@ class ButtonPage extends StatelessWidget {
                 variant: GoogleButtonVariant.outlined,
                 icon: const Icon(Icons.add),
               ),
+              const Divider(height: 32),
+              const Text(
+                  "GoogleIconButton is an alternative to IconButton, the main difference is in the size of the splash effect"),
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  GoogleIconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.add),
+                  ),
+                  GoogleIconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.arrow_back),
+                  ),
+                  GoogleIconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.menu),
+                  ),
+                ],
+              )
             ],
           ),
         ),

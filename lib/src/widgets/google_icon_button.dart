@@ -6,16 +6,16 @@ class GoogleIconButton extends HookWidget {
     Key? key,
     this.size = const Size(48, 48),
     this.splashSize = const Size(40, 40),
-    required this.icon,
     required this.onPressed,
     this.onLongPress,
+    required this.icon,
   }) : super(key: key);
 
   final Size size;
   final Size splashSize;
-  final Widget icon;
   final void Function()? onPressed;
   final void Function()? onLongPress;
+  final Widget icon;
 
   @override
   Widget build(BuildContext context) {
