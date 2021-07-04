@@ -37,7 +37,7 @@ class GoogleGroupedDrawer extends StatelessWidget {
                   actions: actions,
                   secondaryActions: secondaryActions),
               const VerticalDivider(width: 0),
-              SafeArea(child: children[index])
+              Expanded(child: SafeArea(child: children[index]))
             ],
           ),
         ),
