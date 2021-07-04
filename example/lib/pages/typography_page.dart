@@ -14,6 +14,9 @@ class TypographyPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
+              GoogleText("Font family: Poppins"),
+              GoogleText("Font weight: 300, 400, 500"),
+              Divider(height: 32),
               GoogleText(
                 "headline1",
                 variant: GoogleTextVariant.headline1,

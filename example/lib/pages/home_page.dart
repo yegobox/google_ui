@@ -7,10 +7,14 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const GoogleAppBar(title: "Google UI"),
-      drawer: const _PageDrawer(),
-      body: Container(),
+    return const Scaffold(
+      appBar: GoogleAppBar(title: "Google UI"),
+      drawer: _PageDrawer(),
+      body: Center(
+        child: FlutterLogo(
+          size: 100,
+        ),
+      ),
     );
   }
 }

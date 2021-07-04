@@ -32,9 +32,3 @@ flutter:
         - asset: fonts/Poppins/Poppins-Medium.ttf
         - asset: fonts/Poppins/Poppins-MediumItalic.ttf
           weight: 500
-        - asset: fonts/Poppins/Poppins-SemiBold.ttf
-        - asset: fonts/Poppins/Poppins-SemiBoldItalic.ttf
-          weight: 600
-        - asset: fonts/Poppins/Poppins-Bold.ttf
-        - asset: fonts/Poppins/Poppins-BoldItalic.ttf
-          weight: 700
