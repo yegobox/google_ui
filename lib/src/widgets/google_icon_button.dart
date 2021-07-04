@@ -5,12 +5,14 @@ class GoogleIconButton extends HookWidget {
   const GoogleIconButton({
     Key? key,
     this.size = const Size(48, 48),
+    this.splashSize = const Size(40, 40),
     required this.icon,
     required this.onPressed,
     this.onLongPress,
   }) : super(key: key);
 
   final Size size;
+  final Size splashSize;
   final Widget icon;
   final void Function()? onPressed;
   final void Function()? onLongPress;
@@ -38,8 +40,8 @@ class GoogleIconButton extends HookWidget {
           AnimatedContainer(
             duration: const Duration(milliseconds: 100),
             curve: Curves.slowMiddle,
-            width: showSplash.value ? size.width - 8 : 0,
-            height: showSplash.value ? size.height - 8 : 0,
+            width: showSplash.value ? splashSize.width : 0,
+            height: showSplash.value ? splashSize.height : 0,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.grey.withOpacity(.25),
