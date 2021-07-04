@@ -1,32 +1,30 @@
 import 'package:flutter/material.dart';
-
-import 'google_icon_button.dart';
+import 'package:google_ui/src/utils/index.dart';
 
 class GoogleGroupedDrawer extends StatelessWidget {
   const GoogleGroupedDrawer({
     Key? key,
-    required this.index,
-    required this.onChanged,
-    required this.groups,
-    required this.groupViews,
-    this.additionalChildren,
     this.backgroundColor,
+    required this.index,
+    required this.actions,
+    this.secondaryActions,
+    required this.children,
   }) : super(key: key);
 
-  final int index;
-  final void Function(int index) onChanged;
-  final List<IconData> groups;
-  final List<Widget> groupViews;
-  final List<Widget>? additionalChildren;
   final Color? backgroundColor;
+  final int index;
+  final List<Widget> actions;
+  final List<Widget>? secondaryActions;
+  final List<Widget> children;
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final backgroundColor = this.backgroundColor ?? colorScheme.surface;
 
     return Theme(
       data: Theme.of(context).copyWith(
-        canvasColor: backgroundColor ?? colorScheme.surface,
+        canvasColor: backgroundColor,
       ),
       child: SizedBox(
         width: 320,
@@ -34,14 +32,12 @@ class GoogleGroupedDrawer extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _GroupButtons(
-                index: index,
-                onChanged: onChanged,
-                groups: groups,
-                additionalChildren: additionalChildren,
-              ),
+              _ActionBar(
+                  backgroundColor: backgroundColor,
+                  actions: actions,
+                  secondaryActions: secondaryActions),
               const VerticalDivider(width: 0),
-              SafeArea(child: groupViews[index])
+              SafeArea(child: children[index])
             ],
           ),
         ),
@@ -50,50 +46,32 @@ class GoogleGroupedDrawer extends StatelessWidget {
   }
 }
 
-class _GroupButtons extends StatelessWidget {
-  const _GroupButtons({
+class _ActionBar extends StatelessWidget {
+  const _ActionBar({
     Key? key,
-    required this.index,
-    required this.onChanged,
-    required this.groups,
-    this.additionalChildren,
+    required this.backgroundColor,
+    required this.actions,
+    required this.secondaryActions,
   }) : super(key: key);
 
-  final int index;
-  final void Function(int index) onChanged;
-  final List<IconData> groups;
-  final List<Widget>? additionalChildren;
+  final Color backgroundColor;
+  final List<Widget> actions;
+  final List<Widget>? secondaryActions;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 80,
-      padding: const EdgeInsets.all(16),
-      color: const Color(0xFFF5F5F5),
+      padding: const EdgeInsets.only(bottom: 16),
+      color: GoogleColorUtil.darken(backgroundColor, 5),
       child: SafeArea(
         child: Column(
           children: [
-            Builder(builder: (context) {
-              final colorScheme = Theme.of(context).colorScheme;
-              final groupButtons = <Widget>[];
-
-              for (int i = 0; i < groups.length; i++) {
-                groupButtons.add(
-                  GoogleIconButton(
-                    icon: Icon(
-                      groups[i],
-                      color: i == index ? colorScheme.primary : null,
-                    ),
-                    onPressed: () => onChanged(i),
-                  ),
-                );
-              }
-              return SingleChildScrollView(
-                child: Column(children: groupButtons),
-              );
-            }),
-            const Spacer(),
-            if (additionalChildren != null) ...additionalChildren!
+            SingleChildScrollView(child: Column(children: actions)),
+            if (secondaryActions != null) ...[
+              const Spacer(),
+              ...secondaryActions!,
+            ]
           ],
         ),
       ),
