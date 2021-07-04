@@ -1,3 +1,11 @@
+## [1.0.0]
+- Remove all page widget
+- Add GoogleCustomAppBar
+- Add GoogleSearchAppBar
+- Add GoogleGroupedDrawer
+- Add GoogleIconButton
+- Change example app
+
 ## [0.1.2]
 - Remove required from label property [GoogleErrorPage]
 - Change dynamic return type to void

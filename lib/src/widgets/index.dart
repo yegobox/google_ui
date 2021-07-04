@@ -7,7 +7,7 @@ export 'google_custom_app_bar.dart';
 export 'google_date_text_form_field.dart';
 export 'google_dialog.dart';
 export 'google_drawer.dart';
-export 'google_error_page.dart';
+export 'google_error_message.dart';
 export 'google_grid.dart';
 export 'google_grouped_drawer.dart';
 export 'google_icon_button.dart';

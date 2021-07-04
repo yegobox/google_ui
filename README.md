@@ -1,52 +1,44 @@
 # Google UI
-A collection of widgets that look similar to widgets in the Google Ads app.
+Flutter UI library using Material Design 2.0.
 
-I created this project to speed up my application development process by creating some reusable widgets. every widget in this project is made to look similar to the widgets in the Google Ads application.
+[Google UI](https://pub.dev/packages/google_ui) is Flutter open-source UI library using [Material Design 2.0](https://uxdesign.cc/previewing-material-design-2-0-ec0215f0588f) with many pre-built widgets to make Flutter development easier and faster.
 
 ## Screenshots
 |Light mode|Dark Mode|
 |:---:|:---:|
 |![](screenshots/light_mode.jpg)|![](screenshots/dark_mode.jpg)|
 
-## Installing
-
-Run this command:
-``` powershell
-$ flutter pub add google_ui
-```
-This will add a line like this to your package's pubspec.yaml (and run an implicit dart pub get):
-
-``` yaml
-dependencies:
-  google_ui: ^0.1.2
-```
-
-Alternatively, your editor might support flutter pub get. Check the docs for your editor to learn more.
-
-Import it
-Now in your Dart code, you can use:
-``` dart
-import 'package:google_ui/google_ui.dart';
-```
 
 ## Getting Started
 
-Apply google_ui theme to your app
-```dart
-import 'package:flutter/material.dart';
-import 'package:google_ui/google_ui.dart';
+### Font family
+Google UI use Poppins as main font family.
+- Donwload [Poppins](https://fonts.google.com/share?selection.family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500)
+- Import font to `pubspec.yaml`
+``` yaml
+fonts:
+  - family: Poppins
+    fonts:
+      - asset: fonts/Poppins/Poppins-Light.ttf
+      - asset: fonts/Poppins/Poppins-LightItalic.ttf
+        weight: 300
+      - asset: fonts/Poppins/Poppins-Regular.ttf
+      - asset: fonts/Poppins/Poppins-Italic.ttf
+        weight: 400
+      - asset: fonts/Poppins/Poppins-Medium.ttf
+      - asset: fonts/Poppins/Poppins-MediumItalic.ttf
+        weight: 500
+```
 
-import 'pages/index.dart';
-
+### Apply the theme to the app
+```
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     const theme = GoogleTheme();
 
     return MaterialApp(
-      title: "Google UI",
+      title: 'Google UI',
       theme: theme.apply(),
       darkTheme: theme.apply(darkMode: true),
       home: const HomePage(),
@@ -54,75 +46,31 @@ class App extends StatelessWidget {
   }
 }
 ```
-## Using Widget
-### GoogleButton
-```dart
-// Elevated Button
-GoogleButton(
-  "Elevated".toUpperCase(),
-  onPressed: () {},
-),
 
-//Elevated Icon Button
-GoogleButton(
-  "Elevated".toUpperCase(),
-  onPressed: () {},
-  icon: const Icon(Icons.add),
-),
+## Usage
+All Google UI class has `Google` prefix e.g `GoogleButton`
 
-// Text Button
-GoogleButton(
-  "Text".toUpperCase(),
-  onPressed: () {},
-  variant: GoogleButtonVariant.text,
-),
+### Available widget
+- GoogleAppBar
+- GoogleBottomBar
+- GoogleButton
+- GoogleCalendar
+- GoogleConditional
+- GoogleCustomAppBar
+- GoogleDateTextFormField
+- GoogleDialog
+- GoogleDrawer
+- GoogleErrorMessage
+- GoogleGrid
+- GoogleGroupedDrawer
+- GoogleIconButton
+- GooglePopupMenuButton
+- GoogleSearchAppBar
+- GoogleSectionTitle
+- GoogleSelectBox
+- GoogleSwitch
+- GoogleTextFormField
+- GoogleText
 
-...
-// Available Variant
-GoogleButtonVariant.elevated
-GoogleButtonVariant.text
-GoogleButtonVariant.outlined
-```
-
-### GoogleSwitch 
-``` dart
-GoogleSwitch(
-  label: "Dark mode",
-  value: themeProviderConsumer.state,
-  onChanged: (value) {
-    themeProviderConsumer.state = value;
-  },
-)
-```
-
-### GoogleGrid 
-``` dart
-GoogleGrid(
-  padding: const EdgeInsets.all(16),
-  gap: 10,
-  children: [],
-)
-```
-
-### Typography
-``` dart
-GoogleText(
-  "headline1",
-  variant: GoogleTextVariant.headline1,
-),
-....
-// Available Variant
-GoogleTextVariant.headline1
-GoogleTextVariant.headline2
-GoogleTextVariant.headline3
-GoogleTextVariant.headline4
-GoogleTextVariant.headline5
-GoogleTextVariant.headline6
-GoogleTextVariant.subtitle1
-GoogleTextVariant.subtitle2
-GoogleTextVariant.bodyText1
-GoogleTextVariant.bodyText2
-GoogleTextVariant.button
-GoogleTextVariant.caption
-GoogleTextVariant.overline
-```
+### Available util
+- GoogleColorUtil
