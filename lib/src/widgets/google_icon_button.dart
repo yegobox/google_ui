@@ -4,15 +4,13 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 class GoogleIconButton extends HookWidget {
   const GoogleIconButton({
     Key? key,
-    this.width = 48,
-    this.heigth = 48,
+    this.size = const Size(48, 48),
     required this.icon,
     required this.onPressed,
     this.onLongPress,
   }) : super(key: key);
 
-  final double width;
-  final double heigth;
+  final Size size;
   final Widget icon;
   final void Function()? onPressed;
   final void Function()? onLongPress;
@@ -40,16 +38,16 @@ class GoogleIconButton extends HookWidget {
           AnimatedContainer(
             duration: const Duration(milliseconds: 100),
             curve: Curves.slowMiddle,
-            width: showSplash.value ? width - 8 : 0,
-            height: showSplash.value ? heigth - 8 : 0,
+            width: showSplash.value ? size.width - 8 : 0,
+            height: showSplash.value ? size.height - 8 : 0,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.grey.withOpacity(.25),
             ),
           ),
           SizedBox(
-            width: width,
-            height: heigth,
+            width: size.width,
+            height: size.height,
             child: Opacity(opacity: isDisable ? .5 : 1, child: icon),
           ),
         ],
