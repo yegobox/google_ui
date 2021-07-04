@@ -40,8 +40,8 @@ class GoogleIconButton extends HookWidget {
           AnimatedContainer(
             duration: const Duration(milliseconds: 100),
             curve: Curves.slowMiddle,
-            width: showSplash.value ? width : 0,
-            height: showSplash.value ? heigth : 0,
+            width: showSplash.value ? width - 24 : 0,
+            height: showSplash.value ? heigth - 24 : 0,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.grey.withOpacity(.25),
