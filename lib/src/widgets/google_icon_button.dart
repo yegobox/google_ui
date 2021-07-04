@@ -4,8 +4,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 class GoogleIconButton extends HookWidget {
   const GoogleIconButton({
     Key? key,
-    this.width = 64,
-    this.heigth = 64,
+    this.width = 48,
+    this.heigth = 48,
     required this.icon,
     required this.onPressed,
     this.onLongPress,
@@ -40,8 +40,8 @@ class GoogleIconButton extends HookWidget {
           AnimatedContainer(
             duration: const Duration(milliseconds: 100),
             curve: Curves.slowMiddle,
-            width: showSplash.value ? width - 24 : 0,
-            height: showSplash.value ? heigth - 24 : 0,
+            width: showSplash.value ? width - 8 : 0,
+            height: showSplash.value ? heigth - 8 : 0,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.grey.withOpacity(.25),
