@@ -17,20 +17,20 @@ class GoogleTheme {
         : (customLightColorScheme ?? lightColorScheme);
 
     return ThemeData(
-      fontFamily: "Poppins",
-      colorScheme: colorScheme,
-      primaryColor: colorScheme.primary,
-      accentColor: colorScheme.primary,
-      toggleableActiveColor: colorScheme.primary,
-      scaffoldBackgroundColor: colorScheme.background,
-      popupMenuTheme: PopupMenuThemeData(color: colorScheme.surface),
-      iconTheme: IconThemeData(color: colorScheme.onBackground),
-      elevatedButtonTheme: _elevatedButtonTheme(colorScheme),
-      textTheme: textTheme.apply(
-        displayColor: colorScheme.onBackground,
-        bodyColor: colorScheme.onBackground,
-      ),
-    );
+        fontFamily: "Poppins",
+        colorScheme: colorScheme,
+        primaryColor: colorScheme.primary,
+        accentColor: colorScheme.primary,
+        toggleableActiveColor: colorScheme.primary,
+        scaffoldBackgroundColor: colorScheme.background,
+        popupMenuTheme: PopupMenuThemeData(color: colorScheme.surface),
+        iconTheme: IconThemeData(color: colorScheme.onBackground),
+        elevatedButtonTheme: _elevatedButtonTheme(colorScheme),
+        textTheme: textTheme.apply(
+          displayColor: colorScheme.onBackground,
+          bodyColor: colorScheme.onBackground,
+        ),
+        dividerColor: colorScheme.onBackground.withOpacity(.25));
   }
 
   ElevatedButtonThemeData _elevatedButtonTheme(ColorScheme colorScheme) {
