@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'index.dart';
 
+/// Create a date text form field.
 class GoogleDateTextFormField extends StatelessWidget {
   const GoogleDateTextFormField({
     Key? key,
@@ -17,14 +18,31 @@ class GoogleDateTextFormField extends StatelessWidget {
     this.validator,
   }) : super(key: key);
 
+  /// Text that describes the input field.
   final String? labelText;
+
+  /// The initial value of [GoogleDateTextFormField].
   final DateTime? initialValue;
+
+  /// Controls the text being edited.
   final TextEditingController? controller;
+
+  /// An action the user has requested the text input control to perform.
   final TextInputAction? textInputAction;
+
+  /// A callback after form [save()] called.
   final void Function(DateTime? value)? onSaved;
+
+  /// If true, set this field as read only.
   final bool readOnly;
+
+  /// A widget to display after the input area.
   final Widget? suffixIcon;
+
+  /// A widget to display before the input area.
   final Widget? prefixIcon;
+
+  /// A callback after form [validate()] called.
   final String? Function(String? value, bool isValid)? validator;
 
   @override

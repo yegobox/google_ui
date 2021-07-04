@@ -2,20 +2,32 @@ import 'package:flutter/material.dart';
 
 import 'index.dart';
 
+/// Create a error message,
+/// usually displayed on the page when an error occurs
+/// such as no internet error, not found error, and others.
 class GoogleErrorMessage extends StatelessWidget {
   const GoogleErrorMessage({
     Key? key,
     required this.icon,
     required this.title,
-    required this.subtitle1,
-    this.label,
+    required this.subtitle,
+    this.buttonLabel,
     this.onPressed,
   }) : super(key: key);
 
+  /// An icon to display.
   final IconData icon;
+
+  /// An error title.
   final String title;
-  final String subtitle1;
-  final String? label;
+
+  /// A description to explain the error
+  final String subtitle;
+
+  /// Text that describes the button.
+  final String? buttonLabel;
+
+  /// A callback after the user click the button.
   final void Function()? onPressed;
 
   @override
@@ -42,14 +54,14 @@ class GoogleErrorMessage extends StatelessWidget {
                 GoogleText(title),
                 const SizedBox(height: 16),
                 GoogleText(
-                  subtitle1,
+                  subtitle,
                   variant: GoogleTextVariant.bodyText2,
                   color: colorScheme.onBackground.withOpacity(.75),
                   textAlign: TextAlign.center,
                 ),
                 if (onPressed != null) const SizedBox(height: 32),
                 if (onPressed != null)
-                  GoogleButton(label ?? "", onPressed: onPressed)
+                  GoogleButton(buttonLabel ?? "", onPressed: onPressed)
               ],
             ),
           ),

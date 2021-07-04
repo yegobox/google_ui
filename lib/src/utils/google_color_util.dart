@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 
+/// Utilities to manipulate color
 class GoogleColorUtil {
-  static Color darken(Color c, [int percent = 10]) {
+  /// Return new darken color
+  static Color darken(Color color, [int percent = 10]) {
     assert(1 <= percent && percent <= 100);
     final f = 1 - percent / 100;
-    return Color.fromARGB(c.alpha, (c.red * f).round(), (c.green * f).round(),
-        (c.blue * f).round());
+    return Color.fromARGB(color.alpha, (color.red * f).round(),
+        (color.green * f).round(), (color.blue * f).round());
   }
 
-  static Color lighten(Color c, [int percent = 10]) {
+  /// Return new lighten color
+  static Color lighten(Color color, [int percent = 10]) {
     assert(1 <= percent && percent <= 100);
     final p = percent / 100;
     return Color.fromARGB(
-        c.alpha,
-        c.red + ((255 - c.red) * p).round(),
-        c.green + ((255 - c.green) * p).round(),
-        c.blue + ((255 - c.blue) * p).round());
+        color.alpha,
+        color.red + ((255 - color.red) * p).round(),
+        color.green + ((255 - color.green) * p).round(),
+        color.blue + ((255 - color.blue) * p).round());
   }
 }

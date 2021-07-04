@@ -56,7 +56,6 @@ All Google UI class has `Google` prefix e.g `GoogleButton`
 - GoogleButton
 - GoogleCalendar
 - GoogleConditional
-- GoogleCustomAppBar
 - GoogleDateTextFormField
 - GoogleDialog
 - GoogleDrawer

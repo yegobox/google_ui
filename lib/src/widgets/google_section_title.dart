@@ -2,18 +2,26 @@ import 'package:flutter/material.dart';
 
 import 'index.dart';
 
+/// Create a section title.
 class GoogleSectionTitle extends StatelessWidget {
   const GoogleSectionTitle(
     this.title, {
     Key? key,
-    this.trailing,
     this.padding = const EdgeInsets.all(16),
+    this.color,
     this.backgroundColor,
   }) : super(key: key);
 
+  /// Text that describes the section.
   final String title;
-  final Widget? trailing;
+
+  /// An empty space.
   final EdgeInsets padding;
+
+  /// Set [title] text color.
+  final Color? color;
+
+  /// Set [GoogleSectionTitle] background color.
   final Color? backgroundColor;
 
   @override
@@ -24,17 +32,11 @@ class GoogleSectionTitle extends StatelessWidget {
       padding: padding,
       color: backgroundColor,
       width: double.infinity,
-      child: Row(
-        children: [
-          GoogleText(
-            title,
-            variant: GoogleTextVariant.bodyText2,
-            color: colorScheme.onBackground.withOpacity(.75),
-            fontWeight: FontWeight.w600,
-          ),
-          const Spacer(),
-          if (trailing != null) trailing!
-        ],
+      child: GoogleText(
+        title,
+        variant: GoogleTextVariant.bodyText2,
+        color: color ?? colorScheme.onBackground.withOpacity(.75),
+        fontWeight: FontWeight.w600,
       ),
     );
   }

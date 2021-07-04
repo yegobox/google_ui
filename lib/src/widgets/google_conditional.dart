@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Display a widget based on condition.
 class GoogleConditional extends StatelessWidget {
   const GoogleConditional({
     Key? key,
@@ -8,8 +9,13 @@ class GoogleConditional extends StatelessWidget {
     required this.onFalse,
   }) : super(key: key);
 
+  /// A condition to display widget [onTrue] or [onFalse].
   final bool condition;
+
+  /// A widget that display if [condition] true.
   final Widget onTrue;
+
+  /// A widget that display if [condition] false.
   final Widget onFalse;
 
   @override

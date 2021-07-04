@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'index.dart';
 
+/// Display a dialog.
 class GoogleDialog {
+  /// A dialog that is usually displayed asking the user to confirm before taking an action.
   static void showConfirmation(
     BuildContext context, {
     required String title,
@@ -34,6 +36,7 @@ class GoogleDialog {
     );
   }
 
+  /// A dialog that is usually displayed to display an alert message.
   static void showAlert(
     BuildContext context, {
     required String title,

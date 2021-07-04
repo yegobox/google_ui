@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 
+/// Create a bottom bar.
 class GoogleBottomBar extends StatelessWidget {
   const GoogleBottomBar({
     Key? key,
-    this.color,
+    this.backgroundColor,
     this.padding,
     this.child,
   }) : super(key: key);
 
-  final Color? color;
+  /// Set [GoogleBottomBar] background color.
+  final Color? backgroundColor;
+
+  /// Empty space.
   final EdgeInsetsGeometry? padding;
+
+  /// The widget below this widget in the tree.
   final Widget? child;
 
   @override
@@ -19,13 +25,8 @@ class GoogleBottomBar extends StatelessWidget {
     return Container(
       padding: padding,
       decoration: BoxDecoration(
-        color: color ?? colorScheme.surface,
-        boxShadow: const [
-          BoxShadow(
-            blurRadius: 8,
-            offset: Offset(0, 4),
-          ),
-        ],
+        color: backgroundColor ?? colorScheme.surface,
+        boxShadow: const [BoxShadow(blurRadius: 8, offset: Offset(0, 4))],
       ),
       child: child,
     );

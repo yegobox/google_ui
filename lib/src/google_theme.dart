@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 
+/// Generate a theme.
 class GoogleTheme {
   const GoogleTheme({
-    this.customLightColorScheme,
-    this.customDarkColorScheme,
+    this.lightColorScheme,
+    this.darkColorScheme,
   });
 
-  final ColorScheme? customLightColorScheme;
-  final ColorScheme? customDarkColorScheme;
+  /// Color scheme for light mode.
+  final ColorScheme? lightColorScheme;
+
+  /// Color scheme for dark mode.
+  final ColorScheme? darkColorScheme;
 
   ThemeData apply({
     bool darkMode = false,
   }) {
     final colorScheme = darkMode
-        ? (customDarkColorScheme ?? darkColorScheme)
-        : (customLightColorScheme ?? lightColorScheme);
+        ? (darkColorScheme ?? _darkColorScheme)
+        : (lightColorScheme ?? _lightColorScheme);
 
     return ThemeData(
         fontFamily: "Poppins",
@@ -26,7 +30,7 @@ class GoogleTheme {
         popupMenuTheme: PopupMenuThemeData(color: colorScheme.surface),
         iconTheme: IconThemeData(color: colorScheme.onBackground),
         elevatedButtonTheme: _elevatedButtonTheme(colorScheme),
-        textTheme: textTheme.apply(
+        textTheme: _textTheme.apply(
           displayColor: colorScheme.onBackground,
           bodyColor: colorScheme.onBackground,
         ),
@@ -57,7 +61,7 @@ class GoogleTheme {
   }
 }
 
-const ColorScheme lightColorScheme = ColorScheme(
+const ColorScheme _lightColorScheme = ColorScheme(
   primary: Color(0xFF1A73E9),
   primaryVariant: Color(0xFF1D62D6),
   secondary: Color(0xFF1A73E9),
@@ -73,7 +77,7 @@ const ColorScheme lightColorScheme = ColorScheme(
   brightness: Brightness.light,
 );
 
-const ColorScheme darkColorScheme = ColorScheme(
+const ColorScheme _darkColorScheme = ColorScheme(
   primary: Color(0xFF89B4F8),
   primaryVariant: Color(0xFFA6C9FC),
   secondary: Color(0xFF89B4F8),
@@ -89,7 +93,7 @@ const ColorScheme darkColorScheme = ColorScheme(
   brightness: Brightness.dark,
 );
 
-const textTheme = TextTheme(
+const _textTheme = TextTheme(
   headline1: TextStyle(
     fontSize: 93,
     fontWeight: FontWeight.w300,

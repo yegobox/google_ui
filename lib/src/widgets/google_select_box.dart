@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'index.dart';
 
+/// Create a select box item.
 class GoogleSelectBoxItem {
   final String label;
   final dynamic value;
@@ -22,6 +23,7 @@ class GoogleSelectBoxItem {
   }
 }
 
+/// Create a select box.
 class GoogleSelectBox extends StatelessWidget {
   const GoogleSelectBox({
     Key? key,
@@ -30,8 +32,13 @@ class GoogleSelectBox extends StatelessWidget {
     required this.onChanged,
   }) : super(key: key);
 
+  /// Mark item if [item.value] is equal to [value].
   final dynamic value;
+
+  /// A list [GoogleSelectBoxItem] to display as option to select.
   final List<GoogleSelectBoxItem> items;
+
+  /// A callback after user select an option.
   final void Function(dynamic value) onChanged;
 
   @override

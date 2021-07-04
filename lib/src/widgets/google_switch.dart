@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'index.dart';
 
+/// Create switch.
 class GoogleSwitch extends StatelessWidget {
   const GoogleSwitch({
     Key? key,
@@ -9,8 +10,13 @@ class GoogleSwitch extends StatelessWidget {
     required this.onChanged,
   }) : super(key: key);
 
+  /// Text that describes the switch.
   final String label;
+
+  /// Whether this switch is on or off.
   final bool value;
+
+  /// A callback after the user toggles the switch.
   final void Function(bool) onChanged;
 
   @override

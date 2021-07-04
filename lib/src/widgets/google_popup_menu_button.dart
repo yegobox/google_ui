@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Create popup menu item.
 class GooglePopupMenuItem {
   final String label;
   final void Function() onPressed;
@@ -10,10 +11,12 @@ class GooglePopupMenuItem {
   });
 }
 
+/// Create popup menu button.
 class GooglePopupMenuButton extends StatelessWidget {
   const GooglePopupMenuButton({Key? key, required this.children})
       : super(key: key);
 
+  /// A list of [GooglePopupMenuItem] to display as [GooglePopupMenuButton] children.
   final List<GooglePopupMenuItem> children;
 
   @override

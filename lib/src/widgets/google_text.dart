@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Variant for [GoogleText].
 enum GoogleTextVariant {
   headline1,
   headline2,
@@ -16,6 +17,7 @@ enum GoogleTextVariant {
   overline,
 }
 
+/// Create a text.
 class GoogleText extends StatelessWidget {
   const GoogleText(
     this.text, {
@@ -30,14 +32,31 @@ class GoogleText extends StatelessWidget {
     this.fontWeight,
   }) : super(key: key);
 
+  /// Text to display.
   final String text;
+
+  /// Set text variant.
   final GoogleTextVariant variant;
+
+  /// Set text align.
   final TextAlign? textAlign;
+
+  /// Set text color.
   final Color? color;
+
+  /// Set text overflow.
   final TextOverflow? textOverflow;
+
+  /// Set max lines.
   final int? maxLines;
+
+  /// Whether the text should break at soft line breaks.
   final bool? softWrap;
+
+  /// Set font size.
   final double? fontSize;
+
+  /// Set font weight.
   final FontWeight? fontWeight;
 
   TextStyle _textStyle(BuildContext context) {

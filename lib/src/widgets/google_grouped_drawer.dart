@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_ui/src/utils/index.dart';
 
+/// Create a grouped drawer.
 class GoogleGroupedDrawer extends StatelessWidget {
   const GoogleGroupedDrawer({
     Key? key,
@@ -12,11 +13,22 @@ class GoogleGroupedDrawer extends StatelessWidget {
     required this.children,
   }) : super(key: key);
 
+  /// Set [GoogleGroupedDrawer] background color.
   final Color? backgroundColor;
+
+  /// If true, display [actions] after [children].
   final bool isEnd;
+
+  /// Pick children from index to display.
   final int index;
+
+  /// A list of Widgets to control [index].
   final List<Widget> actions;
+
+  /// A list of Widgets to display in a column after [actions].
   final List<Widget>? secondaryActions;
+
+  /// A list of Widgets to display menus.
   final List<Widget> children;
 
   @override

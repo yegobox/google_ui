@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+/// Create an icon button.
 class GoogleIconButton extends HookWidget {
   const GoogleIconButton({
     Key? key,
@@ -11,10 +12,19 @@ class GoogleIconButton extends HookWidget {
     required this.icon,
   }) : super(key: key);
 
+  /// Size of [GoogleIconButton] that can receiving input
   final Size size;
+
+  /// Size of splash effect.
   final Size splashSize;
+
+  /// A callback after user pressed the button.
   final void Function()? onPressed;
+
+  /// A callback when the user long presses the button.
   final void Function()? onLongPress;
+
+  /// An icon to display.
   final Widget icon;
 
   @override

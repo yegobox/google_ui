@@ -1,6 +1,5 @@
 ## [1.0.0]
 - Remove all page widget
-- Add GoogleCustomAppBar
 - Add GoogleSearchAppBar
 - Add GoogleGroupedDrawer
 - Add GoogleIconButton

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Create a drawer
 class GoogleDrawer extends StatelessWidget {
   const GoogleDrawer({
     Key? key,
@@ -8,8 +9,13 @@ class GoogleDrawer extends StatelessWidget {
     required this.child,
   }) : super(key: key);
 
+  /// Set [GoogleDrawer] background color.
   final Color? backgroundColor;
+
+  /// If true, wrap the child widget with [SafeArea].
   final bool enableSafeArea;
+
+  /// The widget below this widget in the tree.
   final Widget child;
 
   @override

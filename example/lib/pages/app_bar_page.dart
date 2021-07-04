@@ -12,32 +12,13 @@ class AppBarPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
-            children: [
-              const GoogleAppBar(
+            children: const [
+              GoogleAppBar(
                 title: "Simple App Bar",
                 subtitle: "Google UI",
               ),
-              const SizedBox(height: 16),
-              GoogleCustomAppBar(
-                title: Row(
-                  children: [
-                    const CircleAvatar(),
-                    const SizedBox(width: 8),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        GoogleText("Custom App Bar"),
-                        GoogleText(
-                          "Subtitle",
-                          variant: GoogleTextVariant.bodyText2,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 16),
-              const GoogleSearchAppBar(
+              SizedBox(height: 16),
+              GoogleSearchAppBar(
                 title: "Search App Bar",
                 hintText: "Search Item...",
                 onFieldSubmitted: null,

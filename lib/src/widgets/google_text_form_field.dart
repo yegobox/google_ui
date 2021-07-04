@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+/// Create text form field
 class GoogleTextFormField extends HookWidget {
   const GoogleTextFormField({
     Key? key,
@@ -10,7 +11,6 @@ class GoogleTextFormField extends HookWidget {
     this.controller,
     this.keyboardType,
     this.textInputAction,
-    this.obscureText = false,
     this.passwordField = false,
     this.onChanged,
     this.onEditingComplete,
@@ -26,25 +26,61 @@ class GoogleTextFormField extends HookWidget {
     this.validator,
   }) : super(key: key);
 
+  /// Text that describes the input field.
   final String? labelText;
+
+  /// Text that suggests what sort of input the field accepts.
   final String? hintText;
+
+  /// The initial value of [GoogleTextFormField].
   final String? initialValue;
+
+  /// Controls the text being edited.
   final TextEditingController? controller;
+
+  /// Set keyboard type.
   final TextInputType? keyboardType;
+
+  /// An action the user has requested the text input control to perform.
   final TextInputAction? textInputAction;
-  final bool obscureText;
+
+  /// If true, make this field to password field.
   final bool passwordField;
+
+  /// A callback after this field value changed.
   final void Function(String)? onChanged;
+
+  /// A callback after editing completed.
   final void Function()? onEditingComplete;
+
+  /// A callback after this field submitted.
   final void Function(String)? onFieldSubmitted;
+
+  /// A callback after form [save()] called.
   final void Function(String?)? onSaved;
+
+  /// A callback after the user tap this widget.
   final void Function()? onTap;
+
+  /// If true, set this field as read only.
   final bool readOnly;
+
+  /// if true, hide counter text.
   final bool hideCounterText;
+
+  /// Set max length.
   final int? maxLength;
+
+  /// Set max lines.
   final int? maxLines;
+
+  /// A widget to display after the input area.
   final Widget? suffixIcon;
+
+  /// A widget to display before the input area.
   final Widget? prefixIcon;
+
+  /// A callback after form [validate()] called.
   final String? Function(String?)? validator;
 
   @override
@@ -56,7 +92,7 @@ class GoogleTextFormField extends HookWidget {
       initialValue: initialValue,
       keyboardType: keyboardType,
       textInputAction: textInputAction,
-      obscureText: passwordField ? !isShowPassword.value : obscureText,
+      obscureText: passwordField && !isShowPassword.value,
       validator: validator,
       onChanged: onChanged,
       onEditingComplete: onEditingComplete,

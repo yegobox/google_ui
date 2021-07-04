@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+/// Variant for [GoogleButton].
 enum GoogleButtonVariant { elevated, outlined, text }
 
+/// Create a button.
 class GoogleButton extends StatelessWidget {
   const GoogleButton(
     this.label, {
@@ -11,9 +13,16 @@ class GoogleButton extends StatelessWidget {
     this.icon,
   }) : super(key: key);
 
+  /// Text that describes the button.
   final String label;
+
+  /// A callback after the user click the button.
   final void Function()? onPressed;
+
+  /// Set button variant.
   final GoogleButtonVariant variant;
+
+  /// A widget to display before the [label].
   final Widget? icon;
 
   @override

@@ -1,32 +1,31 @@
 import 'package:flutter/material.dart';
 
+/// Create a grid.
 class GoogleGrid extends StatelessWidget {
   const GoogleGrid({
     Key? key,
     this.columnCount = 2,
     this.gap,
     this.padding,
-    this.margin,
-    this.expanded = false,
-    this.rowMainAxisAlignment = MainAxisAlignment.start,
-    this.rowCrossAxisAlignment = CrossAxisAlignment.center,
     required this.children,
   }) : super(key: key);
 
+  /// Number of column.
   final int columnCount;
+
+  /// Gap to separate each cell.
   final double? gap;
+
+  /// An empty space.
   final EdgeInsets? padding;
-  final EdgeInsets? margin;
-  final bool expanded;
-  final MainAxisAlignment rowMainAxisAlignment;
-  final CrossAxisAlignment rowCrossAxisAlignment;
+
+  /// The widgets below this widget in the tree.
   final List<Widget> children;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: padding,
-      margin: margin,
       child: Column(children: _createRows()),
     );
   }
@@ -36,26 +35,10 @@ class GoogleGrid extends StatelessWidget {
     final childrenLength = children.length;
     final rowCount = (childrenLength / columnCount).ceil();
 
-    for (int i = 0; i < rowCount; i++) {
-      final List<Widget> columns = _createColumns(i, childrenLength);
-
-      rows.add(
-        expanded
-            ? Expanded(
-                child: Row(
-                  mainAxisAlignment: rowMainAxisAlignment,
-                  crossAxisAlignment: rowCrossAxisAlignment,
-                  children: columns,
-                ),
-              )
-            : Row(
-                mainAxisAlignment: rowMainAxisAlignment,
-                crossAxisAlignment: rowCrossAxisAlignment,
-                children: columns,
-              ),
-      );
-
-      if (i != rowCount - 1) rows.add(SizedBox(height: gap));
+    for (int rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+      final List<Widget> columns = _createColumns(rowIndex, childrenLength);
+      rows.add(Row(children: columns));
+      if (rowIndex != rowCount - 1) rows.add(SizedBox(height: gap));
     }
 
     return rows;
@@ -64,15 +47,15 @@ class GoogleGrid extends StatelessWidget {
   List<Widget> _createColumns(int rowIndex, int childrenLength) {
     final List<Widget> columns = [];
 
-    for (int x = 0; x < columnCount; x++) {
-      final index = rowIndex * columnCount + x;
-      if (index <= childrenLength - 1) {
-        columns.add(Expanded(child: children[index]));
+    for (int columnIndex = 0; columnIndex < columnCount; columnIndex++) {
+      final cellIndex = rowIndex * columnCount + columnIndex;
+      if (cellIndex <= childrenLength - 1) {
+        columns.add(Expanded(child: children[cellIndex]));
       } else {
         columns.add(Expanded(child: Container()));
       }
 
-      if (x != columnCount - 1) columns.add(SizedBox(width: gap));
+      if (columnIndex != columnCount - 1) columns.add(SizedBox(width: gap));
     }
 
     return columns;

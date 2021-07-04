@@ -5,6 +5,7 @@ import 'package:table_calendar/table_calendar.dart';
 
 import 'index.dart';
 
+/// Create a Calendar.
 class GoogleCalendar extends HookWidget {
   const GoogleCalendar({
     Key? key,
@@ -12,7 +13,10 @@ class GoogleCalendar extends HookWidget {
     this.padding = const EdgeInsets.all(8.0),
   }) : super(key: key);
 
+  /// A callback after the user selecting the day.
   final void Function(DateTime selectedDay, DateTime focusedDay)? onDaySelected;
+
+  /// Empty space arround the [GoogleCalendar].
   final EdgeInsets padding;
 
   @override

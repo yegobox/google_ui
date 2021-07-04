@@ -2,44 +2,60 @@ import 'package:flutter/material.dart';
 
 import 'index.dart';
 
+/// Create an app bar.
 class GoogleAppBar extends StatelessWidget implements PreferredSizeWidget {
   const GoogleAppBar({
     Key? key,
     required this.title,
     this.subtitle,
     this.centerTitle,
-    this.backgroundColor,
-    this.textColor,
-    this.elevation,
     this.bottom,
-    this.bottomOpacity = 1.0,
+    this.backgroundColor,
+    this.iconColor,
+    this.elevation,
     this.leading,
     this.automaticallyImplyLeading = true,
-    this.toolbarHeight,
     this.leadingWidth,
     this.actions,
-    this.flexibleSpace,
-    this.shadowColor,
-    this.shape,
     this.brightness,
   }) : super(key: key);
 
+  /// Text to display as title.
   final String? title;
+
+  /// Text to display as a subtitle, below the title.
   final String? subtitle;
+
+  /// If true align the title to the center.
   final bool? centerTitle;
-  final Color? backgroundColor;
-  final Color? textColor;
-  final double? elevation;
+
+  /// This widget appears across the bottom of the app bar.
   final PreferredSizeWidget? bottom;
-  final double bottomOpacity;
+
+  /// Set [GoogleAppBar] background color.
+  final Color? backgroundColor;
+
+  /// The color to use for [GoogleAppBar] icons.
+  final Color? iconColor;
+
+  /// Size of the shadow below app bar.
+  final double? elevation;
+
+  /// A widget to display before the [GoogleAppBar]'s [title].
   final Widget? leading;
+
+  /// If true allow to imply the leading widget.
   final bool automaticallyImplyLeading;
-  final double? toolbarHeight;
+
+  /// Defines the width of [leading] widget.
   final double? leadingWidth;
+
+  /// A list of Widgets to display in a row after the [title].
   final List<Widget>? actions;
-  final Widget? flexibleSpace;
-  final Color? shadowColor;
-  final ShapeBorder? shape;
+
+  /// Determines the brightness of the [SystemUiOverlayStyle]:
+  /// for [Brightness.dark], [SystemUiOverlayStyle.light] is used
+  /// and for [Brightness.light], [SystemUiOverlayStyle.dark] is used.
   final Brightness? brightness;
 
   @override
@@ -48,21 +64,16 @@ class GoogleAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       title: _createTitle(colorScheme),
+      bottom: bottom,
       backgroundColor: backgroundColor ?? colorScheme.surface,
       centerTitle: centerTitle,
       elevation: elevation,
-      bottom: bottom,
-      bottomOpacity: bottomOpacity,
       leading: leading,
       automaticallyImplyLeading: automaticallyImplyLeading,
-      toolbarHeight: toolbarHeight,
       leadingWidth: leadingWidth,
       actions: actions,
-      flexibleSpace: flexibleSpace,
-      shadowColor: shadowColor,
-      shape: shape,
       brightness: brightness,
-      iconTheme: IconThemeData(color: textColor ?? colorScheme.onSurface),
+      iconTheme: IconThemeData(color: iconColor ?? colorScheme.onSurface),
     );
   }
 
@@ -75,19 +86,19 @@ class GoogleAppBar extends StatelessWidget implements PreferredSizeWidget {
         GoogleText(
           title ?? "",
           variant: GoogleTextVariant.headline6,
-          color: textColor ?? colorScheme.onSurface,
+          color: iconColor ?? colorScheme.onSurface,
         ),
         if (subtitle != null)
           GoogleText(
             subtitle!,
             variant: GoogleTextVariant.bodyText2,
-            color: textColor ?? colorScheme.onSurface,
+            color: iconColor ?? colorScheme.onSurface,
           ),
       ],
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(
-      toolbarHeight ?? kToolbarHeight + (bottom?.preferredSize.height ?? 0.0));
+  Size get preferredSize =>
+      Size.fromHeight(kToolbarHeight + (bottom?.preferredSize.height ?? 0.0));
 }
