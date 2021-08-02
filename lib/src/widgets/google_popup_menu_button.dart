@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 /// Create popup menu item.
 class GooglePopupMenuItem {
-  final String label;
   final void Function() onPressed;
+  final Widget? icon;
+  final String label;
 
   GooglePopupMenuItem({
-    required this.label,
     required this.onPressed,
+    this.icon,
+    required this.label,
   });
 }
 
@@ -23,7 +25,20 @@ class GooglePopupMenuButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopupMenuButton<void Function()>(
       itemBuilder: (context) => children
-          .map((e) => PopupMenuItem(value: e.onPressed, child: Text(e.label)))
+          .map(
+            (e) => PopupMenuItem(
+              value: e.onPressed,
+              child: e.icon != null
+                  ? Row(
+                      children: [
+                        e.icon!,
+                        const SizedBox(width: 16),
+                        Text(e.label),
+                      ],
+                    )
+                  : Text(e.label),
+            ),
+          )
           .toList(),
       onSelected: (value) => value(),
     );
