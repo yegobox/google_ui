@@ -48,7 +48,6 @@ class GoogleGroupedDrawer extends StatelessWidget {
             children: !isEnd
                 ? [
                     _ActionBar(
-                      backgroundColor: backgroundColor,
                       actions: actions,
                       secondaryActions: secondaryActions,
                     ),
@@ -59,7 +58,6 @@ class GoogleGroupedDrawer extends StatelessWidget {
                     Expanded(child: SafeArea(child: children[index])),
                     const VerticalDivider(width: 0),
                     _ActionBar(
-                      backgroundColor: backgroundColor,
                       actions: actions,
                       secondaryActions: secondaryActions,
                     ),
@@ -74,12 +72,10 @@ class GoogleGroupedDrawer extends StatelessWidget {
 class _ActionBar extends StatelessWidget {
   const _ActionBar({
     Key? key,
-    required this.backgroundColor,
     required this.actions,
     required this.secondaryActions,
   }) : super(key: key);
 
-  final Color backgroundColor;
   final List<Widget> actions;
   final List<Widget>? secondaryActions;
 
@@ -88,7 +84,6 @@ class _ActionBar extends StatelessWidget {
     return Container(
       width: 80,
       padding: const EdgeInsets.only(bottom: 16),
-      color: GoogleColorUtil.darken(backgroundColor, 5),
       child: SafeArea(
         child: Column(
           children: [
