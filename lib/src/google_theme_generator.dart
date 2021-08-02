@@ -1,20 +1,8 @@
 import 'package:flutter/material.dart';
 
 /// Generate a theme.
-@Deprecated("use GoogleThemeGenerator instead")
-class GoogleTheme {
-  const GoogleTheme({
-    this.lightColorScheme,
-    this.darkColorScheme,
-  });
-
-  /// Color scheme for light mode.
-  final ColorScheme? lightColorScheme;
-
-  /// Color scheme for dark mode.
-  final ColorScheme? darkColorScheme;
-
-  static const ColorScheme _lightColorScheme = ColorScheme(
+class GoogleThemeGenerator {
+  static const ColorScheme _colorScheme = ColorScheme(
     primary: Color(0xFF1A73E9),
     primaryVariant: Color(0xFF1D62D6),
     secondary: Color(0xFF1A73E9),
@@ -112,13 +100,15 @@ class GoogleTheme {
     ),
   );
 
-  ThemeData apply({
-    bool darkMode = false,
-  }) {
-    final colorScheme = darkMode
-        ? (darkColorScheme ?? _darkColorScheme)
-        : (lightColorScheme ?? _lightColorScheme);
+  static ThemeData generate({ColorScheme? colorScheme}) {
+    return _generateThemeData(colorScheme ?? _colorScheme);
+  }
 
+  static ThemeData generateDark({ColorScheme? colorScheme}) {
+    return _generateThemeData(colorScheme ?? _darkColorScheme);
+  }
+
+  static ThemeData _generateThemeData(ColorScheme colorScheme) {
     return ThemeData(
       fontFamily: "Poppins",
       colorScheme: colorScheme,

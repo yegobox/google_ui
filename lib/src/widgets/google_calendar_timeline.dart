@@ -117,7 +117,7 @@ class GoogleCalendarTimeline extends HookWidget {
       });
     }, []);
 
-    final currentYear = dateTimes.value[pageIndex.value * dayInRow];
+    final firstDateTimeInRow = dateTimes.value[pageIndex.value * dayInRow];
 
     return Padding(
       padding: EdgeInsets.fromLTRB(
@@ -137,9 +137,9 @@ class GoogleCalendarTimeline extends HookWidget {
               0,
             ),
             child: yearText != null
-                ? yearText!(currentYear)
+                ? yearText!(firstDateTimeInRow)
                 : Text(
-                    DateFormat("MMM y").format(currentYear),
+                    DateFormat("MMM y").format(firstDateTimeInRow),
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
