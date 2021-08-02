@@ -284,10 +284,10 @@ class _GoogleCalendarTimelineDay extends StatelessWidget {
       decoration: BoxDecoration(
         color: isToday
             ? isSelected
-                ? colorScheme.primary.withOpacity(.25)
+                ? colorScheme.primary.withOpacity(.15)
                 : colorScheme.primary
             : Colors.black.withOpacity(.05),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(8),
         border: isSelected
             ? Border.all(
                 color: colorScheme.primary,
