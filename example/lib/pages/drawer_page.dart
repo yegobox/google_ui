@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_ui/google_ui.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+final _scrollControllerProvider = Provider.autoDispose((ref) {
+  return ScrollController();
+});
 
 class DrawerPage extends HookWidget {
   const DrawerPage({Key? key}) : super(key: key);
@@ -102,7 +107,7 @@ class _GroupedDrawer extends StatelessWidget {
   }
 }
 
-class _ActionButton extends StatelessWidget {
+class _ActionButton extends HookWidget {
   const _ActionButton({
     Key? key,
     required this.index,
@@ -116,6 +121,7 @@ class _ActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scrollController = useProvider(_scrollControllerProvider);
     final colorScheme = Theme.of(context).colorScheme;
 
     return GoogleIconButton(
@@ -125,24 +131,36 @@ class _ActionButton extends StatelessWidget {
             ? colorScheme.primary
             : GoogleColorUtil.lighten(colorScheme.onSurface, 20),
       ),
-      onPressed: () => drawerIndex.value = index,
+      onPressed: () {
+        if (drawerIndex.value != index) {
+          scrollController.jumpTo(0);
+          drawerIndex.value = index;
+        }
+      },
     );
   }
 }
 
-class _DrawerMenu extends StatelessWidget {
+class _DrawerMenu extends HookWidget {
   const _DrawerMenu({Key? key, required this.pageNumber}) : super(key: key);
 
   final int pageNumber;
 
   @override
   Widget build(BuildContext context) {
+    final scrollController = useProvider(_scrollControllerProvider);
     final links = <Widget>[];
     for (int i = 0; i < 20; i++) {
-      links.add(ListTile(title: Text("Link ${i + 1}")));
+      links.add(
+        ListTile(
+          title: Text("Link ${i + 1}"),
+          onTap: () {},
+        ),
+      );
     }
 
     return SingleChildScrollView(
+      controller: scrollController,
       child: Column(
         children: [GoogleSectionTitle("Page $pageNumber"), ...links],
       ),

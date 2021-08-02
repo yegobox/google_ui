@@ -1,3 +1,12 @@
+## [1.1.0]
+- Add [GoogleCalendarTimeline]
+- Add [GoogleThemeGenerator]
+- Add icon property to [GooglePopupMenuItem]
+- Deprecating [GoogleTheme]
+- Deprecating [GoogleCalendar]
+- Change [GoogleColorUtil] percent property type
+- Remove [GoogleGroupedDrawer] ActionBar color
+
 ## [1.0.0]
 - Remove all page widget
 - Add GoogleSearchAppBar

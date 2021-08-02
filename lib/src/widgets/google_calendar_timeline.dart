@@ -87,21 +87,6 @@ class GoogleCalendarTimeline extends HookWidget {
 
     useEffect(() {
       generateDates();
-
-      final totalRow = (dateTimes.value.length / dayInRow).floor();
-      if (pageIndex.value > totalRow) {
-        pageIndex.value = totalRow;
-
-        WidgetsBinding.instance?.addPostFrameCallback((_) {
-          if (controller.hasClients) {
-            controller.animateToPage(
-              pageIndex.value,
-              duration: const Duration(milliseconds: 150),
-              curve: Curves.easeIn,
-            );
-          }
-        });
-      }
     }, [startDate, endDate]);
 
     useEffect(() {

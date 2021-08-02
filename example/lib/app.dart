@@ -6,12 +6,10 @@ import 'pages/home_page.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    const theme = GoogleTheme();
-
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: theme.apply(),
-      darkTheme: theme.apply(darkMode: true),
+      theme: GoogleThemeGenerator.generate(),
+      darkTheme: GoogleThemeGenerator.generateDark(),
       home: const HomePage(),
     );
   }

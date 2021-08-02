@@ -12,17 +12,43 @@ class AppBarPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
-            children: const [
-              GoogleAppBar(
+            children: [
+              const GoogleAppBar(
                 title: "Simple App Bar",
                 subtitle: "Google UI",
               ),
-              SizedBox(height: 16),
-              GoogleSearchAppBar(
+              const SizedBox(height: 16),
+              const GoogleSearchAppBar(
                 title: "Search App Bar",
                 hintText: "Search Item...",
                 onFieldSubmitted: null,
                 onClosePressed: null,
+              ),
+              const SizedBox(height: 16),
+              GoogleAppBar(
+                title: "App Bar",
+                subtitle: "With PopUpButton",
+                actions: [
+                  GooglePopupMenuButton(
+                    children: [
+                      GooglePopupMenuItem(
+                        onPressed: () {},
+                        icon: const Icon(Icons.sync),
+                        label: "Sync",
+                      ),
+                      GooglePopupMenuItem(
+                        onPressed: () {},
+                        icon: const Icon(Icons.settings),
+                        label: "Settings",
+                      ),
+                      GooglePopupMenuItem(
+                        onPressed: () {},
+                        icon: const Icon(Icons.logout),
+                        label: "Logout",
+                      ),
+                    ],
+                  )
+                ],
               ),
             ],
           ),
