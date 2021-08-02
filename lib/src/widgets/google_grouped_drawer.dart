@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../utils/index.dart';
 
 /// Create a grouped drawer.
 class GoogleGroupedDrawer extends StatelessWidget {
