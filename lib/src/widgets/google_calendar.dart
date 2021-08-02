@@ -6,6 +6,7 @@ import 'package:table_calendar/table_calendar.dart';
 import 'index.dart';
 
 /// Create a Calendar.
+@Deprecated("use GoogleCalendarTimeline instead")
 class GoogleCalendar extends HookWidget {
   const GoogleCalendar({
     Key? key,
