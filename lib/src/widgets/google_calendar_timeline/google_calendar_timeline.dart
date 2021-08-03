@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:intl/intl.dart';
 
+import 'google_calendar_timeline_controller.dart';
 import 'google_calendar_timeline_day.dart';
 
 /// Create a Calendar Timeline.
@@ -14,15 +15,12 @@ class GoogleCalendarTimeline extends HookWidget {
     this.gap = 4,
     this.height = 80,
     this.padding = const EdgeInsets.all(16),
-    this.dayInRow = 5,
-    this.startDate,
-    this.endDate,
     this.onDaySelected,
     this.onPageChanged,
   }) : super(key: key);
 
-  /// [PageView] controller.
-  final PageController controller;
+  /// [GoogleCalendarTimeline] controller.
+  final GoogleCalendarTimelineController controller;
 
   /// Custom [yearText] widget.
   final Widget Function(DateTime value)? yearText;
@@ -39,15 +37,6 @@ class GoogleCalendarTimeline extends HookWidget {
   /// Empty space arround the [GoogleCalendarTimeline].
   final EdgeInsets padding;
 
-  /// Day count in one row.
-  final int dayInRow;
-
-  /// Set start date.
-  final DateTime? startDate;
-
-  /// Set end date.
-  final DateTime? endDate;
-
   /// A callback after the user selecting the day.
   final void Function(DateTime value)? onDaySelected;
 
@@ -56,96 +45,59 @@ class GoogleCalendarTimeline extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pageIndex = useState(0);
     final dateTimes = useState<List<DateTime>>([]);
 
-    final now = useState(DateTime.now());
-    final selectedDay = useState(now.value);
+    final selectedDay = useState(controller.today);
+    final currentRowMonth = useState(DateTime.now());
 
-    final start = startDate ??
-        DateTime(
-          now.value.year - 3,
-          now.value.month,
-          now.value.day,
-        );
-    final end = endDate ??
-        DateTime(
-          now.value.year + 3,
-          now.value.month,
-          now.value.day,
-        );
+    useEffect(() {
+      final startDate = controller.startDate;
+      final endDate = controller.endDate;
+      final todayPageViewIndex = controller.todayPageViewIndex;
+      final dayInRow = controller.dayInRow;
 
-    void generateDates() {
-      dateTimes.value.clear();
+      dateTimes.value = [];
 
-      final daysToGenerate = end.difference(start).inDays;
-      dateTimes.value.addAll(
-        List.generate(
-          daysToGenerate,
-          (i) => DateTime(start.year, start.month, start.day + i),
+      final dateTimeLength = endDate.difference(startDate).inDays;
+      dateTimes.value = List.generate(
+        dateTimeLength,
+        (i) => DateTime(
+          startDate.year,
+          startDate.month,
+          startDate.day + i,
         ),
       );
-    }
 
-    useEffect(() {
-      generateDates();
-    }, [startDate, endDate]);
-
-    useEffect(() {
-      final dateTimeIndex = dateTimes.value.indexWhere(
-        (e) => e == DateTime(now.value.year, now.value.month, now.value.day),
-      );
-      pageIndex.value = (dateTimeIndex / dayInRow).floor();
+      final newCurrentRowMonthValue =
+          dateTimes.value[todayPageViewIndex * dayInRow + dayInRow];
 
       WidgetsBinding.instance?.addPostFrameCallback((_) {
-        if (controller.hasClients) {
-          controller.jumpToPage(pageIndex.value);
-        }
+        currentRowMonth.value = newCurrentRowMonthValue;
+        controller.jumpToPage(todayPageViewIndex);
       });
-    }, []);
-
-    final firstDateTimeInRow = dateTimes.value[pageIndex.value * dayInRow];
+    }, [controller]);
 
     return Padding(
-      padding: EdgeInsets.fromLTRB(
-        0,
-        padding.top,
-        0,
-        padding.bottom,
-      ),
+      padding: EdgeInsets.fromLTRB(0, padding.top, 0, padding.bottom),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.fromLTRB(
-              padding.left,
-              0,
-              padding.right,
-              0,
-            ),
+            padding: EdgeInsets.fromLTRB(padding.left, 0, padding.right, 0),
             child: yearText != null
-                ? yearText!(firstDateTimeInRow)
-                : Text(
-                    DateFormat("MMM y").format(firstDateTimeInRow),
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
+                ? yearText!(currentRowMonth.value)
+                : _YearText(currentRowMonth: currentRowMonth.value),
           ),
           SizedBox(height: yearTextGap),
           SizedBox(
             height: height,
-            child: _DateTimePageView(
-              controller: controller,
-              dateTimes: dateTimes,
-              dayInRow: dayInRow,
-              now: now,
-              selectedDay: selectedDay,
-              onDaySelected: onDaySelected,
+            child: _GoogleCalendarTimelinePageView(
               gap: gap,
               padding: padding,
-              pageIndex: pageIndex,
+              controller: controller,
+              dateTimes: dateTimes.value,
+              selectedDay: selectedDay,
+              onDaySelected: onDaySelected,
               onPageChanged: onPageChanged,
             ),
           ),
@@ -155,51 +107,73 @@ class GoogleCalendarTimeline extends HookWidget {
   }
 }
 
-class _DateTimePageView extends StatelessWidget {
-  const _DateTimePageView({
+class _YearText extends StatelessWidget {
+  const _YearText({
     Key? key,
-    required this.controller,
-    required this.dateTimes,
-    required this.dayInRow,
-    required this.now,
-    required this.selectedDay,
-    required this.onDaySelected,
+    required this.currentRowMonth,
+  }) : super(key: key);
+
+  final DateTime currentRowMonth;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      DateFormat("MMMM y").format(currentRowMonth),
+      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+    );
+  }
+}
+
+class _GoogleCalendarTimelinePageView extends StatelessWidget {
+  const _GoogleCalendarTimelinePageView({
+    Key? key,
     required this.gap,
     required this.padding,
-    required this.pageIndex,
+    required this.dateTimes,
+    required this.controller,
+    required this.selectedDay,
+    required this.onDaySelected,
     required this.onPageChanged,
   }) : super(key: key);
 
-  final PageController controller;
-  final ValueNotifier<List<DateTime>> dateTimes;
-  final int dayInRow;
-  final ValueNotifier<DateTime> now;
-  final ValueNotifier<DateTime> selectedDay;
-  final void Function(DateTime value)? onDaySelected;
   final double gap;
   final EdgeInsets padding;
-  final ValueNotifier<int> pageIndex;
+  final List<DateTime> dateTimes;
+  final GoogleCalendarTimelineController controller;
+  final ValueNotifier<DateTime> selectedDay;
+  final void Function(DateTime value)? onDaySelected;
   final void Function(int index)? onPageChanged;
 
   @override
   Widget build(BuildContext context) {
+    void _onDaySelected(DateTime dateTime) {
+      selectedDay.value = dateTime;
+      if (onDaySelected != null) {
+        onDaySelected!(dateTime);
+      }
+    }
+
     return PageView.builder(
-      controller: controller,
-      itemCount: (dateTimes.value.length / dayInRow).ceil(),
+      controller: controller.pageController,
+      itemCount: (controller.dateTimeLength / controller.dayInRow).ceil(),
       itemBuilder: (context, index) {
         final children = <Widget>[];
-        for (int i = 0; i < dayInRow; i++) {
+        for (int i = 0; i < controller.dayInRow; i++) {
+          final dayInRow = controller.dayInRow;
+          final dateTimeLength = controller.dateTimeLength;
+          final now = controller.today;
+
           final dateTimeIndex = index * dayInRow + i;
-          if (dateTimeIndex > dateTimes.value.length - 1) {
+          if (dateTimeIndex > dateTimeLength - 1) {
             children.add(Expanded(child: Container()));
             continue;
           }
 
-          final dateTime = dateTimes.value[dateTimeIndex];
+          final dateTime = dateTimes[dateTimeIndex];
           final dateNow = DateTime(
-            now.value.year,
-            now.value.month,
-            now.value.day,
+            now.year,
+            now.month,
+            now.day,
           );
           final selectedDate = DateTime(
             selectedDay.value.year,
@@ -210,14 +184,9 @@ class _DateTimePageView extends StatelessWidget {
           children.add(
             Expanded(
               child: GestureDetector(
-                onTap: () {
-                  selectedDay.value = dateTime;
-                  if (onDaySelected != null) {
-                    onDaySelected!(dateTime);
-                  }
-                },
+                onTap: () => _onDaySelected(dateTime),
                 child: GoogleCalendarTimelineDay(
-                  dateTime: dateTimes.value[dateTimeIndex],
+                  dateTime: dateTimes[dateTimeIndex],
                   isToday: dateNow == dateTime,
                   isSelected: selectedDate == dateTime,
                 ),
@@ -225,27 +194,17 @@ class _DateTimePageView extends StatelessWidget {
             ),
           );
 
-          if (i != dayInRow - 1) {
+          if (i != controller.dayInRow - 1) {
             children.add(SizedBox(width: gap));
           }
         }
 
         return Padding(
-          padding: EdgeInsets.fromLTRB(
-            padding.left,
-            0,
-            padding.right,
-            0,
-          ),
+          padding: EdgeInsets.fromLTRB(padding.left, 0, padding.right, 0),
           child: Row(children: children),
         );
       },
-      onPageChanged: (index) {
-        pageIndex.value = index;
-        if (onPageChanged != null) {
-          onPageChanged!(index);
-        }
-      },
+      onPageChanged: onPageChanged,
     );
   }
 }
