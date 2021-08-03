@@ -41,53 +41,68 @@ class _PageDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-              title: const Text("Text Field"),
-              onTap: () {
-                Navigator.of(context)
-                  ..pop()
-                  ..push(
-                    MaterialPageRoute(
-                        builder: (context) => const TextFieldPage()),
-                  );
-              }),
+            title: const Text("Text Field"),
+            onTap: () {
+              Navigator.of(context)
+                ..pop()
+                ..push(
+                  MaterialPageRoute(
+                      builder: (context) => const TextFieldPage()),
+                );
+            },
+          ),
           ListTile(
-              title: const Text("App Bar"),
-              onTap: () {
-                Navigator.of(context)
-                  ..pop()
-                  ..push(
-                    MaterialPageRoute(builder: (context) => const AppBarPage()),
-                  );
-              }),
+            title: const Text("App Bar"),
+            onTap: () {
+              Navigator.of(context)
+                ..pop()
+                ..push(
+                  MaterialPageRoute(builder: (context) => const AppBarPage()),
+                );
+            },
+          ),
           ListTile(
-              title: const Text("Grouped Drawer"),
-              onTap: () {
-                Navigator.of(context)
-                  ..pop()
-                  ..push(
-                    MaterialPageRoute(builder: (context) => const DrawerPage()),
-                  );
-              }),
+            title: const Text("Grouped Drawer"),
+            onTap: () {
+              Navigator.of(context)
+                ..pop()
+                ..push(
+                  MaterialPageRoute(builder: (context) => const DrawerPage()),
+                );
+            },
+          ),
           ListTile(
-              title: const Text("Calendar"),
-              onTap: () {
-                Navigator.of(context)
-                  ..pop()
-                  ..push(
-                    MaterialPageRoute(
-                        builder: (context) => const CalendarPage()),
-                  );
-              }),
+            title: const Text("Calendar"),
+            onTap: () {
+              Navigator.of(context)
+                ..pop()
+                ..push(
+                  MaterialPageRoute(builder: (context) => const CalendarPage()),
+                );
+            },
+          ),
           ListTile(
-              title: const Text("Typography"),
-              onTap: () {
-                Navigator.of(context)
-                  ..pop()
-                  ..push(
-                    MaterialPageRoute(
-                        builder: (context) => const TypographyPage()),
-                  );
-              }),
+            title: const Text("Error Message"),
+            onTap: () {
+              Navigator.of(context)
+                ..pop()
+                ..push(
+                  MaterialPageRoute(
+                      builder: (context) => const ErrorMessagePage()),
+                );
+            },
+          ),
+          ListTile(
+            title: const Text("Typography"),
+            onTap: () {
+              Navigator.of(context)
+                ..pop()
+                ..push(
+                  MaterialPageRoute(
+                      builder: (context) => const TypographyPage()),
+                );
+            },
+          ),
         ],
       ),
     );

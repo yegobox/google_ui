@@ -21,6 +21,7 @@ export 'src/widgets/google_grid_builder/google_grid_builder.dart';
 export 'src/widgets/google_grouped_drawer/google_grouped_drawer.dart';
 export 'src/widgets/google_icon_button/google_icon_button.dart';
 export 'src/widgets/google_popup_menu_button/google_popup_menu_button.dart';
+export 'src/widgets/google_popup_menu_button/google_popup_menu_item.dart';
 export 'src/widgets/google_search_app_bar/google_search_app_bar.dart';
 export 'src/widgets/google_section_title/google_section_title.dart';
 export 'src/widgets/google_select_box/google_select_box.dart';

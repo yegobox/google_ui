@@ -16,7 +16,7 @@ class GoogleErrorMessage extends StatelessWidget {
   }) : super(key: key);
 
   /// An icon to display.
-  final IconData icon;
+  final Widget icon;
 
   /// An error title.
   final String title;
@@ -48,7 +48,15 @@ class GoogleErrorMessage extends StatelessWidget {
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: colorScheme.primary.withOpacity(.2)),
-                  child: Icon(icon, color: colorScheme.primary, size: 40),
+                  child: Theme(
+                    data: Theme.of(context).copyWith(
+                      iconTheme: IconThemeData(
+                        size: 40,
+                        color: colorScheme.primary,
+                      ),
+                    ),
+                    child: icon,
+                  ),
                 ),
                 const SizedBox(height: 16),
                 GoogleText(title),
