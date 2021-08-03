@@ -1,28 +1,10 @@
 import 'package:flutter/material.dart';
 
-/// Create a select box item.
-class GoogleSelectBoxItem {
-  final String label;
-  final dynamic value;
-
-  GoogleSelectBoxItem({
-    required this.label,
-    required this.value,
-  });
-
-  GoogleSelectBoxItem copyWith({
-    String? label,
-    dynamic value,
-  }) {
-    return GoogleSelectBoxItem(
-      label: label ?? this.label,
-      value: value ?? this.value,
-    );
-  }
-}
+import 'google_select_box_item.dart';
+import 'google_select_box_list_tile.dart';
 
 /// Create a select box.
-class GoogleSelectBox extends StatelessWidget {
+class GoogleSelectBox<T> extends StatelessWidget {
   const GoogleSelectBox({
     Key? key,
     required this.value,
@@ -31,13 +13,13 @@ class GoogleSelectBox extends StatelessWidget {
   }) : super(key: key);
 
   /// Mark item if [item.value] is equal to [value].
-  final dynamic value;
+  final T value;
 
   /// A list [GoogleSelectBoxItem] to display as option to select.
-  final List<GoogleSelectBoxItem> items;
+  final List<GoogleSelectBoxItem<T>> items;
 
   /// A callback after user select an option.
-  final void Function(dynamic value) onChanged;
+  final void Function(T value) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +27,10 @@ class GoogleSelectBox extends StatelessWidget {
     final List<Widget> children = [];
 
     for (int i = 0; i < items.length; i++) {
-      children.add(_ListTile(
-        value: value,
-        item: items[i],
-        onChanged: onChanged,
+      children.add(GoogleSelectBoxListTile(
+        label: items[i].label,
+        isSelected: value == items[i].value,
+        onTap: () => onChanged(items[i].value),
         colorScheme: colorScheme,
       ));
 
@@ -58,31 +40,5 @@ class GoogleSelectBox extends StatelessWidget {
     }
 
     return Column(children: children);
-  }
-}
-
-class _ListTile extends StatelessWidget {
-  const _ListTile({
-    Key? key,
-    required this.value,
-    required this.item,
-    required this.onChanged,
-    required this.colorScheme,
-  }) : super(key: key);
-
-  final dynamic value;
-  final GoogleSelectBoxItem item;
-  final void Function(dynamic) onChanged;
-  final ColorScheme colorScheme;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(item.label),
-      trailing: value == item.value
-          ? Icon(Icons.check, color: colorScheme.primary)
-          : null,
-      onTap: () => onChanged(item.value),
-    );
   }
 }
