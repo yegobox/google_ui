@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'index.dart';
+import '../google_button/google_button.dart';
+import '../google_text/google_text.dart';
 
 /// Create a error message,
 /// usually displayed on the page when an error occurs

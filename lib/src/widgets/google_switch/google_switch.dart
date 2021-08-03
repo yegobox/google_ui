@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'index.dart';
-
 /// Create switch.
 class GoogleSwitch extends StatelessWidget {
   const GoogleSwitch({
@@ -24,7 +22,7 @@ class GoogleSwitch extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        GoogleText(label),
+        Text(label),
         const Spacer(),
         Switch(value: value, onChanged: onChanged),
       ],

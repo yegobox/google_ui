@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'index.dart';
+import '../google_button/google_button.dart';
+import '../google_text/google_text.dart';
 
 /// Display a dialog.
 class GoogleDialog {

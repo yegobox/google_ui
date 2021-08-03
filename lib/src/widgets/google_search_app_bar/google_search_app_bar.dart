@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import '../google_text/google_text.dart';
 
-import 'index.dart';
-
-/// Create an app bar.
-class GoogleAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const GoogleAppBar({
+/// Create app bar with search bar.
+class GoogleSearchAppBar extends HookWidget implements PreferredSizeWidget {
+  const GoogleSearchAppBar({
     Key? key,
     required this.title,
     this.subtitle,
@@ -17,6 +17,10 @@ class GoogleAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.automaticallyImplyLeading = true,
     this.leadingWidth,
     this.actions,
+    required this.hintText,
+    this.keyboardType,
+    required this.onFieldSubmitted,
+    required this.onClosePressed,
     this.brightness,
   }) : super(key: key);
 
@@ -53,6 +57,18 @@ class GoogleAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// A list of Widgets to display in a row after the [title].
   final List<Widget>? actions;
 
+  /// Text that suggests what sort of input the field accepts.
+  final String hintText;
+
+  /// Set keyboard type.
+  final TextInputType? keyboardType;
+
+  /// A callback after this field submitted.
+  final void Function(String)? onFieldSubmitted;
+
+  /// A callback after the user press the close button.
+  final void Function()? onClosePressed;
+
   /// Determines the brightness of the [SystemUiOverlayStyle]:
   /// for [Brightness.dark], [SystemUiOverlayStyle.light] is used
   /// and for [Brightness.light], [SystemUiOverlayStyle.dark] is used.
@@ -62,18 +78,46 @@ class GoogleAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
+    final isSearch = useState(false);
+
     return AppBar(
-      title: _createTitle(colorScheme),
-      bottom: bottom,
+      title: isSearch.value ? _createSearchBar() : _createTitle(colorScheme),
       backgroundColor: backgroundColor ?? colorScheme.surface,
       centerTitle: centerTitle,
       elevation: elevation,
+      bottom: bottom,
       leading: leading,
       automaticallyImplyLeading: automaticallyImplyLeading,
       leadingWidth: leadingWidth,
-      actions: actions,
+      actions: [
+        IconButton(
+          icon: Icon(!isSearch.value ? Icons.search : Icons.close),
+          onPressed: () {
+            if (isSearch.value && onClosePressed != null) onClosePressed!();
+            isSearch.value = !isSearch.value;
+          },
+        ),
+        if (!isSearch.value && actions != null) ...actions!
+      ],
       brightness: brightness,
       iconTheme: IconThemeData(color: iconColor ?? colorScheme.onSurface),
+    );
+  }
+
+  Widget _createSearchBar() {
+    return TextFormField(
+      autofocus: true,
+      keyboardType: keyboardType,
+      textInputAction: TextInputAction.search,
+      decoration: InputDecoration(
+        border: InputBorder.none,
+        focusedBorder: InputBorder.none,
+        enabledBorder: InputBorder.none,
+        errorBorder: InputBorder.none,
+        disabledBorder: InputBorder.none,
+        hintText: hintText,
+      ),
+      onFieldSubmitted: onFieldSubmitted,
     );
   }
 

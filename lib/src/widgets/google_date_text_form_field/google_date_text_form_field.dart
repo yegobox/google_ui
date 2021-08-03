@@ -1,7 +1,6 @@
 import 'package:date_format/date_format.dart' as date_format;
 import 'package:flutter/material.dart';
-
-import 'index.dart';
+import '../google_text_form_field/google_text_form_field.dart';
 
 /// Create a date text form field.
 class GoogleDateTextFormField extends StatelessWidget {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'index.dart';
+import '../google_text/google_text.dart';
 
 /// Create a section title.
 class GoogleSectionTitle extends StatelessWidget {

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'index.dart';
-
 /// Create a select box item.
 class GoogleSelectBoxItem {
   final String label;
@@ -80,7 +78,7 @@ class _ListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: GoogleText(item.label),
+      title: Text(item.label),
       trailing: value == item.value
           ? Icon(Icons.check, color: colorScheme.primary)
           : null,
