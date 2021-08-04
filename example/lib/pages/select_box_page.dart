@@ -9,6 +9,7 @@ class SelectBoxPage extends HookWidget {
   Widget build(BuildContext context) {
     final selectBoxValue = useState(1);
     final multipleSelectBoxValue = useState(<int>[1]);
+    final iconSelectBoxValue = useState(1);
 
     return Scaffold(
       appBar: const GoogleAppBar(title: "Select Box"),
@@ -52,7 +53,30 @@ class SelectBoxPage extends HookWidget {
                 ),
               ],
               onChanged: (values) => multipleSelectBoxValue.value = [...values],
-            )
+            ),
+            const GoogleSectionTitle("With icon"),
+            GoogleSelectBox<int>(
+              value: iconSelectBoxValue.value,
+              items: [
+                GoogleSelectBoxItem(
+                  label: "Option 1",
+                  icon: const Icon(Icons.wifi),
+                  value: 1,
+                ),
+                GoogleSelectBoxItem(
+                  label: "Option 2",
+                  icon: const Icon(Icons.bluetooth),
+                  value: 2,
+                ),
+                GoogleSelectBoxItem(
+                  label: "Option 3",
+                  icon: const Icon(Icons.location_on),
+                  value: 3,
+                ),
+              ],
+              onChanged: (value) => iconSelectBoxValue.value = value,
+            ),
+            const SizedBox(height: 16),
           ],
         ),
       ),

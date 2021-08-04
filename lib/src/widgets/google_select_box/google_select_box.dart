@@ -29,6 +29,7 @@ class GoogleSelectBox<T> extends StatelessWidget {
     for (int i = 0; i < items.length; i++) {
       children.add(GoogleSelectBoxListTile(
         label: items[i].label,
+        icon: items[i].icon,
         isSelected: value == items[i].value,
         onTap: () => onChanged(items[i].value),
         colorScheme: colorScheme,
