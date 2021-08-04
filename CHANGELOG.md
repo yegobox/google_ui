@@ -2,6 +2,7 @@
 - Add [GoogleCalendarTimelineController]
 - Change [GoogleCalendarTimelineDay] background color
 - Add [GoogleMultipleSelectBox]
+- Add icon property to [GoogleSelectBox] and [GoogleMultipleSelectBox]
 - Set [AppBarTheme]
 - Add [GoogleTabBarIndicator]
 - Set [TabBarTheme]
