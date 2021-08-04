@@ -139,7 +139,7 @@ class GoogleThemeGenerator {
       ),
       tabBarTheme: TabBarTheme(
         labelColor: colorScheme.primary,
-        unselectedLabelColor: colorScheme.onSurface,
+        unselectedLabelColor: colorScheme.onSurface.withOpacity(.75),
         indicator: GoogleTabBarIndicator(colorScheme.primary),
         indicatorSize: TabBarIndicatorSize.label,
       ),
