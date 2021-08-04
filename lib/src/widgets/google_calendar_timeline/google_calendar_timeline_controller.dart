@@ -11,6 +11,7 @@ class GoogleCalendarTimelineController extends ChangeNotifier {
     this.today = DateTime(today.year, today.month, today.day);
     this.startDate = DateTime(startDate.year, startDate.month, startDate.day);
     this.endDate = DateTime(endDate.year, endDate.month, endDate.day);
+    _selectedDay = this.today;
   }
 
   /// [PageController].
@@ -27,6 +28,19 @@ class GoogleCalendarTimelineController extends ChangeNotifier {
 
   /// End [DateTime].
   late final DateTime endDate;
+
+  /// Current selected day.
+  late DateTime _selectedDay;
+
+  /// Get current selected day.
+  DateTime get selectedDay => _selectedDay;
+
+  /// Set current selected day.
+  set selectedDay(DateTime dateTime) {
+    _selectedDay = dateTime;
+    animateToDateTime(dateTime);
+    notifyListeners();
+  }
 
   /// Get number of days from [startDate] and [endDate].
   int get dateTimeLength => endDate.difference(startDate).inDays;

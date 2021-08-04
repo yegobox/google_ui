@@ -38,6 +38,8 @@ class GoogleCalendarTimeline extends HookWidget {
   final EdgeInsets padding;
 
   /// A callback after the user selecting the day.
+  /// not called if the selected day is changed using
+  /// [GoogleCalendarTimelineController].
   final void Function(DateTime value)? onDaySelected;
 
   /// A callback after page changed.
@@ -46,8 +48,6 @@ class GoogleCalendarTimeline extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final dateTimes = useState<List<DateTime>>([]);
-
-    final selectedDay = useState(controller.today);
     final currentRowMonth = useState(DateTime.now());
 
     useEffect(() {
@@ -96,7 +96,6 @@ class GoogleCalendarTimeline extends HookWidget {
               padding: padding,
               controller: controller,
               dateTimes: dateTimes.value,
-              selectedDay: selectedDay,
               onDaySelected: onDaySelected,
               onPageChanged: onPageChanged,
             ),
@@ -124,14 +123,13 @@ class _YearText extends StatelessWidget {
   }
 }
 
-class _GoogleCalendarTimelinePageView extends StatelessWidget {
+class _GoogleCalendarTimelinePageView extends HookWidget {
   const _GoogleCalendarTimelinePageView({
     Key? key,
     required this.gap,
     required this.padding,
     required this.dateTimes,
     required this.controller,
-    required this.selectedDay,
     required this.onDaySelected,
     required this.onPageChanged,
   }) : super(key: key);
@@ -140,14 +138,21 @@ class _GoogleCalendarTimelinePageView extends StatelessWidget {
   final EdgeInsets padding;
   final List<DateTime> dateTimes;
   final GoogleCalendarTimelineController controller;
-  final ValueNotifier<DateTime> selectedDay;
   final void Function(DateTime value)? onDaySelected;
   final void Function(int index)? onPageChanged;
 
   @override
   Widget build(BuildContext context) {
+    final selectedDay = useState(controller.selectedDay);
+
+    useEffect(() {
+      controller.addListener(() {
+        selectedDay.value = controller.selectedDay;
+      });
+    }, []);
+
     void _onDaySelected(DateTime dateTime) {
-      selectedDay.value = dateTime;
+      controller.selectedDay = dateTime;
       if (onDaySelected != null) {
         onDaySelected!(dateTime);
       }

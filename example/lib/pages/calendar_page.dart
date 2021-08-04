@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+
 import 'package:google_ui/google_ui.dart';
 
 class CalendarPage extends HookWidget {
@@ -45,6 +46,35 @@ class CalendarPage extends HookWidget {
             GoogleCalendarTimeline(
               controller: calendarController.value,
               onDaySelected: (dateTime) => selectedDay.value = dateTime,
+            ),
+            const Divider(),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GoogleButton(
+                    "Select previous day",
+                    onPressed: () {
+                      final newSelectedDay =
+                          selectedDay.value.subtract(const Duration(days: 1));
+
+                      calendarController.value.selectedDay = newSelectedDay;
+                      selectedDay.value = newSelectedDay;
+                    },
+                  ),
+                  GoogleButton(
+                    "Select next day",
+                    onPressed: () {
+                      final newSelectedDay =
+                          selectedDay.value.add(const Duration(days: 1));
+
+                      calendarController.value.selectedDay = newSelectedDay;
+                      selectedDay.value = newSelectedDay;
+                    },
+                  ),
+                ],
+              ),
             ),
             const Divider(),
             Padding(
