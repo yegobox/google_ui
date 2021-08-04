@@ -1,5 +1,6 @@
 ## [1.2.0]
 - Add [GoogleCalendarTimelineController]
+- Add [GoogleMultipleSelectBox]
 
 ## [1.1.0]
 - Add [GoogleCalendarTimeline]
