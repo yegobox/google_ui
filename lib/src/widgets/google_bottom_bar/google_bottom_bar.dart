@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// Create a bottom bar.
+@Deprecated("use BottomAppBar instead")
 class GoogleBottomBar extends StatelessWidget {
   const GoogleBottomBar({
     Key? key,

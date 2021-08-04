@@ -1,6 +1,11 @@
 ## [1.2.0]
 - Add [GoogleCalendarTimelineController]
+- Change [GoogleCalendarTimelineDay] background color
 - Add [GoogleMultipleSelectBox]
+- Set [AppBarTheme]
+- Add [GoogleTabBarIndicator]
+- Set [TabBarTheme]
+- Deprecating [GoogleBottomBar]
 
 ## [1.1.0]
 - Add [GoogleCalendarTimeline]
