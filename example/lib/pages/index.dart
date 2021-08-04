@@ -5,5 +5,6 @@ export 'drawer_page.dart';
 export 'error_message_page.dart';
 export 'home_page.dart';
 export 'select_box_page.dart';
+export 'tab_bar_page.dart';
 export 'text_field_page.dart';
 export 'typography_page.dart';

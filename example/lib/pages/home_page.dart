@@ -62,6 +62,16 @@ class _PageDrawer extends StatelessWidget {
             },
           ),
           ListTile(
+            title: const Text("Tab Bar"),
+            onTap: () {
+              Navigator.of(context)
+                ..pop()
+                ..push(
+                  MaterialPageRoute(builder: (context) => const TabBarPage()),
+                );
+            },
+          ),
+          ListTile(
             title: const Text("Select Box"),
             onTap: () {
               Navigator.of(context)

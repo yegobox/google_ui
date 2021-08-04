@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/google_tab_bar/google_tab_bar_indicator.dart';
+
 /// Generate a theme.
 class GoogleThemeGenerator {
   static const ColorScheme _colorScheme = ColorScheme(
@@ -114,6 +116,7 @@ class GoogleThemeGenerator {
       colorScheme: colorScheme,
       primaryColor: colorScheme.primary,
       accentColor: colorScheme.primary,
+      indicatorColor: colorScheme.primary,
       toggleableActiveColor: colorScheme.primary,
       scaffoldBackgroundColor: colorScheme.background,
       popupMenuTheme: PopupMenuThemeData(color: colorScheme.surface),
@@ -121,8 +124,25 @@ class GoogleThemeGenerator {
       textTheme: _textTheme.apply(
         displayColor: colorScheme.onBackground,
         bodyColor: colorScheme.onBackground,
+        decorationColor: colorScheme.onBackground,
       ),
       dividerColor: colorScheme.onBackground.withOpacity(.25),
+      appBarTheme: AppBarTheme(
+        textTheme: _textTheme.copyWith(
+          headline6: _textTheme.headline6?.copyWith(
+            color: colorScheme.onSurface,
+          ),
+        ),
+        backgroundColor: colorScheme.surface,
+        brightness: colorScheme.brightness,
+        iconTheme: IconThemeData(color: colorScheme.onSurface),
+      ),
+      tabBarTheme: TabBarTheme(
+        labelColor: colorScheme.primary,
+        unselectedLabelColor: colorScheme.onSurface,
+        indicator: GoogleTabBarIndicator(colorScheme.primary),
+        indicatorSize: TabBarIndicatorSize.label,
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
           backgroundColor: MaterialStateColor.resolveWith(
