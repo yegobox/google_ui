@@ -38,7 +38,6 @@ class GoogleCalendarTimelineController extends ChangeNotifier {
   /// Set current selected day.
   set selectedDay(DateTime dateTime) {
     _selectedDay = dateTime;
-    animateToDateTime(dateTime);
     notifyListeners();
   }
 

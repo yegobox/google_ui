@@ -97,7 +97,13 @@ class GoogleCalendarTimeline extends HookWidget {
               controller: controller,
               dateTimes: dateTimes.value,
               onDaySelected: onDaySelected,
-              onPageChanged: onPageChanged,
+              onPageChanged: (index) {
+                currentRowMonth.value = dateTimes
+                    .value[index * controller.dayInRow + controller.dayInRow];
+                if (onPageChanged != null) {
+                  onPageChanged!(index);
+                }
+              },
             ),
           ),
         ],
