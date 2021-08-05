@@ -1,21 +1,25 @@
+## [1.2.1]
+- Fix GoogleCalendarTimeline yearText not updated 
+- Fix GoogleGridBuilder scroll too fast
+
 ## [1.2.0]
-- Add [GoogleCalendarTimelineController]
-- Change [GoogleCalendarTimelineDay] background color
-- Add [GoogleMultipleSelectBox]
-- Add icon property to [GoogleSelectBox] and [GoogleMultipleSelectBox]
-- Set [AppBarTheme]
-- Add [GoogleTabBarIndicator]
-- Set [TabBarTheme]
-- Deprecating [GoogleBottomBar]
+- Add GoogleCalendarTimelineController
+- Change GoogleCalendarTimelineDay background color
+- Add GoogleMultipleSelectBox
+- Add icon property to GoogleSelectBox and GoogleMultipleSelectBox
+- Set AppBarTheme
+- Add GoogleTabBarIndicator
+- Set TabBarTheme
+- Deprecating GoogleBottomBar
 
 ## [1.1.0]
-- Add [GoogleCalendarTimeline]
-- Add [GoogleThemeGenerator]
-- Add icon property to [GooglePopupMenuItem]
-- Deprecating [GoogleTheme]
-- Deprecating [GoogleCalendar]
-- Change [GoogleColorUtil] percent property type
-- Remove [GoogleGroupedDrawer] ActionBar color
+- Add GoogleCalendarTimeline
+- Add GoogleThemeGenerator
+- Add icon property to GooglePopupMenuItem
+- Deprecating GoogleTheme
+- Deprecating GoogleCalendar
+- Change GoogleColorUtil percent property type
+- Remove GoogleGroupedDrawer ActionBar color
 
 ## [1.0.0]
 - Remove all page widget
@@ -26,10 +30,10 @@
 - Change example app
 
 ## [0.1.2]
-- Remove required from label property [GoogleErrorPage]
+- Remove required from label property GoogleErrorPage
 - Change dynamic return type to void
-- Change property name [GoogleDrawer]
-- Change GoogleTextVariant from bodyText1 to bodyText2 [GoogleListPage, GoogleSearchPage] 
+- Change property name GoogleDrawer
+- Change GoogleTextVariant from bodyText1 to bodyText2 on GoogleListPage and GoogleSearchPage 
 
 ## [0.1.1]
 - Fix flutter_hooks version

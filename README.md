@@ -5,7 +5,7 @@
 [![GitHub release](https://img.shields.io/github/release/edsulaiman/google_ui?include_prereleases=&sort=semver)](https://github.com/edsulaiman/google_ui/releases/)
 [![License](https://img.shields.io/badge/License-MIT-blue)](#license)
 [![issues - google_ui](https://img.shields.io/github/issues/edsulaiman/google_ui)](https://github.com/edsulaiman/google_ui/issues)
-![](https://tokei.rs/b1/github/edsulaiman/google_ui)
+[![loc](https://tokei.rs/b1/github/edsulaiman/google_ui)](https://github.com/edsulaiman/google_ui)
 
 Flutter UI library using Material Design 2.0.
 
