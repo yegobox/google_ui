@@ -42,15 +42,24 @@ class GoogleGridBuilder extends StatelessWidget {
     final rowCount = (itemCount / columnCount).ceil();
 
     for (int rowIndex = 0; rowIndex < rowCount; rowIndex++) {
-      final List<Widget> columns = _createColumns(context, rowIndex);
+      final List<Widget> columns = _createRowCells(context, rowIndex);
+      if (rowIndex != rowCount - 1) {
+        rows.add(Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(children: columns),
+            SizedBox(height: gap),
+          ],
+        ));
+        continue;
+      }
       rows.add(Row(children: columns));
-      if (rowIndex != rowCount - 1) rows.add(SizedBox(height: gap));
     }
 
     return rows;
   }
 
-  List<Widget> _createColumns(BuildContext context, int rowIndex) {
+  List<Widget> _createRowCells(BuildContext context, int rowIndex) {
     final List<Widget> columns = [];
 
     for (int columnIndex = 0; columnIndex < columnCount; columnIndex++) {
