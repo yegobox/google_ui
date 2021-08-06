@@ -1,3 +1,12 @@
+## [1.3.0]
+- Fix visualDensity
+- Fix Button tapTargetSize
+- Fix GoogleTabBarIndicator size on desktop
+- Add tooltipTheme to GoogleThemeGenerator
+- Add dayBuilder to GoogleCalendarTimeline
+- Add properties to customize GoogleCalendarTimelineDay
+- Wrap clickable widget with MouseRegion
+
 ## [1.2.1]
 - Fix GoogleCalendarTimeline yearText not updated 
 - Fix GoogleGridBuilder scroll too fast
