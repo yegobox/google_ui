@@ -11,6 +11,7 @@ export 'src/widgets/google_button/google_button.dart';
 export 'src/widgets/google_calendar/google_calendar.dart';
 export 'src/widgets/google_calendar_timeline/google_calendar_timeline.dart';
 export 'src/widgets/google_calendar_timeline/google_calendar_timeline_controller.dart';
+export 'src/widgets/google_calendar_timeline/google_calendar_timeline_day.dart';
 export 'src/widgets/google_conditional/google_conditional.dart';
 export 'src/widgets/google_date_text_form_field/google_date_text_form_field.dart';
 export 'src/widgets/google_dialog/google_dialog.dart';

@@ -46,6 +46,13 @@ class CalendarPage extends HookWidget {
             GoogleCalendarTimeline(
               controller: calendarController.value,
               onDaySelected: (dateTime) => selectedDay.value = dateTime,
+              dayBuilder: (dateTime, isToday, isSelected) {
+                return GoogleCalendarTimelineDay(
+                  dateTime: dateTime,
+                  isToday: isToday,
+                  isSelected: isSelected,
+                );
+              },
             ),
             const Divider(),
             Padding(

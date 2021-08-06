@@ -24,7 +24,7 @@ class GoogleCalendarTimelineDay extends StatelessWidget {
             ? isSelected
                 ? colorScheme.primary.withOpacity(.15)
                 : colorScheme.primary
-            : Colors.grey.withOpacity(.15),
+            : colorScheme.onBackground.withOpacity(.1),
         borderRadius: BorderRadius.circular(8),
         border: isSelected
             ? Border.all(

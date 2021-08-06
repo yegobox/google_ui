@@ -10,6 +10,7 @@ class GoogleCalendarTimeline extends HookWidget {
   const GoogleCalendarTimeline({
     Key? key,
     required this.controller,
+    this.dayBuilder,
     this.yearText,
     this.yearTextGap = 16,
     this.gap = 4,
@@ -21,6 +22,13 @@ class GoogleCalendarTimeline extends HookWidget {
 
   /// [GoogleCalendarTimeline] controller.
   final GoogleCalendarTimelineController controller;
+
+  /// Day builder for [GoogleCalendarTimeline], default is [GoogleCalendarTimelineDay].
+  final Widget Function(
+    DateTime dateTime,
+    bool isToday,
+    bool isSelected,
+  )? dayBuilder;
 
   /// Custom [yearText] widget.
   final Widget Function(DateTime value)? yearText;
@@ -94,6 +102,7 @@ class GoogleCalendarTimeline extends HookWidget {
             child: _GoogleCalendarTimelinePageView(
               gap: gap,
               padding: padding,
+              dayBuilder: dayBuilder,
               controller: controller,
               dateTimes: dateTimes.value,
               onDaySelected: onDaySelected,
@@ -135,6 +144,7 @@ class _GoogleCalendarTimelinePageView extends HookWidget {
     required this.gap,
     required this.padding,
     required this.dateTimes,
+    required this.dayBuilder,
     required this.controller,
     required this.onDaySelected,
     required this.onPageChanged,
@@ -143,6 +153,11 @@ class _GoogleCalendarTimelinePageView extends HookWidget {
   final double gap;
   final EdgeInsets padding;
   final List<DateTime> dateTimes;
+  final Widget Function(
+    DateTime dateTime,
+    bool isToday,
+    bool isSelected,
+  )? dayBuilder;
   final GoogleCalendarTimelineController controller;
   final void Function(DateTime value)? onDaySelected;
   final void Function(int index)? onPageChanged;
@@ -196,11 +211,17 @@ class _GoogleCalendarTimelinePageView extends HookWidget {
             Expanded(
               child: GestureDetector(
                 onTap: () => _onDaySelected(dateTime),
-                child: GoogleCalendarTimelineDay(
-                  dateTime: dateTimes[dateTimeIndex],
-                  isToday: dateNow == dateTime,
-                  isSelected: selectedDate == dateTime,
-                ),
+                child: dayBuilder == null
+                    ? GoogleCalendarTimelineDay(
+                        dateTime: dateTimes[dateTimeIndex],
+                        isToday: dateNow == dateTime,
+                        isSelected: selectedDate == dateTime,
+                      )
+                    : dayBuilder!(
+                        dateTimes[dateTimeIndex],
+                        dateNow == dateTime,
+                        selectedDate == dateTime,
+                      ),
               ),
             ),
           );
