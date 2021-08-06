@@ -170,6 +170,12 @@ class GoogleThemeGenerator {
               return 0;
             },
           ),
+          tapTargetSize: MaterialTapTargetSize.padded,
+        ),
+      ),
+      textButtonTheme: const TextButtonThemeData(
+        style: ButtonStyle(
+          tapTargetSize: MaterialTapTargetSize.padded,
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
@@ -177,6 +183,7 @@ class GoogleThemeGenerator {
           side: MaterialStateProperty.resolveWith(
             (states) => BorderSide(color: colorScheme.primary),
           ),
+          tapTargetSize: MaterialTapTargetSize.padded,
         ),
       ),
     );
