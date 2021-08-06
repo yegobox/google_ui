@@ -128,6 +128,12 @@ class GoogleThemeGenerator {
         decorationColor: colorScheme.onBackground,
       ),
       dividerColor: colorScheme.onBackground.withOpacity(.25),
+      tooltipTheme: TooltipThemeData(
+        decoration: BoxDecoration(
+          color: colorScheme.onBackground.withOpacity(.75),
+          borderRadius: BorderRadius.circular(4),
+        ),
+      ),
       appBarTheme: AppBarTheme(
         textTheme: _textTheme.copyWith(
           headline6: _textTheme.headline6?.copyWith(
