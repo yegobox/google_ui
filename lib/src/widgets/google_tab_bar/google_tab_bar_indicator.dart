@@ -22,19 +22,23 @@ class _GoogleTabBarIndicatorPainter extends BoxPainter {
     paint.color = color;
     paint.style = PaintingStyle.fill;
 
+    const double height = 3;
+    const double borderRadius = 8;
+
+    final rect = Offset(
+          offset.dx,
+          configuration.size!.height - height,
+        ) &
+        Size(
+          configuration.size!.width,
+          height,
+        );
+
     canvas.drawRRect(
       RRect.fromRectAndCorners(
-        Rect.fromCenter(
-          center: offset +
-              Offset(
-                configuration.size!.width / 2,
-                configuration.size!.height,
-              ),
-          width: configuration.size!.width,
-          height: configuration.size!.height / 8,
-        ),
-        topRight: const Radius.circular(3),
-        topLeft: const Radius.circular(3),
+        rect,
+        topRight: const Radius.circular(borderRadius),
+        topLeft: const Radius.circular(borderRadius),
       ),
       paint,
     );
