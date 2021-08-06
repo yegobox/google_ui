@@ -112,6 +112,7 @@ class GoogleThemeGenerator {
 
   static ThemeData _generateThemeData(ColorScheme colorScheme) {
     return ThemeData(
+      visualDensity: VisualDensity.standard,
       fontFamily: "Poppins",
       colorScheme: colorScheme,
       primaryColor: colorScheme.primary,
