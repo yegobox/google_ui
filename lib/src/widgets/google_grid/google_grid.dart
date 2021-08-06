@@ -36,7 +36,7 @@ class GoogleGrid extends StatelessWidget {
     final rowCount = (childrenLength / columnCount).ceil();
 
     for (int rowIndex = 0; rowIndex < rowCount; rowIndex++) {
-      final List<Widget> columns = _createColumns(rowIndex, childrenLength);
+      final List<Widget> columns = _createRowCells(rowIndex);
       rows.add(Row(children: columns));
       if (rowIndex != rowCount - 1) rows.add(SizedBox(height: gap));
     }
@@ -44,8 +44,9 @@ class GoogleGrid extends StatelessWidget {
     return rows;
   }
 
-  List<Widget> _createColumns(int rowIndex, int childrenLength) {
+  List<Widget> _createRowCells(int rowIndex) {
     final List<Widget> columns = [];
+    final childrenLength = children.length;
 
     for (int columnIndex = 0; columnIndex < columnCount; columnIndex++) {
       final cellIndex = rowIndex * columnCount + columnIndex;
