@@ -107,8 +107,8 @@ class GoogleCalendarTimeline extends HookWidget {
               dateTimes: dateTimes.value,
               onDaySelected: onDaySelected,
               onPageChanged: (index) {
-                currentRowMonth.value = dateTimes
-                    .value[index * controller.dayInRow + controller.dayInRow];
+                currentRowMonth.value = dateTimes.value[
+                    index * controller.dayInRow + controller.dayInRow - 1];
                 if (onPageChanged != null) {
                   onPageChanged!(index);
                 }

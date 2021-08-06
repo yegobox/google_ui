@@ -8,10 +8,28 @@ class CalendarPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     final dateTimeNow = useState(DateTime.now());
     final selectedDay = useState(DateTime.now());
 
     final calendarController = useState(
+      GoogleCalendarTimelineController(
+        today: dateTimeNow.value,
+        startDate: DateTime(
+          dateTimeNow.value.year - 1,
+          dateTimeNow.value.month,
+          dateTimeNow.value.day,
+        ),
+        endDate: DateTime(
+          dateTimeNow.value.year + 1,
+          dateTimeNow.value.month,
+          dateTimeNow.value.day,
+        ),
+      ),
+    );
+
+    final customCalendarController = useState(
       GoogleCalendarTimelineController(
         today: dateTimeNow.value,
         startDate: DateTime(
@@ -51,6 +69,30 @@ class CalendarPage extends HookWidget {
                   dateTime: dateTime,
                   isToday: isToday,
                   isSelected: isSelected,
+                );
+              },
+            ),
+            const Divider(height: 0),
+            GoogleSectionTitle(
+              "Custom GoogleCalendarTimeline",
+              backgroundColor: colorScheme.onBackground.withOpacity(.05),
+            ),
+            GoogleCalendarTimeline(
+              controller: customCalendarController.value,
+              onDaySelected: (dateTime) => selectedDay.value = dateTime,
+              dayBuilder: (dateTime, isToday, isSelected) {
+                return GoogleCalendarTimelineDay(
+                  dateTime: dateTime,
+                  isToday: isToday,
+                  isSelected: isSelected,
+                  dayColor: Colors.green[50],
+                  todayColor: Colors.green,
+                  selectedTodayColor: Colors.green[50],
+                  textColor: Colors.black,
+                  todayTextColor: Colors.white,
+                  selectedTodayTextColor: Colors.green,
+                  selectedBorder: Border.all(color: Colors.green, width: 2),
+                  borderRadius: BorderRadius.circular(4),
                 );
               },
             ),
