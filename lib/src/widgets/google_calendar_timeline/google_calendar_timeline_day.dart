@@ -45,55 +45,58 @@ class GoogleCalendarTimelineDay extends StatelessWidget {
         selectedBorder ?? Border.all(color: colorScheme.primary, width: 2);
     final _borderRadius = borderRadius ?? BorderRadius.circular(8);
 
-    return Container(
-      padding: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-        color: isToday
-            ? isSelected
-                ? _selectedtodayColor
-                : _todayColor
-            : _dayColor,
-        borderRadius: _borderRadius,
-        border: isSelected ? _selectedBorder : null,
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            DateFormat("MMM").format(dateTime),
-            style: TextStyle(
-              fontSize: 10,
-              color: isToday
-                  ? isSelected
-                      ? _selectedTodayTextColor
-                      : _todayTextColor
-                  : _textColor,
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: Container(
+        padding: const EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          color: isToday
+              ? isSelected
+                  ? _selectedtodayColor
+                  : _todayColor
+              : _dayColor,
+          borderRadius: _borderRadius,
+          border: isSelected ? _selectedBorder : null,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              DateFormat("MMM").format(dateTime),
+              style: TextStyle(
+                fontSize: 10,
+                color: isToday
+                    ? isSelected
+                        ? _selectedTodayTextColor
+                        : _todayTextColor
+                    : _textColor,
+              ),
             ),
-          ),
-          Text(
-            dateTime.day.toString(),
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: isToday
-                  ? isSelected
-                      ? _selectedTodayTextColor
-                      : _todayTextColor
-                  : _textColor,
+            Text(
+              dateTime.day.toString(),
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: isToday
+                    ? isSelected
+                        ? _selectedTodayTextColor
+                        : _todayTextColor
+                    : _textColor,
+              ),
             ),
-          ),
-          Text(
-            DateFormat("EEE").format(dateTime),
-            style: TextStyle(
-              fontSize: 10,
-              color: isToday
-                  ? isSelected
-                      ? _selectedTodayTextColor
-                      : _todayTextColor
-                  : _textColor,
+            Text(
+              DateFormat("EEE").format(dateTime),
+              style: TextStyle(
+                fontSize: 10,
+                color: isToday
+                    ? isSelected
+                        ? _selectedTodayTextColor
+                        : _todayTextColor
+                    : _textColor,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
