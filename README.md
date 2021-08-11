@@ -45,8 +45,6 @@ import 'package:google_ui/google_ui.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    const theme = GoogleTheme();
-
     return MaterialApp(
       title: 'Google UI',
       theme: GoogleThemeGenerator.generate(),
