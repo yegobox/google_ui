@@ -183,13 +183,8 @@ class GThemeGenerator {
           tapTargetSize: MaterialTapTargetSize.padded,
         ),
       ),
-      outlinedButtonTheme: OutlinedButtonThemeData(
-        style: ButtonStyle(
-          side: MaterialStateProperty.resolveWith(
-            (states) => BorderSide(color: colorScheme.primary),
-          ),
-          tapTargetSize: MaterialTapTargetSize.padded,
-        ),
+      outlinedButtonTheme: const OutlinedButtonThemeData(
+        style: ButtonStyle(tapTargetSize: MaterialTapTargetSize.padded),
       ),
     );
   }
