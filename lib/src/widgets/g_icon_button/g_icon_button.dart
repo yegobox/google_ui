@@ -40,7 +40,7 @@ class GIconButton extends HookWidget {
         onTapDown: (det) => !isDisable ? showSplash.value = true : null,
         onTapUp: (det) => !isDisable
             ? Future.delayed(
-                const Duration(milliseconds: 200),
+                const Duration(milliseconds: 250),
                 () => showSplash.value = false,
               )
             : null,
@@ -50,8 +50,8 @@ class GIconButton extends HookWidget {
           alignment: Alignment.center,
           children: [
             AnimatedContainer(
-              duration: const Duration(milliseconds: 100),
-              curve: Curves.slowMiddle,
+              duration: const Duration(milliseconds: 200),
+              curve: standardEasing,
               width: showSplash.value ? splashSize.width : 0,
               height: showSplash.value ? splashSize.height : 0,
               decoration: BoxDecoration(
