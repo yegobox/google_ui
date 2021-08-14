@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: GoogleAppBar(title: "Google UI"),
+      appBar: GAppBar(title: "G UI"),
       drawer: _PageDrawer(),
       body: Center(
         child: FlutterLogo(
@@ -27,7 +27,7 @@ class _PageDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GoogleDrawer(
+    return GDrawer(
       child: Column(
         children: [
           ListTile(

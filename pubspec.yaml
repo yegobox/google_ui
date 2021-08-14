@@ -1,6 +1,6 @@
 name: google_ui
-description: Google UI is Flutter open-source UI library using Material Design 2.0 with many pre-built widgets to make Flutter development easier and faster.
-version: 1.3.0
+description: G UI is Flutter open-source UI library using Material Design 2.0 with many pre-built widgets to make Flutter development easier and faster.
+version: 2.0.0
 homepage: https://github.com/edsulaiman/google_ui
 repository: https://github.com/edsulaiman/google_ui
 
@@ -12,8 +12,6 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_hooks: ^0.17.0
-  table_calendar: ^3.0.0
-  date_format: ^2.0.2
   intl: ^0.17.0
 
 dev_dependencies:

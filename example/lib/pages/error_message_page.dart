@@ -7,8 +7,8 @@ class ErrorMessagePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const GoogleAppBar(title: "Error Message"),
-      body: GoogleErrorMessage(
+      appBar: const GAppBar(title: "Error Message"),
+      body: GErrorMessage(
         title: "No internet",
         subtitle:
             "Can't connect to the internet.\nPlease check your internet connection",

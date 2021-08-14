@@ -8,8 +8,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: GoogleThemeGenerator.generate(),
-      darkTheme: GoogleThemeGenerator.generateDark(),
+      theme: GThemeGenerator.generate(),
+      darkTheme: GThemeGenerator.generateDark(),
       home: const HomePage(),
     );
   }

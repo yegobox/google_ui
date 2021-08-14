@@ -7,64 +7,64 @@ class TypographyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const GoogleAppBar(title: "Typography"),
+      appBar: const GAppBar(title: "Typography"),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
-              GoogleText("Font family: Poppins"),
-              GoogleText("Font weight: 300, 400, 500"),
+              GText("Font family: Poppins"),
+              GText("Font weight: 300, 400, 500"),
               Divider(height: 32),
-              GoogleText(
+              GText(
                 "headline1",
-                variant: GoogleTextVariant.headline1,
+                variant: GTextVariant.headline1,
               ),
-              GoogleText(
+              GText(
                 "headline2",
-                variant: GoogleTextVariant.headline2,
+                variant: GTextVariant.headline2,
               ),
-              GoogleText(
+              GText(
                 "headline3",
-                variant: GoogleTextVariant.headline3,
+                variant: GTextVariant.headline3,
               ),
-              GoogleText(
+              GText(
                 "headline4",
-                variant: GoogleTextVariant.headline4,
+                variant: GTextVariant.headline4,
               ),
-              GoogleText(
+              GText(
                 "headline5",
-                variant: GoogleTextVariant.headline5,
+                variant: GTextVariant.headline5,
               ),
-              GoogleText(
+              GText(
                 "headline6",
-                variant: GoogleTextVariant.headline6,
+                variant: GTextVariant.headline6,
               ),
-              GoogleText(
+              GText(
                 "subtitle1",
-                variant: GoogleTextVariant.subtitle1,
+                variant: GTextVariant.subtitle1,
               ),
-              GoogleText(
+              GText(
                 "subtitle2",
-                variant: GoogleTextVariant.subtitle2,
+                variant: GTextVariant.subtitle2,
               ),
-              GoogleText("bodyText1"),
-              GoogleText(
+              GText("bodyText1"),
+              GText(
                 "bodyText2",
-                variant: GoogleTextVariant.bodyText2,
+                variant: GTextVariant.bodyText2,
               ),
-              GoogleText(
+              GText(
                 "button",
-                variant: GoogleTextVariant.button,
+                variant: GTextVariant.button,
               ),
-              GoogleText(
+              GText(
                 "caption",
-                variant: GoogleTextVariant.caption,
+                variant: GTextVariant.caption,
               ),
-              GoogleText(
+              GText(
                 "overline",
-                variant: GoogleTextVariant.overline,
+                variant: GTextVariant.overline,
               ),
             ],
           ),

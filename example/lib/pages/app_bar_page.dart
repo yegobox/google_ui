@@ -7,41 +7,41 @@ class AppBarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const GoogleAppBar(title: "App Bar"),
+      appBar: const GAppBar(title: "App Bar"),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             children: [
-              const GoogleAppBar(
+              const GAppBar(
                 title: "Simple App Bar",
-                subtitle: "Google UI",
+                subtitle: "G UI",
               ),
               const SizedBox(height: 16),
-              const GoogleSearchAppBar(
+              const GSearchAppBar(
                 title: "Search App Bar",
                 hintText: "Search Item...",
                 onFieldSubmitted: null,
                 onClosePressed: null,
               ),
               const SizedBox(height: 16),
-              GoogleAppBar(
+              GAppBar(
                 title: "App Bar",
                 subtitle: "With PopUpButton",
                 actions: [
-                  GooglePopupMenuButton(
+                  GPopupMenuButton(
                     children: [
-                      GooglePopupMenuItem(
+                      GPopupMenuItem(
                         onPressed: () {},
                         icon: const Icon(Icons.sync),
                         label: "Sync",
                       ),
-                      GooglePopupMenuItem(
+                      GPopupMenuItem(
                         onPressed: () {},
                         icon: const Icon(Icons.settings),
                         label: "Settings",
                       ),
-                      GooglePopupMenuItem(
+                      GPopupMenuItem(
                         onPressed: () {},
                         icon: const Icon(Icons.logout),
                         label: "Logout",

@@ -14,7 +14,7 @@ class CalendarPage extends HookWidget {
     final selectedDay = useState(DateTime.now());
 
     final calendarController = useState(
-      GoogleCalendarTimelineController(
+      GCalendarTimelineController(
         today: dateTimeNow.value,
         startDate: DateTime(
           dateTimeNow.value.year - 1,
@@ -30,7 +30,7 @@ class CalendarPage extends HookWidget {
     );
 
     final customCalendarController = useState(
-      GoogleCalendarTimelineController(
+      GCalendarTimelineController(
         today: dateTimeNow.value,
         startDate: DateTime(
           dateTimeNow.value.year - 1,
@@ -56,16 +56,16 @@ class CalendarPage extends HookWidget {
     }
 
     return Scaffold(
-      appBar: const GoogleAppBar(title: "Calendar"),
+      appBar: const GAppBar(title: "Calendar"),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            GoogleCalendarTimeline(
+            GCalendarTimeline(
               controller: calendarController.value,
               onDaySelected: (dateTime) => selectedDay.value = dateTime,
               dayBuilder: (dateTime, isToday, isSelected) {
-                return GoogleCalendarTimelineDay(
+                return GCalendarTimelineDay(
                   dateTime: dateTime,
                   isToday: isToday,
                   isSelected: isSelected,
@@ -73,15 +73,15 @@ class CalendarPage extends HookWidget {
               },
             ),
             const Divider(height: 0),
-            GoogleSectionTitle(
-              "Custom GoogleCalendarTimeline",
+            GSectionTitle(
+              "Custom GCalendarTimeline",
               backgroundColor: colorScheme.onBackground.withOpacity(.05),
             ),
-            GoogleCalendarTimeline(
+            GCalendarTimeline(
               controller: customCalendarController.value,
               onDaySelected: (dateTime) => selectedDay.value = dateTime,
               dayBuilder: (dateTime, isToday, isSelected) {
-                return GoogleCalendarTimelineDay(
+                return GCalendarTimelineDay(
                   dateTime: dateTime,
                   isToday: isToday,
                   isSelected: isSelected,
@@ -102,7 +102,7 @@ class CalendarPage extends HookWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  GoogleButton(
+                  GButton(
                     "Select previous day",
                     onPressed: () {
                       final newSelectedDay =
@@ -112,7 +112,7 @@ class CalendarPage extends HookWidget {
                       selectedDay.value = newSelectedDay;
                     },
                   ),
-                  GoogleButton(
+                  GButton(
                     "Select next day",
                     onPressed: () {
                       final newSelectedDay =
@@ -131,18 +131,18 @@ class CalendarPage extends HookWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  GoogleButton(
+                  GButton(
                     "Jump to today",
                     onPressed: () => calendarController.value.jumpToIndex(
                       calendarController.value.todayIndex,
                     ),
                   ),
-                  GoogleButton(
+                  GButton(
                     "Jump to last week",
                     onPressed: () =>
                         calendarController.value.jumpToDateTime(lastWeek()),
                   ),
-                  GoogleButton(
+                  GButton(
                     "Jump to next week",
                     onPressed: () =>
                         calendarController.value.jumpToDateTime(nextWeek()),
@@ -156,18 +156,18 @@ class CalendarPage extends HookWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  GoogleButton(
+                  GButton(
                     "Animate to today",
                     onPressed: () => calendarController.value.animateToIndex(
                       calendarController.value.todayIndex,
                     ),
                   ),
-                  GoogleButton(
+                  GButton(
                     "Animate to last week",
                     onPressed: () =>
                         calendarController.value.animateToDateTime(lastWeek()),
                   ),
-                  GoogleButton(
+                  GButton(
                     "Animate to next week",
                     onPressed: () =>
                         calendarController.value.animateToDateTime(nextWeek()),

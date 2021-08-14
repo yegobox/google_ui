@@ -16,7 +16,7 @@ class DrawerPage extends HookWidget {
     final drawerIndex = useState(0);
 
     return Scaffold(
-      appBar: GoogleAppBar(
+      appBar: GAppBar(
         title: "Grouped Drawer",
         automaticallyImplyLeading: false,
         leading: IconButton(
@@ -52,7 +52,7 @@ class _GroupedDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GoogleGroupedDrawer(
+    return GGroupedDrawer(
       isEnd: isEnd,
       index: drawerIndex.value,
       actions: [
@@ -76,24 +76,24 @@ class _GroupedDrawer extends StatelessWidget {
         ),
       ],
       secondaryActions: [
-        GoogleIconButton(
+        GIconButton(
           icon: Icon(
             Icons.play_circle_outline,
-            color: GoogleColorUtil.lighten(colorScheme.onSurface, 20),
+            color: colorScheme.onSurface.withOpacity(.75),
           ),
           onPressed: () {},
         ),
-        GoogleIconButton(
+        GIconButton(
           icon: Icon(
             Icons.help_outline,
-            color: GoogleColorUtil.lighten(colorScheme.onSurface, 20),
+            color: colorScheme.onSurface.withOpacity(.75),
           ),
           onPressed: () {},
         ),
-        GoogleIconButton(
+        GIconButton(
           icon: Icon(
             Icons.settings,
-            color: GoogleColorUtil.lighten(colorScheme.onSurface, 20),
+            color: colorScheme.onSurface.withOpacity(.75),
           ),
           onPressed: () {},
         ),
@@ -124,12 +124,12 @@ class _ActionButton extends HookWidget {
     final scrollController = useProvider(_scrollControllerProvider);
     final colorScheme = Theme.of(context).colorScheme;
 
-    return GoogleIconButton(
+    return GIconButton(
       icon: Icon(
         icons,
         color: drawerIndex.value == index
             ? colorScheme.primary
-            : GoogleColorUtil.lighten(colorScheme.onSurface, 20),
+            : colorScheme.onSurface.withOpacity(.75),
       ),
       onPressed: () {
         if (drawerIndex.value != index) {
@@ -162,7 +162,7 @@ class _DrawerMenu extends HookWidget {
     return SingleChildScrollView(
       controller: scrollController,
       child: Column(
-        children: [GoogleSectionTitle("Page $pageNumber"), ...links],
+        children: [GSectionTitle("Page $pageNumber"), ...links],
       ),
     );
   }
@@ -184,11 +184,11 @@ class _PageBody extends StatelessWidget {
                 "Grouped drawer is inspired by the drawer in microsoft outlook apk",
               ),
               const SizedBox(height: 8),
-              GoogleButton(
+              GButton(
                 "Open grouped drawer",
                 onPressed: () => Scaffold.of(context).openDrawer(),
               ),
-              GoogleButton(
+              GButton(
                 "Open end grouped drawer",
                 onPressed: () => Scaffold.of(context).openEndDrawer(),
               ),

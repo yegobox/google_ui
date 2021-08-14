@@ -7,24 +7,24 @@ class TextFieldPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const GoogleAppBar(title: "TextField"),
+      appBar: const GAppBar(title: "TextField"),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             children: const [
-              GoogleTextFormField(
+              GTextFormField(
                 labelText: "Username Field",
                 prefixIcon: Icon(Icons.person),
               ),
               SizedBox(height: 16),
-              GoogleTextFormField(
+              GTextFormField(
                 labelText: "Password Field",
                 prefixIcon: Icon(Icons.vpn_key),
                 passwordField: true,
               ),
               SizedBox(height: 16),
-              GoogleDateTextFormField(
+              GDateTextFormField(
                 labelText: "Date Field",
                 prefixIcon: Icon(Icons.calendar_today),
               ),

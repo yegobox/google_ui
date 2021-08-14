@@ -7,59 +7,59 @@ class ButtonPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const GoogleAppBar(title: "Button"),
+      appBar: const GAppBar(title: "Button"),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              GoogleButton(
+              GButton(
                 "Elevated".toUpperCase(),
                 onPressed: () {},
               ),
-              GoogleButton(
+              GButton(
                 "Text".toUpperCase(),
                 onPressed: () {},
-                variant: GoogleButtonVariant.text,
+                variant: GButtonVariant.text,
               ),
-              GoogleButton(
+              GButton(
                 "Outlined".toUpperCase(),
                 onPressed: () {},
-                variant: GoogleButtonVariant.outlined,
+                variant: GButtonVariant.outlined,
               ),
-              GoogleButton(
+              GButton(
                 "Elevated".toUpperCase(),
                 onPressed: () {},
                 icon: const Icon(Icons.add),
               ),
-              GoogleButton(
+              GButton(
                 "Text".toUpperCase(),
                 onPressed: () {},
-                variant: GoogleButtonVariant.text,
+                variant: GButtonVariant.text,
                 icon: const Icon(Icons.add),
               ),
-              GoogleButton(
+              GButton(
                 "Outlined".toUpperCase(),
                 onPressed: () {},
-                variant: GoogleButtonVariant.outlined,
+                variant: GButtonVariant.outlined,
                 icon: const Icon(Icons.add),
               ),
               const Divider(height: 32),
               const Text(
-                  "GoogleIconButton is an alternative to IconButton, the main difference is in the size of the splash effect"),
+                  "GIconButton is an alternative to IconButton, the main difference is in the size of the splash effect"),
               const SizedBox(height: 8),
               Row(
                 children: [
-                  GoogleIconButton(
+                  GIconButton(
                     onPressed: () {},
                     icon: const Icon(Icons.add),
                   ),
-                  GoogleIconButton(
+                  GIconButton(
                     onPressed: () {},
                     icon: const Icon(Icons.arrow_back),
                   ),
-                  GoogleIconButton(
+                  GIconButton(
                     onPressed: () {},
                     icon: const Icon(Icons.menu),
                   ),

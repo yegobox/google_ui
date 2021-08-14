@@ -12,63 +12,63 @@ class SelectBoxPage extends HookWidget {
     final iconSelectBoxValue = useState(1);
 
     return Scaffold(
-      appBar: const GoogleAppBar(title: "Select Box"),
+      appBar: const GAppBar(title: "Select Box"),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const GoogleSectionTitle("Single select"),
-            GoogleSelectBox<int>(
+            const GSectionTitle("Single select"),
+            GSelectBox<int>(
               value: selectBoxValue.value,
               items: [
-                GoogleSelectBoxItem(
+                GSelectBoxItem(
                   label: "Option 1",
                   value: 1,
                 ),
-                GoogleSelectBoxItem(
+                GSelectBoxItem(
                   label: "Option 2",
                   value: 2,
                 ),
-                GoogleSelectBoxItem(
+                GSelectBoxItem(
                   label: "Option 3",
                   value: 3,
                 ),
               ],
               onChanged: (value) => selectBoxValue.value = value,
             ),
-            const GoogleSectionTitle("Multiple select"),
-            GoogleMultipleSelectBox<int>(
+            const GSectionTitle("Multiple select"),
+            GMultipleSelectBox<int>(
               values: multipleSelectBoxValue.value,
               items: [
-                GoogleSelectBoxItem(
+                GSelectBoxItem(
                   label: "Option 1",
                   value: 1,
                 ),
-                GoogleSelectBoxItem(
+                GSelectBoxItem(
                   label: "Option 2",
                   value: 2,
                 ),
-                GoogleSelectBoxItem(
+                GSelectBoxItem(
                   label: "Option 3",
                   value: 3,
                 ),
               ],
               onChanged: (values) => multipleSelectBoxValue.value = [...values],
             ),
-            const GoogleSectionTitle("With icon"),
-            GoogleSelectBox<int>(
+            const GSectionTitle("With icon"),
+            GSelectBox<int>(
               value: iconSelectBoxValue.value,
               items: [
-                GoogleSelectBoxItem(
+                GSelectBoxItem(
                   label: "Option 1",
                   icon: const Icon(Icons.wifi),
                   value: 1,
                 ),
-                GoogleSelectBoxItem(
+                GSelectBoxItem(
                   label: "Option 2",
                   icon: const Icon(Icons.bluetooth),
                   value: 2,
                 ),
-                GoogleSelectBoxItem(
+                GSelectBoxItem(
                   label: "Option 3",
                   icon: const Icon(Icons.location_on),
                   value: 3,

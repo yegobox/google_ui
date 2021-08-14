@@ -47,8 +47,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Google UI',
-      theme: GoogleThemeGenerator.generate(),
-      darkTheme: GoogleThemeGenerator.generateDark(),
+      theme: GThemeGenerator.generate(),
+      darkTheme: GThemeGenerator.generateDark(),
       home: const HomePage(),
     );
   }
@@ -56,35 +56,32 @@ class App extends StatelessWidget {
 ```
 
 ## Usage
-All Google UI class has `Google` prefix e.g `GoogleButton`
+All Google UI class has `G` prefix e.g `GButton`
 
 ### Available class
-- GoogleTheme (Deprecated)
-- GoogleThemeGenerator
+- GThemeGenerator
 
 ### Available widget
-- GoogleAppBar
-- GoogleBottomBar (Deprecated)
-- GoogleButton
-- GoogleCalendarTimeline
-- GoogleCalendar (Deprecated)
-- GoogleConditional
-- GoogleDateTextFormField
-- GoogleDialog
-- GoogleDrawer
-- GoogleErrorMessage
-- GoogleGrid
-- GoogleGridBuilder
-- GoogleGroupedDrawer
-- GoogleIconButton
-- GooglePopupMenuButton
-- GoogleSearchAppBar
-- GoogleSectionTitle
-- GoogleMultipleSelectBox
-- GoogleSelectBox
-- GoogleSwitch
-- GoogleTextFormField
-- GoogleText
+- GAppBar
+- GButton
+- GCalendarTimeline
+- GConditional
+- GDateTextFormField
+- GDialog
+- GDrawer
+- GErrorMessage
+- GGrid
+- GGridBuilder
+- GGroupedDrawer
+- GIconButton
+- GPopupMenuButton
+- GSearchAppBar
+- GSectionTitle
+- GMultipleSelectBox
+- GSelectBox
+- GSwitch
+- GTextFormField
+- GText
 
 ### Available util
-- GoogleColorUtil
+- GColorUtil
