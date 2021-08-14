@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 /// Create text form field
@@ -22,6 +23,7 @@ class GTextFormField extends HookWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.validator,
+    this.inputFormatters,
   }) : super(key: key);
 
   /// Text that describes the input field.
@@ -75,6 +77,9 @@ class GTextFormField extends HookWidget {
   /// A callback after form [validate()] called.
   final String? Function(String?)? validator;
 
+  /// Input formatter.
+  final List<TextInputFormatter>? inputFormatters;
+
   @override
   Widget build(BuildContext context) {
     final isShowPassword = useState(false);
@@ -104,6 +109,7 @@ class GTextFormField extends HookWidget {
             : suffixIcon,
       ),
       style: Theme.of(context).textTheme.bodyText1,
+      inputFormatters: inputFormatters,
     );
   }
 }

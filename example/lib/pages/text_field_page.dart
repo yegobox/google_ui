@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_ui/google_ui.dart';
 
-class TextFieldPage extends StatelessWidget {
+class TextFieldPage extends HookWidget {
   const TextFieldPage({Key? key}) : super(key: key);
 
   @override
@@ -12,21 +13,22 @@ class TextFieldPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
-            children: const [
-              GTextFormField(
+            children: [
+              const GTextFormField(
                 labelText: "Username Field",
                 prefixIcon: Icon(Icons.person),
               ),
-              SizedBox(height: 16),
-              GTextFormField(
+              const SizedBox(height: 16),
+              const GTextFormField(
                 labelText: "Password Field",
                 prefixIcon: Icon(Icons.vpn_key),
                 passwordField: true,
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               GDateTextFormField(
                 labelText: "Date Field",
-                prefixIcon: Icon(Icons.calendar_today),
+                prefixIcon: const Icon(Icons.calendar_today),
+                initialValue: DateTime.now(),
               ),
             ],
           ),

@@ -15,7 +15,7 @@ class AppBarPage extends StatelessWidget {
             children: [
               const GAppBar(
                 title: "Simple App Bar",
-                subtitle: "G UI",
+                subtitle: "Google UI",
               ),
               const SizedBox(height: 16),
               const GSearchAppBar(

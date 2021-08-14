@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 import '../g_text_form_field/g_text_form_field.dart';
@@ -11,11 +12,14 @@ class GDateTextFormField extends StatelessWidget {
     this.initialValue,
     this.controller,
     this.textInputAction,
+    this.onChanged,
     this.onSaved,
+    this.onTap,
     this.readOnly = false,
     this.suffixIcon,
     this.prefixIcon,
     this.validator,
+    this.inputFormatters,
   }) : super(key: key);
 
   /// Text that describes the input field.
@@ -30,8 +34,14 @@ class GDateTextFormField extends StatelessWidget {
   /// An action the user has requested the text input control to perform.
   final TextInputAction? textInputAction;
 
+  /// A callback after this field value changed.
+  final void Function(DateTime? value)? onChanged;
+
   /// A callback after form [save()] called.
   final void Function(DateTime? value)? onSaved;
+
+  /// A callback after the user tap this widget.
+  final void Function()? onTap;
 
   /// If true, set this field as read only.
   final bool readOnly;
@@ -44,6 +54,9 @@ class GDateTextFormField extends StatelessWidget {
 
   /// A callback after form [validate()] called.
   final String? Function(String? value, bool isValid)? validator;
+
+  /// Input formatter.
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
@@ -58,10 +71,19 @@ class GDateTextFormField extends StatelessWidget {
       initialValue: dateDefaultValue,
       keyboardType: TextInputType.datetime,
       textInputAction: textInputAction,
-      onSaved: (value) {
-        if (value != null) _onSaved(datePattern, value);
+      onChanged: (value) {
+        if (onChanged != null) {
+          onChanged!(getDateTimeFromString(datePattern, value));
+        }
       },
+      onSaved: (value) {
+        if (value != null && onSaved != null) {
+          onSaved!(getDateTimeFromString(datePattern, value));
+        }
+      },
+      onTap: onTap,
       readOnly: readOnly,
+      maxLength: 10,
       suffixIcon: suffixIcon,
       prefixIcon: prefixIcon,
       validator: (value) {
@@ -71,10 +93,11 @@ class GDateTextFormField extends StatelessWidget {
         }
         if (validator != null) return validator!(value, isValid);
       },
+      inputFormatters: inputFormatters,
     );
   }
 
-  void _onSaved(String datePattern, String value) {
+  DateTime? getDateTimeFromString(String datePattern, String value) {
     DateTime? date;
     final isValid = RegExp(datePattern).hasMatch(value);
     if (isValid) {
@@ -84,6 +107,6 @@ class GDateTextFormField extends StatelessWidget {
       date = DateTime.parse(newValue);
     }
 
-    if (onSaved != null) onSaved!(date);
+    return date;
   }
 }
