@@ -30,6 +30,10 @@ class GText extends StatelessWidget {
     this.softWrap,
     this.fontSize,
     this.fontWeight,
+    this.decoration,
+    this.decorationColor,
+    this.decorationStyle,
+    this.decorationThickness,
   }) : super(key: key);
 
   /// Text to display.
@@ -58,6 +62,18 @@ class GText extends StatelessWidget {
 
   /// Set font weight.
   final FontWeight? fontWeight;
+
+  /// Set text decoration
+  final TextDecoration? decoration;
+
+  /// Set text decoration color
+  final Color? decorationColor;
+
+  /// Set text decoration style
+  final TextDecorationStyle? decorationStyle;
+
+  /// Set text decoration thickness
+  final double? decorationThickness;
 
   TextStyle _textStyle(BuildContext context) {
     switch (variant) {
@@ -113,6 +129,10 @@ class GText extends StatelessWidget {
         color: color,
         fontSize: fontSize,
         fontWeight: fontWeight,
+        decoration: decoration,
+        decorationColor: decorationColor,
+        decorationStyle: decorationStyle,
+        decorationThickness: decorationThickness,
       ),
       overflow: textOverflow,
       textAlign: textAlign,
