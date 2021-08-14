@@ -7,6 +7,7 @@ export 'src/widgets/g_button/g_button.dart';
 export 'src/widgets/g_calendar_timeline/g_calendar_timeline.dart';
 export 'src/widgets/g_calendar_timeline/g_calendar_timeline_controller.dart';
 export 'src/widgets/g_calendar_timeline/g_calendar_timeline_day.dart';
+export 'src/widgets/g_card/g_card.dart';
 export 'src/widgets/g_conditional/g_conditional.dart';
 export 'src/widgets/g_date_text_form_field/g_date_text_form_field.dart';
 export 'src/widgets/g_dialog/g_dialog.dart';
