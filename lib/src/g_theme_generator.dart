@@ -137,12 +137,17 @@ class GThemeGenerator {
       appBarTheme: AppBarTheme(
         textTheme: _textTheme.copyWith(
           headline6: _textTheme.headline6?.copyWith(
+            fontWeight: FontWeight.normal,
             color: colorScheme.onSurface,
           ),
         ),
+        titleSpacing: 4,
         backgroundColor: colorScheme.surface,
         brightness: colorScheme.brightness,
         iconTheme: IconThemeData(color: colorScheme.onSurface),
+        shadowColor: colorScheme.brightness == Brightness.light
+            ? Colors.white70
+            : Colors.black45,
       ),
       tabBarTheme: TabBarTheme(
         labelColor: colorScheme.primary,

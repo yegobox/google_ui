@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+
 import '../g_text/g_text.dart';
 
 /// Create app bar with search bar.
@@ -10,8 +11,6 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
     this.subtitle,
     this.centerTitle,
     this.bottom,
-    this.backgroundColor,
-    this.iconColor,
     this.elevation,
     this.leading,
     this.automaticallyImplyLeading = true,
@@ -21,11 +20,10 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
     this.keyboardType,
     required this.onFieldSubmitted,
     required this.onClosePressed,
-    this.brightness,
   }) : super(key: key);
 
   /// Text to display as title.
-  final String? title;
+  final String title;
 
   /// Text to display as a subtitle, below the title.
   final String? subtitle;
@@ -35,12 +33,6 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
 
   /// This widget appears across the bottom of the app bar.
   final PreferredSizeWidget? bottom;
-
-  /// Set [GAppBar] background color.
-  final Color? backgroundColor;
-
-  /// The color to use for [GAppBar] icons.
-  final Color? iconColor;
 
   /// Size of the shadow below app bar.
   final double? elevation;
@@ -69,11 +61,6 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
   /// A callback after the user press the close button.
   final void Function()? onClosePressed;
 
-  /// Determines the brightness of the [SystemUiOverlayStyle]:
-  /// for [Brightness.dark], [SystemUiOverlayStyle.light] is used
-  /// and for [Brightness.light], [SystemUiOverlayStyle.dark] is used.
-  final Brightness? brightness;
-
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
@@ -82,7 +69,6 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
 
     return AppBar(
       title: isSearch.value ? _createSearchBar() : _createTitle(colorScheme),
-      backgroundColor: backgroundColor ?? colorScheme.surface,
       centerTitle: centerTitle,
       elevation: elevation,
       bottom: bottom,
@@ -99,8 +85,6 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
         ),
         if (!isSearch.value && actions != null) ...actions!
       ],
-      brightness: brightness,
-      iconTheme: IconThemeData(color: iconColor ?? colorScheme.onSurface),
     );
   }
 
@@ -127,16 +111,11 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
           ? CrossAxisAlignment.center
           : CrossAxisAlignment.start,
       children: [
-        GText(
-          title ?? "",
-          variant: GTextVariant.headline6,
-          color: iconColor ?? colorScheme.onSurface,
-        ),
+        Text(title),
         if (subtitle != null)
           GText(
             subtitle!,
             variant: GTextVariant.bodyText2,
-            color: iconColor ?? colorScheme.onSurface,
           ),
       ],
     );
