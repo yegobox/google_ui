@@ -34,7 +34,7 @@ class GSectionTitle extends StatelessWidget {
       child: GText(
         title,
         variant: GTextVariant.bodyText2,
-        color: color ?? colorScheme.onBackground.withOpacity(.75),
+        color: color ?? colorScheme.primary,
         fontWeight: FontWeight.w600,
       ),
     );
