@@ -13,8 +13,6 @@ class GTextFormField extends HookWidget {
     this.textInputAction,
     this.passwordField = false,
     this.onChanged,
-    this.onEditingComplete,
-    this.onFieldSubmitted,
     this.onSaved,
     this.onTap,
     this.readOnly = false,
@@ -49,12 +47,6 @@ class GTextFormField extends HookWidget {
 
   /// A callback after this field value changed.
   final void Function(String)? onChanged;
-
-  /// A callback after editing completed.
-  final void Function()? onEditingComplete;
-
-  /// A callback after this field submitted.
-  final void Function(String)? onFieldSubmitted;
 
   /// A callback after form [save()] called.
   final void Function(String?)? onSaved;
@@ -95,8 +87,6 @@ class GTextFormField extends HookWidget {
       obscureText: passwordField && !isShowPassword.value,
       validator: validator,
       onChanged: onChanged,
-      onEditingComplete: onEditingComplete,
-      onFieldSubmitted: onFieldSubmitted,
       onSaved: onSaved,
       onTap: onTap,
       readOnly: readOnly,
