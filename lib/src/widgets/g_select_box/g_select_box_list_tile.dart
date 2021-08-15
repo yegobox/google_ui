@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_ui/src/widgets/g_text/g_text.dart';
 
+import '../g_text/g_text.dart';
 import 'g_select_box_item.dart';
 
 class GSelectBoxListTile<T> extends StatelessWidget {
