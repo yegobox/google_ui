@@ -16,6 +16,7 @@ export 'src/widgets/g_error_message/g_error_message.dart';
 export 'src/widgets/g_grid/g_grid.dart';
 export 'src/widgets/g_grid_builder/g_grid_builder.dart';
 export 'src/widgets/g_grouped_drawer/g_grouped_drawer.dart';
+export 'src/widgets/g_image/g_image.dart';
 export 'src/widgets/g_popup_menu_button/g_popup_menu_button.dart';
 export 'src/widgets/g_popup_menu_button/g_popup_menu_item.dart';
 export 'src/widgets/g_radio/g_radio.dart';
