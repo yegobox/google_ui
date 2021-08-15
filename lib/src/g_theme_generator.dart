@@ -141,7 +141,6 @@ class GThemeGenerator {
             color: colorScheme.onSurface,
           ),
         ),
-        titleSpacing: 4,
         backgroundColor: colorScheme.surface,
         brightness: colorScheme.brightness,
         iconTheme: IconThemeData(color: colorScheme.onSurface),
