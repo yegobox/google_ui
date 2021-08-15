@@ -54,89 +54,16 @@ class _GroupedDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return GGroupedDrawer(
       isEnd: isEnd,
-      index: drawerIndex.value,
-      actions: [
-        const SizedBox(height: 8),
-        _ActionButton(
-          index: 0,
-          drawerIndex: drawerIndex,
-          icons: Icons.shopping_cart,
-        ),
-        const SizedBox(height: 8),
-        _ActionButton(
-          index: 1,
-          drawerIndex: drawerIndex,
-          icons: Icons.dashboard,
-        ),
-        const SizedBox(height: 8),
-        _ActionButton(
-          index: 2,
-          drawerIndex: drawerIndex,
-          icons: Icons.language,
-        ),
-      ],
-      secondaryActions: [
-        IconButton(
-          icon: Icon(
-            Icons.play_circle_outline,
-            color: colorScheme.onSurface.withOpacity(.75),
-          ),
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: Icon(
-            Icons.help_outline,
-            color: colorScheme.onSurface.withOpacity(.75),
-          ),
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: Icon(
-            Icons.settings,
-            color: colorScheme.onSurface.withOpacity(.75),
-          ),
-          onPressed: () {},
-        ),
+      actions: const [
+        Icon(Icons.play_circle_outline),
+        Icon(Icons.play_circle_outline),
+        Icon(Icons.play_circle_outline),
       ],
       children: const [
         _DrawerMenu(pageNumber: 1),
         _DrawerMenu(pageNumber: 2),
         _DrawerMenu(pageNumber: 3),
       ],
-    );
-  }
-}
-
-class _ActionButton extends HookWidget {
-  const _ActionButton({
-    Key? key,
-    required this.index,
-    required this.drawerIndex,
-    required this.icons,
-  }) : super(key: key);
-
-  final int index;
-  final ValueNotifier<int> drawerIndex;
-  final IconData icons;
-
-  @override
-  Widget build(BuildContext context) {
-    final scrollController = useProvider(_scrollControllerProvider);
-    final colorScheme = Theme.of(context).colorScheme;
-
-    return IconButton(
-      icon: Icon(
-        icons,
-        color: drawerIndex.value == index
-            ? colorScheme.primary
-            : colorScheme.onSurface.withOpacity(.75),
-      ),
-      onPressed: () {
-        if (drawerIndex.value != index) {
-          scrollController.jumpTo(0);
-          drawerIndex.value = index;
-        }
-      },
     );
   }
 }
@@ -150,7 +77,7 @@ class _DrawerMenu extends HookWidget {
   Widget build(BuildContext context) {
     final scrollController = useProvider(_scrollControllerProvider);
     final links = <Widget>[];
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < 5; i++) {
       links.add(
         ListTile(
           title: Text("Link ${i + 1}"),
