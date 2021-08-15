@@ -31,35 +31,13 @@ class GMultipleSelectBox<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
     final List<Widget> children = [];
-
-    void onGSelectBoxListTileTap(int index) {
-      final item = items[index];
-      final newValues = values;
-      final min = minSelections ?? 1;
-      final max = maxSelections ?? items.length;
-
-      if (newValues.contains(item.value)) {
-        newValues.removeWhere((e) => e == item.value);
-      } else {
-        newValues.add(item.value);
-      }
-
-      if (newValues.length > max || newValues.length < min) {
-        return;
-      }
-
-      onChanged(newValues);
-    }
 
     for (int i = 0; i < items.length; i++) {
       children.add(GSelectBoxListTile(
-        label: items[i].label,
-        icon: items[i].icon,
+        item: items[i],
         isSelected: values.contains(items[i].value),
-        onTap: () => onGSelectBoxListTileTap(i),
-        colorScheme: colorScheme,
+        onTap: () => _onGSelectBoxListTileTap(i),
       ));
 
       if (i != items.length - 1) {
@@ -68,5 +46,24 @@ class GMultipleSelectBox<T> extends StatelessWidget {
     }
 
     return Column(children: children);
+  }
+
+  void _onGSelectBoxListTileTap(int index) {
+    final item = items[index];
+    final newValues = values;
+    final min = minSelections ?? 1;
+    final max = maxSelections ?? items.length;
+
+    if (newValues.contains(item.value)) {
+      newValues.removeWhere((e) => e == item.value);
+    } else {
+      newValues.add(item.value);
+    }
+
+    if (newValues.length > max || newValues.length < min) {
+      return;
+    }
+
+    onChanged(newValues);
   }
 }

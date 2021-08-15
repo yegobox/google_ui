@@ -21,15 +21,18 @@ class SelectBoxPage extends HookWidget {
               value: selectBoxValue.value,
               items: [
                 GSelectBoxItem(
-                  label: "Option 1",
+                  title: "Option 1",
+                  subtitle: "This is description of current option",
                   value: 1,
                 ),
                 GSelectBoxItem(
-                  label: "Option 2",
+                  title: "Option 2",
+                  subtitle: "This is description of current option",
                   value: 2,
                 ),
                 GSelectBoxItem(
-                  label: "Option 3",
+                  title: "Option 3",
+                  subtitle: "This is description of current option",
                   value: 3,
                 ),
               ],
@@ -40,15 +43,18 @@ class SelectBoxPage extends HookWidget {
               values: multipleSelectBoxValue.value,
               items: [
                 GSelectBoxItem(
-                  label: "Option 1",
+                  title: "Option 1",
+                  subtitle: "This is description of current option",
                   value: 1,
                 ),
                 GSelectBoxItem(
-                  label: "Option 2",
+                  title: "Option 2",
+                  subtitle: "This is description of current option",
                   value: 2,
                 ),
                 GSelectBoxItem(
-                  label: "Option 3",
+                  title: "Option 3",
+                  subtitle: "This is description of current option",
                   value: 3,
                 ),
               ],
@@ -59,17 +65,17 @@ class SelectBoxPage extends HookWidget {
               value: iconSelectBoxValue.value,
               items: [
                 GSelectBoxItem(
-                  label: "Option 1",
+                  title: "Option 1",
                   icon: const Icon(Icons.wifi),
                   value: 1,
                 ),
                 GSelectBoxItem(
-                  label: "Option 2",
+                  title: "Option 2",
                   icon: const Icon(Icons.bluetooth),
                   value: 2,
                 ),
                 GSelectBoxItem(
-                  label: "Option 3",
+                  title: "Option 3",
                   icon: const Icon(Icons.location_on),
                   value: 3,
                 ),

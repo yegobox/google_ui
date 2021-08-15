@@ -1,26 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:google_ui/src/widgets/g_text/g_text.dart';
 
-class GSelectBoxListTile extends StatelessWidget {
+import 'g_select_box_item.dart';
+
+class GSelectBoxListTile<T> extends StatelessWidget {
   const GSelectBoxListTile({
     Key? key,
-    required this.label,
-    required this.icon,
+    required this.item,
     required this.isSelected,
     required this.onTap,
-    required this.colorScheme,
   }) : super(key: key);
 
-  final String label;
-  final Widget? icon;
+  final GSelectBoxItem<T> item;
   final bool isSelected;
   final void Function() onTap;
-  final ColorScheme colorScheme;
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return ListTile(
-      title: Text(label),
-      leading: icon,
+      title: GText(item.title),
+      subtitle: item.subtitle != null
+          ? GText(
+              item.subtitle!,
+              variant: GTextVariant.bodyText2,
+              color: colorScheme.onBackground.withOpacity(.75),
+            )
+          : null,
+      leading: item.icon,
       trailing:
           isSelected ? Icon(Icons.check, color: colorScheme.primary) : null,
       onTap: () => onTap(),

@@ -23,16 +23,13 @@ class GSelectBox<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
     final List<Widget> children = [];
 
     for (int i = 0; i < items.length; i++) {
       children.add(GSelectBoxListTile(
-        label: items[i].label,
-        icon: items[i].icon,
+        item: items[i],
         isSelected: value == items[i].value,
         onTap: () => onChanged(items[i].value),
-        colorScheme: colorScheme,
       ));
 
       if (i != items.length - 1) {
