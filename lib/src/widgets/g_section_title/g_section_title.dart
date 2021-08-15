@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../g_text/g_text.dart';
 
 /// Create a section title.

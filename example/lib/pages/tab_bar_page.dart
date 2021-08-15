@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_ui/google_ui.dart';
 
 class TabBarPage extends StatelessWidget {
   const TabBarPage({Key? key}) : super(key: key);
@@ -8,21 +9,29 @@ class TabBarPage extends StatelessWidget {
     return DefaultTabController(
       length: 7,
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text("Tab Bar"),
-          bottom: const TabBar(
-            tabs: [
-              Tab(text: "For you"),
-              Tab(text: "Top charts"),
-              Tab(text: "Children"),
-              Tab(text: "Events"),
-              Tab(text: "Premium"),
-              Tab(text: "Categories"),
-              Tab(text: "Editors' Choice"),
-            ],
-            isScrollable: true,
+        appBar: GAppBar(
+          title: "Tab Bar",
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(kToolbarHeight + 1),
+            child: Column(
+              children: const [
+                TabBar(
+                  tabs: [
+                    Tab(text: "For you"),
+                    Tab(text: "Top charts"),
+                    Tab(text: "Children"),
+                    Tab(text: "Events"),
+                    Tab(text: "Premium"),
+                    Tab(text: "Categories"),
+                    Tab(text: "Editors' Choice"),
+                  ],
+                  isScrollable: true,
+                ),
+                Divider(height: 0),
+              ],
+            ),
           ),
-          elevation: 1,
+          elevation: 0,
         ),
         body: const TabBarView(
           children: [

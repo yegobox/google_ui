@@ -1,7 +1,6 @@
 library google_ui;
 
 export 'src/g_theme_generator.dart';
-
 export 'src/widgets/g_app_bar/g_app_bar.dart';
 export 'src/widgets/g_button/g_button.dart';
 export 'src/widgets/g_calendar_timeline/g_calendar_timeline.dart';
