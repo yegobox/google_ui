@@ -11,10 +11,12 @@ Flutter UI library using Material Design 2.0.
 
 [Google UI](https://pub.dev/packages/google_ui) is Flutter open-source UI library using [Material Design 2.0](https://uxdesign.cc/previewing-material-design-2-0-ec0215f0588f) with many pre-built widgets to make Flutter development easier and faster.
 
-## Screenshots
+## Some Screenshots
 |Light mode|Dark Mode|
 |:---:|:---:|
-|![](screenshots/light_mode.jpg)|![](screenshots/dark_mode.jpg)|
+|![](screenshots/button.jpg)|![](screenshots/button_d.jpg)|
+|![](screenshots/select_box.jpg)|![](screenshots/select_box_d.jpg)|
+|![](screenshots/text_form.jpg)|![](screenshots/text_form_d.jpg)|
 
 ## Get the package
 To use this package as a library, [pub.dev](https://pub.dev/packages/google_ui/install)
@@ -54,34 +56,3 @@ class App extends StatelessWidget {
   }
 }
 ```
-
-## Usage
-All Google UI class has `G` prefix e.g `GButton`
-
-### Available class
-- GThemeGenerator
-
-### Available widget
-- GAppBar
-- GButton
-- GCalendarTimeline
-- GConditional
-- GDateTextFormField
-- GDialog
-- GDrawer
-- GErrorMessage
-- GGrid
-- GGridBuilder
-- GGroupedDrawer
-- GIconButton
-- GPopupMenuButton
-- GSearchAppBar
-- GSectionTitle
-- GMultipleSelectBox
-- GSelectBox
-- GSwitch
-- GTextFormField
-- GText
-
-### Available util
-- GColorUtil
