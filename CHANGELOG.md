@@ -1,6 +1,12 @@
 ## [2.0.0]
 - Remove all deprecated
 - Change widget prefix name to G
+- Add GCard
+- Add GRadio
+- Add GCheckBox
+- Remove index from GGroupedDrawer
+- Change label to title on some Widget
+- Remove all color property from GAppBar and GSearchAppBar
 
 ## [1.3.0]
 - Fix visualDensity
