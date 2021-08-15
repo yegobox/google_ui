@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../../google_ui.dart';
 
-/// Create switch list tile.
-class GSwitch extends StatelessWidget {
-  const GSwitch({
+/// Create switch.
+class GCheckBox extends StatelessWidget {
+  const GCheckBox({
     Key? key,
     required this.title,
     this.subtitle,
@@ -22,13 +22,13 @@ class GSwitch extends StatelessWidget {
   final bool value;
 
   /// A callback after the user toggles the switch.
-  final void Function(bool) onChanged;
+  final void Function(bool?) onChanged;
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    return SwitchListTile(
+    return CheckboxListTile(
       title: GText(title),
       subtitle: subtitle != null
           ? GText(
