@@ -98,11 +98,9 @@ class GTextFormField extends HookWidget {
       maxLength: maxLength,
       maxLines: maxLines,
       decoration: InputDecoration(
-        isDense: true,
         counterText: hideCounterText ? "" : null,
         labelText: labelText,
         hintText: hintText,
-        border: const OutlineInputBorder(),
         prefixIcon: prefixIcon,
         suffixIcon: passwordField
             ? _TogglePasswordButton(isShowPassword: isShowPassword)

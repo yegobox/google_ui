@@ -154,6 +154,10 @@ class GThemeGenerator {
         indicator: GTabBarIndicator(colorScheme.primary),
         indicatorSize: TabBarIndicatorSize.label,
       ),
+      inputDecorationTheme: const InputDecorationTheme(
+        isDense: true,
+        border: OutlineInputBorder(),
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
           backgroundColor: MaterialStateColor.resolveWith(
