@@ -76,21 +76,21 @@ class _GroupedDrawer extends StatelessWidget {
         ),
       ],
       secondaryActions: [
-        GIconButton(
+        IconButton(
           icon: Icon(
             Icons.play_circle_outline,
             color: colorScheme.onSurface.withOpacity(.75),
           ),
           onPressed: () {},
         ),
-        GIconButton(
+        IconButton(
           icon: Icon(
             Icons.help_outline,
             color: colorScheme.onSurface.withOpacity(.75),
           ),
           onPressed: () {},
         ),
-        GIconButton(
+        IconButton(
           icon: Icon(
             Icons.settings,
             color: colorScheme.onSurface.withOpacity(.75),
@@ -124,7 +124,7 @@ class _ActionButton extends HookWidget {
     final scrollController = useProvider(_scrollControllerProvider);
     final colorScheme = Theme.of(context).colorScheme;
 
-    return GIconButton(
+    return IconButton(
       icon: Icon(
         icons,
         color: drawerIndex.value == index

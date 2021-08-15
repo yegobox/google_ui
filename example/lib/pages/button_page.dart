@@ -45,26 +45,6 @@ class ButtonPage extends StatelessWidget {
                 variant: GButtonVariant.outlined,
                 icon: const Icon(Icons.add),
               ),
-              const Divider(height: 32),
-              const Text(
-                  "GIconButton is an alternative to IconButton, the main difference is in the size of the splash effect"),
-              const SizedBox(height: 8),
-              Row(
-                children: [
-                  GIconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.add),
-                  ),
-                  GIconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.arrow_back),
-                  ),
-                  GIconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.menu),
-                  ),
-                ],
-              )
             ],
           ),
         ),
