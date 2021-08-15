@@ -8,6 +8,7 @@
 - Remove index from GGroupedDrawer
 - Change label to title on some Widget
 - Remove all color property from GAppBar and GSearchAppBar
+- Remove GIconButton
 
 ## [1.3.0]
 - Fix visualDensity
