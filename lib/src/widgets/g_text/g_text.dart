@@ -25,6 +25,7 @@ class GText extends StatelessWidget {
     this.variant = GTextVariant.bodyText1,
     this.textAlign,
     this.color,
+    this.colorBuilder,
     this.textOverflow,
     this.maxLines,
     this.softWrap,
@@ -47,6 +48,9 @@ class GText extends StatelessWidget {
 
   /// Set text color.
   final Color? color;
+
+  /// Set text color using colorBuilder
+  final Color? Function(ColorScheme)? colorBuilder;
 
   /// Set text overflow.
   final TextOverflow? textOverflow;
@@ -123,10 +127,15 @@ class GText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textColor = color ??
+        (colorBuilder != null
+            ? colorBuilder!(Theme.of(context).colorScheme)
+            : null);
+
     return Text(
       text,
       style: _textStyle(context).copyWith(
-        color: color,
+        color: textColor,
         fontSize: fontSize,
         fontWeight: fontWeight,
         decoration: decoration,
