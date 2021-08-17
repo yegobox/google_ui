@@ -1,14 +1,24 @@
 ## [2.0.0]
-- Remove all deprecated
 - Change widget prefix name to G
-- Add GCard
-- Add GRadio
-- Add GCheckBox
-- Add GImage
-- Remove index from GGroupedDrawer
-- Change label to title on some Widget
-- Remove all color property from GAppBar and GSearchAppBar
-- Remove GIconButton
+- Change default text color of `GSectionTitle` to primary
+- Change `label` property of `GSwitch` to `title`
+- Change `label` property of `GSelectBoxItem` to `title`
+- Change `onPressed` property of `GDialog` to onConfirm
+- Change visual of `GAppBar` and `GSearchAppBar`
+- Change default text color of `GSectionTitle` to primary
+- Remove `GoogleColorUtil`
+- Remove `GoogleTheme`
+- Remove `GoogleCalendar`
+- Remove `GoogleBottomBar`
+- Remove `GIconButton`.
+- Remove `onEditingComplete` and `onFieldSubmitted` from `GTextFormField`
+- Remove all color property from `GAppBar` and `GSearchAppBar`
+- Remove `index` property from `GGroupedDrawer`
+- Add `GCard`
+- Add `GRadio`
+- Add `GCheckBox`
+- Add `GImage`
+- Add transition to `GGroupedDrawer`
 
 ## [1.3.0]
 - Fix visualDensity

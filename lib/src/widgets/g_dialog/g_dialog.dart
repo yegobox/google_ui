@@ -10,8 +10,8 @@ class GDialog {
     BuildContext context, {
     required String title,
     required String subtitle,
-    String confirmLabel = "OK",
-    String cancelLabel = "CANCEL",
+    String confirmLabel = "Ok",
+    String cancelLabel = "Cancel",
     required void Function()? onConfirm,
   }) {
     showDialog<void>(
@@ -42,8 +42,8 @@ class GDialog {
     BuildContext context, {
     required String title,
     required String subtitle,
-    String confirmLabel = "OK",
-    void Function()? onPressed,
+    String confirmLabel = "Ok",
+    void Function()? onConfirm,
   }) {
     showDialog<void>(
       context: context,
@@ -57,7 +57,7 @@ class GDialog {
               confirmLabel,
               onPressed: () {
                 Navigator.of(context).pop();
-                if (onPressed != null) onPressed();
+                if (onConfirm != null) onConfirm();
               },
               variant: GButtonVariant.text,
             )

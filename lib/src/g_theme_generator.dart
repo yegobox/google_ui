@@ -102,12 +102,14 @@ class GThemeGenerator {
     ),
   );
 
+  /// Generate a theme, if [colorScheme] is null, default light [colorScheme] used.
   static ThemeData generate({ColorScheme? colorScheme}) {
     return _generateThemeData(colorScheme ?? _colorScheme);
   }
 
-  static ThemeData generateDark({ColorScheme? colorScheme}) {
-    return _generateThemeData(colorScheme ?? _darkColorScheme);
+  /// Generate a dark theme using default dark [colorScheme].
+  static ThemeData generateDark() {
+    return _generateThemeData(_darkColorScheme);
   }
 
   static ThemeData _generateThemeData(ColorScheme colorScheme) {
