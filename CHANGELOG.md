@@ -1,3 +1,6 @@
+## [2.1.1]
+- Fix `GText` wrong default `variant`
+
 ## [2.1.0]
 - Add `color` property to `GButton`
 - Add `colorBuilder` property to `GButton`

@@ -22,7 +22,7 @@ class GText extends StatelessWidget {
   const GText(
     this.text, {
     Key? key,
-    this.variant = GTextVariant.bodyText1,
+    this.variant = GTextVariant.bodyText2,
     this.textAlign,
     this.color,
     this.colorBuilder,
