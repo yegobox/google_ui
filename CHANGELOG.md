@@ -1,3 +1,6 @@
+## [2.1.2]
+- Fix all widgets affected by last update
+
 ## [2.1.1]
 - Fix `GText` wrong default `variant`
 
