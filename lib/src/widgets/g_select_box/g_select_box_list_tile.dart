@@ -20,11 +20,13 @@ class GSelectBoxListTile<T> extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return ListTile(
-      title: GText(item.title),
+      title: GText(
+        item.title,
+        variant: GTextVariant.bodyText1,
+      ),
       subtitle: item.subtitle != null
           ? GText(
               item.subtitle!,
-              variant: GTextVariant.bodyText2,
               color: colorScheme.onBackground.withOpacity(.75),
             )
           : null,

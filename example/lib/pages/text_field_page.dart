@@ -10,28 +10,26 @@ class TextFieldPage extends HookWidget {
     return Scaffold(
       appBar: const GAppBar(title: "TextField"),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              const GTextFormField(
-                labelText: "Username Field",
-                prefixIcon: Icon(Icons.person),
-              ),
-              const SizedBox(height: 16),
-              const GTextFormField(
-                labelText: "Password Field",
-                prefixIcon: Icon(Icons.vpn_key),
-                passwordField: true,
-              ),
-              const SizedBox(height: 16),
-              GDateTextFormField(
-                labelText: "Date Field",
-                prefixIcon: const Icon(Icons.calendar_today),
-                initialValue: DateTime.now(),
-              ),
-            ],
-          ),
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            const GTextFormField(
+              labelText: "Username Field",
+              prefixIcon: Icon(Icons.person),
+            ),
+            const SizedBox(height: 16),
+            const GTextFormField(
+              labelText: "Password Field",
+              prefixIcon: Icon(Icons.vpn_key),
+              passwordField: true,
+            ),
+            const SizedBox(height: 16),
+            GDateTextFormField(
+              labelText: "Date Field",
+              prefixIcon: const Icon(Icons.calendar_today),
+              initialValue: DateTime.now(),
+            ),
+          ],
         ),
       ),
     );

@@ -29,11 +29,13 @@ class GSwitch extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return SwitchListTile(
-      title: GText(title),
+      title: GText(
+        title,
+        variant: GTextVariant.bodyText1,
+      ),
       subtitle: subtitle != null
           ? GText(
               subtitle!,
-              variant: GTextVariant.bodyText2,
               color: colorScheme.onBackground.withOpacity(.75),
             )
           : null,

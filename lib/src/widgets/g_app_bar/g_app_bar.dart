@@ -70,7 +70,6 @@ class GAppBar extends StatelessWidget implements PreferredSizeWidget {
         if (subtitle != null)
           GText(
             subtitle!,
-            variant: GTextVariant.bodyText2,
             color: colorScheme.onSurface,
           ),
       ],

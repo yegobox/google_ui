@@ -112,11 +112,7 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
           : CrossAxisAlignment.start,
       children: [
         Text(title),
-        if (subtitle != null)
-          GText(
-            subtitle!,
-            variant: GTextVariant.bodyText2,
-          ),
+        if (subtitle != null) GText(subtitle!),
       ],
     );
   }

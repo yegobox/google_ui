@@ -60,11 +60,13 @@ class GErrorMessage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
-                GText(title),
+                GText(
+                  title,
+                  variant: GTextVariant.bodyText1,
+                ),
                 const SizedBox(height: 16),
                 GText(
                   subtitle,
-                  variant: GTextVariant.bodyText2,
                   color: colorScheme.onBackground.withOpacity(.75),
                   textAlign: TextAlign.center,
                 ),

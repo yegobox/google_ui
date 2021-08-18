@@ -34,7 +34,6 @@ class GSectionTitle extends StatelessWidget {
       width: double.infinity,
       child: GText(
         title,
-        variant: GTextVariant.bodyText2,
         color: color ?? colorScheme.primary,
         fontWeight: FontWeight.w600,
       ),
