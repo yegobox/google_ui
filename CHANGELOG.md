@@ -1,3 +1,10 @@
+## [2.2.0]
+- Add `controller` property to `GSearchAppBar`
+- Add `onChanged` property to `GSearchAppBar`
+- Add `onActionPressed` property to `GSearchAppBar`
+- Add `open` property to `GSearchAppBar`
+- Deprecationg `onClosePressed` property to `GSearchAppBar`
+
 ## [2.1.2]
 - Fix all widgets affected by last update
 
