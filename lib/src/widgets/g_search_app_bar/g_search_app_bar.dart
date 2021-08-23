@@ -9,6 +9,7 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
     Key? key,
     required this.title,
     this.subtitle,
+    this.controller,
     this.centerTitle,
     this.bottom,
     this.elevation,
@@ -18,8 +19,11 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
     this.actions,
     required this.hintText,
     this.keyboardType,
-    required this.onFieldSubmitted,
-    required this.onClosePressed,
+    this.onChanged,
+    this.onFieldSubmitted,
+    this.onClosePressed,
+    this.onActionPressed,
+    this.open,
   }) : super(key: key);
 
   /// Text to display as title.
@@ -27,6 +31,9 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
 
   /// Text to display as a subtitle, below the title.
   final String? subtitle;
+
+  /// Controls the text being edited.
+  final TextEditingController? controller;
 
   /// If true align the title to the center.
   final bool? centerTitle;
@@ -55,20 +62,33 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
   /// Set keyboard type.
   final TextInputType? keyboardType;
 
+  /// A callback after this field value changed.
+  final void Function(String)? onChanged;
+
   /// A callback after this field submitted.
   final void Function(String)? onFieldSubmitted;
 
   /// A callback after the user press the close button.
+  @Deprecated("use onActionPressed instead.")
   final void Function()? onClosePressed;
+
+  /// A callback after the user press the action button.
+  final void Function()? onActionPressed;
+
+  /// Whether the search bar open or not.
+  final bool? open;
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    final isSearch = useState(false);
+    final isOpen = useState(false);
+    final textController = useState(controller ?? TextEditingController());
 
     return AppBar(
-      title: isSearch.value ? _createSearchBar() : _createTitle(colorScheme),
+      title: (open ?? isOpen.value)
+          ? _createSearchBar(textController.value)
+          : _createTitle(colorScheme),
       centerTitle: centerTitle,
       elevation: elevation,
       bottom: bottom,
@@ -77,19 +97,36 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
       leadingWidth: leadingWidth,
       actions: [
         IconButton(
-          icon: Icon(!isSearch.value ? Icons.search : Icons.close),
+          icon: Icon((open ?? isOpen.value) ? Icons.close : Icons.search),
           onPressed: () {
-            if (isSearch.value && onClosePressed != null) onClosePressed!();
-            isSearch.value = !isSearch.value;
+            if (open == null) {
+              if (!isOpen.value) {
+                isOpen.value = true;
+                return;
+              }
+
+              if (textController.value.text.isNotEmpty) {
+                textController.value.clear();
+                return;
+              }
+
+              isOpen.value = false;
+              return;
+            }
+
+            if (onActionPressed != null || onClosePressed != null) {
+              final callback = onActionPressed ?? onClosePressed!;
+              callback();
+            }
           },
         ),
-        if (!isSearch.value && actions != null) ...actions!
       ],
     );
   }
 
-  Widget _createSearchBar() {
+  Widget _createSearchBar(TextEditingController textController) {
     return TextFormField(
+      controller: textController,
       autofocus: true,
       keyboardType: keyboardType,
       textInputAction: TextInputAction.search,
@@ -101,6 +138,7 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
         disabledBorder: InputBorder.none,
         hintText: hintText,
       ),
+      onChanged: onChanged,
       onFieldSubmitted: onFieldSubmitted,
     );
   }

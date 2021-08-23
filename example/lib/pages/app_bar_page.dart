@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_ui/google_ui.dart';
 
-class AppBarPage extends StatelessWidget {
+class AppBarPage extends HookWidget {
   const AppBarPage({Key? key}) : super(key: key);
 
   @override
@@ -20,8 +21,6 @@ class AppBarPage extends StatelessWidget {
             const GSearchAppBar(
               title: "Search App Bar",
               hintText: "Search Item...",
-              onFieldSubmitted: null,
-              onClosePressed: null,
             ),
             const SizedBox(height: 16),
             GAppBar(
