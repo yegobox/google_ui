@@ -107,11 +107,12 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
 
               if (textController.value.text.isNotEmpty) {
                 textController.value.clear();
+                if (onChanged != null) onChanged!("");
+
                 return;
               }
 
               isOpen.value = false;
-              return;
             }
 
             if (onActionPressed != null || onClosePressed != null) {
