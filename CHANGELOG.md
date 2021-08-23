@@ -1,3 +1,6 @@
+## [2.2.1]
+- Fix `GSearchAppBar` `ononActionPressed` not called
+
 ## [2.2.0]
 - Add `controller` property to `GSearchAppBar`
 - Add `onChanged` property to `GSearchAppBar`
