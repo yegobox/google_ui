@@ -1,7 +1,5 @@
-## [2.2.2]
-- Change `GCard` default padding
-
 ## [2.2.1]
+- Change `GCard` default padding
 - Fix `GSearchAppBar` `ononActionPressed` not called
 
 ## [2.2.0]
