@@ -56,7 +56,7 @@ class GCard extends StatelessWidget {
         onTap: onPressed,
         onLongPress: onLongPress,
         child: Padding(
-          padding: padding ?? const EdgeInsets.all(8),
+          padding: padding ?? EdgeInsets.zero,
           child: child,
         ),
       ),
