@@ -102,7 +102,7 @@ class CalendarPage extends HookWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  GButton(
+                  GElevatedButton(
                     "Select previous day",
                     onPressed: () {
                       final newSelectedDay =
@@ -112,7 +112,7 @@ class CalendarPage extends HookWidget {
                       selectedDay.value = newSelectedDay;
                     },
                   ),
-                  GButton(
+                  GElevatedButton(
                     "Select next day",
                     onPressed: () {
                       final newSelectedDay =
@@ -131,18 +131,18 @@ class CalendarPage extends HookWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  GButton(
+                  GElevatedButton(
                     "Jump to today",
                     onPressed: () => calendarController.value.jumpToIndex(
                       calendarController.value.todayIndex,
                     ),
                   ),
-                  GButton(
+                  GElevatedButton(
                     "Jump to last week",
                     onPressed: () =>
                         calendarController.value.jumpToDateTime(lastWeek()),
                   ),
-                  GButton(
+                  GElevatedButton(
                     "Jump to next week",
                     onPressed: () =>
                         calendarController.value.jumpToDateTime(nextWeek()),
@@ -156,18 +156,18 @@ class CalendarPage extends HookWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  GButton(
+                  GElevatedButton(
                     "Animate to today",
                     onPressed: () => calendarController.value.animateToIndex(
                       calendarController.value.todayIndex,
                     ),
                   ),
-                  GButton(
+                  GElevatedButton(
                     "Animate to last week",
                     onPressed: () =>
                         calendarController.value.animateToDateTime(lastWeek()),
                   ),
-                  GButton(
+                  GElevatedButton(
                     "Animate to next week",
                     onPressed: () =>
                         calendarController.value.animateToDateTime(nextWeek()),

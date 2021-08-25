@@ -1,4 +1,8 @@
-## [2.2.1]
+## [2.3.0]
+- Add `GElevatedButton`
+- Add `GTextButton`
+- Add `GOutlinedButton`
+- Deprecating `GButton`
 - Change `GCard` default padding
 - Fix `GSearchAppBar` `ononActionPressed` not called
 
@@ -7,7 +11,7 @@
 - Add `onChanged` property to `GSearchAppBar`
 - Add `onActionPressed` property to `GSearchAppBar`
 - Add `open` property to `GSearchAppBar`
-- Deprecationg `onClosePressed` property to `GSearchAppBar`
+- Deprecating `onClosePressed` property to `GSearchAppBar`
 
 ## [2.1.2]
 - Fix all widgets affected by last update

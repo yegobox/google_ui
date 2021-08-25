@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 enum GButtonVariant { elevated, outlined, text }
 
 /// Create a button.
+@Deprecated("")
 class GButton extends StatelessWidget {
   const GButton(
     this.label, {

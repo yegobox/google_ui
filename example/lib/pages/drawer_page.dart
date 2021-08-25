@@ -111,11 +111,11 @@ class _PageBody extends StatelessWidget {
                 "Grouped drawer is inspired by the drawer in microsoft outlook apk",
               ),
               const SizedBox(height: 8),
-              GButton(
+              GElevatedButton(
                 "Open grouped drawer",
                 onPressed: () => Scaffold.of(context).openDrawer(),
               ),
-              GButton(
+              GElevatedButton(
                 "Open end grouped drawer",
                 onPressed: () => Scaffold.of(context).openEndDrawer(),
               ),

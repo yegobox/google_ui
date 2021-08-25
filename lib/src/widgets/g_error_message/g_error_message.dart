@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../g_button/g_button.dart';
+import '../g_elevated_button/g_elevated_button.dart';
 import '../g_text/g_text.dart';
 
 /// Create a error message,
@@ -72,7 +72,7 @@ class GErrorMessage extends StatelessWidget {
                 ),
                 if (onPressed != null) const SizedBox(height: 32),
                 if (onPressed != null)
-                  GButton(buttonLabel ?? "", onPressed: onPressed)
+                  GElevatedButton(buttonLabel ?? "", onPressed: onPressed)
               ],
             ),
           ),

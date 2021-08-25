@@ -13,35 +13,31 @@ class ButtonPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            GButton(
+            GElevatedButton(
               "Elevated",
               onPressed: () {},
             ),
-            GButton(
+            GTextButton(
               "Text",
               onPressed: () {},
-              variant: GButtonVariant.text,
             ),
-            GButton(
+            GOutlinedButton(
               "Outlined",
               onPressed: () {},
-              variant: GButtonVariant.outlined,
             ),
-            GButton(
+            GElevatedButton(
               "Elevated",
               onPressed: () {},
               icon: const Icon(Icons.add),
             ),
-            GButton(
+            GTextButton(
               "Text",
               onPressed: () {},
-              variant: GButtonVariant.text,
               icon: const Icon(Icons.add),
             ),
-            GButton(
+            GOutlinedButton(
               "Outlined",
               onPressed: () {},
-              variant: GButtonVariant.outlined,
               icon: const Icon(Icons.add),
             ),
           ],

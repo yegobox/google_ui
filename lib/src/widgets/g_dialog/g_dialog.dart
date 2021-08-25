@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../g_button/g_button.dart';
 import '../g_text/g_text.dart';
+import '../g_text_button/g_text_button.dart';
 
 /// Display a dialog.
 class GDialog {
@@ -21,15 +21,13 @@ class GDialog {
           title: GText(title, variant: GTextVariant.headline6),
           content: GText(subtitle),
           actions: <Widget>[
-            GButton(
+            GTextButton(
               confirmLabel,
               onPressed: onConfirm,
-              variant: GButtonVariant.text,
             ),
-            GButton(
+            GTextButton(
               cancelLabel,
               onPressed: () => Navigator.of(context).pop(),
-              variant: GButtonVariant.text,
             )
           ],
         );
@@ -53,13 +51,12 @@ class GDialog {
           title: GText(title, variant: GTextVariant.headline6),
           content: GText(subtitle),
           actions: <Widget>[
-            GButton(
+            GTextButton(
               confirmLabel,
               onPressed: () {
                 Navigator.of(context).pop();
                 if (onConfirm != null) onConfirm();
               },
-              variant: GButtonVariant.text,
             )
           ],
         );
