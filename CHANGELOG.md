@@ -5,6 +5,7 @@
 - Deprecating `GButton`
 - Change `GCard` default padding
 - Fix `GSearchAppBar` `ononActionPressed` not called
+- Add `BottomNavigationBarThemeData` to `GThemeGenerator`
 
 ## [2.2.0]
 - Add `controller` property to `GSearchAppBar`
