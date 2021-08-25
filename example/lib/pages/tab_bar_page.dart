@@ -44,6 +44,30 @@ class TabBarPage extends StatelessWidget {
             Center(child: Text("Editors' Choice")),
           ],
         ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_outlined),
+              activeIcon: Icon(Icons.home),
+              label: "Home",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.star_border),
+              activeIcon: Icon(Icons.star),
+              label: "Starred",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.people_outlined),
+              activeIcon: Icon(Icons.people),
+              label: "Shared",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.folder_outlined),
+              activeIcon: Icon(Icons.folder),
+              label: "Files",
+            ),
+          ],
+        ),
       ),
     );
   }

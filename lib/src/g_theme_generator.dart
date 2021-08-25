@@ -150,6 +150,17 @@ class GThemeGenerator {
             ? Colors.white70
             : Colors.black45,
       ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: colorScheme.surface,
+        unselectedItemColor: colorScheme.onSurface.withOpacity(.75),
+        selectedLabelStyle: _textTheme.bodyText2?.copyWith(
+          fontWeight: FontWeight.w500,
+        ),
+        unselectedLabelStyle: _textTheme.bodyText2?.copyWith(
+          fontWeight: FontWeight.w500,
+        ),
+      ),
       tabBarTheme: TabBarTheme(
         labelColor: colorScheme.primary,
         unselectedLabelColor: colorScheme.onSurface.withOpacity(.75),
