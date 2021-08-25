@@ -37,26 +37,21 @@ class GElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final buttonStyle = ElevatedButton.styleFrom(
       primary: color ?? colorBuilder?.call(Theme.of(context).colorScheme),
-    );
-    final buttonLabel = Text(
-      label,
-      style: Theme.of(context).textTheme.button?.copyWith(
-            color: labelColor ??
-                labelColorBuilder?.call(Theme.of(context).colorScheme),
-          ),
+      onPrimary:
+          labelColor ?? labelColorBuilder?.call(Theme.of(context).colorScheme),
     );
 
     return icon == null
         ? ElevatedButton(
             style: buttonStyle,
             onPressed: onPressed,
-            child: buttonLabel,
+            child: Text(label),
           )
         : ElevatedButton.icon(
             style: buttonStyle,
             onPressed: onPressed,
             icon: icon!,
-            label: buttonLabel,
+            label: Text(label),
           );
   }
 }

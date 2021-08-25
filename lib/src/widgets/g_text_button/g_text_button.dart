@@ -8,8 +8,6 @@ class GTextButton extends StatelessWidget {
     this.onPressed,
     this.color,
     this.colorBuilder,
-    this.labelColor,
-    this.labelColorBuilder,
   }) : super(key: key);
 
   /// Text that describes the button.
@@ -27,36 +25,23 @@ class GTextButton extends StatelessWidget {
   /// Set button color.
   final Color Function(ColorScheme colorScheme)? colorBuilder;
 
-  /// Set button label color.
-  final Color? labelColor;
-
-  /// Set button label color.
-  final Color Function(ColorScheme colorScheme)? labelColorBuilder;
-
   @override
   Widget build(BuildContext context) {
     final buttonStyle = TextButton.styleFrom(
       primary: color ?? colorBuilder?.call(Theme.of(context).colorScheme),
-    );
-    final buttonLabel = Text(
-      label,
-      style: Theme.of(context).textTheme.button?.copyWith(
-            color: labelColor ??
-                labelColorBuilder?.call(Theme.of(context).colorScheme),
-          ),
     );
 
     return icon == null
         ? TextButton(
             style: buttonStyle,
             onPressed: onPressed,
-            child: buttonLabel,
+            child: Text(label),
           )
         : TextButton.icon(
             style: buttonStyle,
             onPressed: onPressed,
             icon: icon!,
-            label: buttonLabel,
+            label: Text(label),
           );
   }
 }
