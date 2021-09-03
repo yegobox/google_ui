@@ -31,8 +31,6 @@ class GRadio<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
     return RadioListTile<T>(
       title: GText(
         title,
@@ -41,7 +39,7 @@ class GRadio<T> extends StatelessWidget {
       subtitle: subtitle != null
           ? GText(
               subtitle!,
-              color: colorScheme.onBackground.withOpacity(.75),
+              colorBuilder: (c) => c.onBackground.withOpacity(.75),
             )
           : null,
       value: value,

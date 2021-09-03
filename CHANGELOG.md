@@ -1,4 +1,5 @@
 ## [2.4.0]
+- Add `GListTile`
 - Add `GScrollColor`
 - Add `GTextSelectionControls`
 - Add `autocorrect` and `autofocus` property to `GTextFormField` and `GDateTextFormField`

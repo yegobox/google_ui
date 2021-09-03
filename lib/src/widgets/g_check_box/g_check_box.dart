@@ -27,8 +27,6 @@ class GCheckBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
     return CheckboxListTile(
       title: GText(
         title,
@@ -37,7 +35,7 @@ class GCheckBox extends StatelessWidget {
       subtitle: subtitle != null
           ? GText(
               subtitle!,
-              color: colorScheme.onBackground.withOpacity(.75),
+              colorBuilder: (c) => c.onBackground.withOpacity(.75),
             )
           : null,
       value: value,
