@@ -22,6 +22,12 @@ class GDateTextFormField extends StatelessWidget {
     this.prefixIcon,
     this.validator,
     this.inputFormatters,
+    this.primaryColor,
+    this.primaryColorBuilder,
+    this.textColor,
+    this.textColorBuilder,
+    this.cursorColor,
+    this.cursorColorBuilder,
   }) : super(key: key);
 
   /// Text that describes the input field.
@@ -66,6 +72,25 @@ class GDateTextFormField extends StatelessWidget {
   /// Input formatter.
   final List<TextInputFormatter>? inputFormatters;
 
+  /// Set primary color.
+  final Color? primaryColor;
+
+  /// Set primary color using colorBuilder
+  final Color? Function(ColorScheme)? primaryColorBuilder;
+
+  /// Set [hintText] and [Text] color.
+  final Color? textColor;
+
+  /// Set text color using colorBuilder
+  final Color? Function(ColorScheme)? textColorBuilder;
+
+  /// The default color for [cursorColor], [selectionHandleColor] and [selectionColor].
+  /// Note [selectionHandleColor] only changed on first build.
+  final Color? cursorColor;
+
+  /// Set cursor color using colorBuilder
+  final Color? Function(ColorScheme)? cursorColorBuilder;
+
   @override
   Widget build(BuildContext context) {
     const datePattern = r"^(0[1-9]|[12]\d|30|31)\/(0[1-9]|1[0-2])\/(\d{4})$";
@@ -75,6 +100,12 @@ class GDateTextFormField extends StatelessWidget {
 
     return GTextFormField(
       labelText: labelText,
+      primaryColor: primaryColor,
+      primaryColorBuilder: primaryColorBuilder,
+      textColor: textColor,
+      textColorBuilder: textColorBuilder,
+      cursorColor: cursorColor,
+      cursorColorBuilder: cursorColorBuilder,
       autocorrect: autocorrect,
       autofocus: autofocus,
       hintText: "DD/MM/YYYY",

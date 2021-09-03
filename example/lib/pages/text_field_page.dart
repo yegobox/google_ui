@@ -14,21 +14,29 @@ class TextFieldPage extends HookWidget {
         child: Column(
           children: [
             const GTextFormField(
-              labelText: "Username Field",
-              autofocus: true,
+              labelText: "Username field",
               prefixIcon: Icon(Icons.person),
             ),
             const SizedBox(height: 16),
             const GTextFormField(
-              labelText: "Password Field",
+              labelText: "Password field",
               prefixIcon: Icon(Icons.vpn_key),
               passwordField: true,
             ),
             const SizedBox(height: 16),
             GDateTextFormField(
-              labelText: "Date Field",
+              labelText: "Date field",
               prefixIcon: const Icon(Icons.calendar_today),
               initialValue: DateTime.now(),
+            ),
+            const SizedBox(height: 32),
+            GTextFormField(
+              labelText: "Custom field color",
+              autofocus: true,
+              prefixIcon: const Icon(Icons.star),
+              cursorColor: Colors.yellow,
+              primaryColorBuilder: (c) => c.error,
+              textColorBuilder: (c) => c.primary,
             ),
           ],
         ),

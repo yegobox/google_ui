@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import '../../g_text_selection_controls.dart';
+
 /// Create text form field
 class GTextFormField extends HookWidget {
   const GTextFormField({
@@ -26,6 +28,12 @@ class GTextFormField extends HookWidget {
     this.prefixIcon,
     this.validator,
     this.inputFormatters,
+    this.primaryColor,
+    this.primaryColorBuilder,
+    this.textColor,
+    this.textColorBuilder,
+    this.cursorColor,
+    this.cursorColorBuilder,
   }) : super(key: key);
 
   /// Text that describes the input field.
@@ -88,36 +96,83 @@ class GTextFormField extends HookWidget {
   /// Input formatter.
   final List<TextInputFormatter>? inputFormatters;
 
+  /// Set primary color.
+  final Color? primaryColor;
+
+  /// Set primary color using colorBuilder
+  final Color? Function(ColorScheme)? primaryColorBuilder;
+
+  /// Set [hintText] and [Text] color.
+  final Color? textColor;
+
+  /// Set text color using colorBuilder
+  final Color? Function(ColorScheme)? textColorBuilder;
+
+  /// The default color for [cursorColor], [selectionHandleColor] and [selectionColor].
+  /// Note [selectionHandleColor] only changed on first build.
+  final Color? cursorColor;
+
+  /// Set cursor color using colorBuilder
+  final Color? Function(ColorScheme)? cursorColorBuilder;
+
   @override
   Widget build(BuildContext context) {
     final isShowPassword = useState(false);
 
-    return TextFormField(
-      controller: controller,
-      autocorrect: autocorrect,
-      autofocus: autofocus,
-      initialValue: initialValue,
-      keyboardType: keyboardType,
-      textInputAction: textInputAction,
-      obscureText: passwordField && !isShowPassword.value,
-      validator: validator,
-      onChanged: onChanged,
-      onSaved: onSaved,
-      onTap: onTap,
-      readOnly: readOnly,
-      maxLength: maxLength,
-      maxLines: maxLines,
-      decoration: InputDecoration(
-        counterText: hideCounterText ? "" : null,
-        labelText: labelText,
-        hintText: hintText,
-        prefixIcon: prefixIcon,
-        suffixIcon: passwordField
-            ? _TogglePasswordButton(isShowPassword: isShowPassword)
-            : suffixIcon,
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
+    final _primaryColor =
+        primaryColor ?? primaryColorBuilder?.call(colorScheme);
+    final _textColor = textColor ?? textColorBuilder?.call(colorScheme);
+    final _cursorColor = cursorColor ??
+        cursorColorBuilder?.call(colorScheme) ??
+        colorScheme.primary;
+
+    return Theme(
+      data: theme.copyWith(
+        colorScheme: colorScheme.copyWith(primary: _primaryColor),
+        textSelectionTheme: TextSelectionThemeData(
+          cursorColor: _cursorColor,
+          selectionHandleColor: _cursorColor,
+          selectionColor: _cursorColor.withOpacity(.40),
+        ),
       ),
-      style: Theme.of(context).textTheme.bodyText1,
-      inputFormatters: inputFormatters,
+      child: TextFormField(
+        controller: controller,
+        autocorrect: autocorrect,
+        autofocus: autofocus,
+        initialValue: initialValue,
+        keyboardType: keyboardType,
+        textInputAction: textInputAction,
+        obscureText: passwordField && !isShowPassword.value,
+        validator: validator,
+        onChanged: onChanged,
+        onSaved: onSaved,
+        onTap: onTap,
+        readOnly: readOnly,
+        maxLength: maxLength,
+        maxLines: maxLines,
+        selectionControls: GTextSelectionControls(_cursorColor),
+        decoration: InputDecoration(
+          counterText: hideCounterText ? "" : null,
+          labelText: labelText,
+          hintText: hintText,
+          prefixIcon: prefixIcon,
+          suffixIcon: passwordField
+              ? _TogglePasswordButton(isShowPassword: isShowPassword)
+              : suffixIcon,
+          hintStyle: theme.textTheme.bodyText1?.copyWith(
+            color: _textColor?.withOpacity(.5),
+            decorationColor: _textColor?.withOpacity(.5),
+          ),
+        ),
+        style: theme.textTheme.bodyText1?.copyWith(
+          color: _textColor,
+          decorationColor: _textColor,
+        ),
+        inputFormatters: inputFormatters,
+      ),
     );
   }
 }

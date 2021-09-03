@@ -5,6 +5,9 @@
 - Add `bottomSheetTheme` to `GThemeGenerator`
 - Add `dialogBackgroundColor` to `GThemeGenerator`
 - Add `backgroundColor` and `foregroundColor` to `GAppBar` and `GSearchAppBar`
+- Add `primaryColor` and `primaryColorBuilder` to `GTextFormField` and `GDateTextFormField`
+- Add `textColor` and `textColorBuilder` to `GTextFormField` and `GDateTextFormField`
+- Add `cursorColor` and `cursorColorBuilder` to `GTextFormField` and `GDateTextFormField`
 
 ## [2.3.0]
 - Add `GElevatedButton`
