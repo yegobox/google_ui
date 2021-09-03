@@ -20,6 +20,8 @@ class GTextFormField extends HookWidget {
     this.hideCounterText = true,
     this.maxLength,
     this.maxLines = 1,
+    this.autocorrect = true,
+    this.autofocus = false,
     this.suffixIcon,
     this.prefixIcon,
     this.validator,
@@ -68,6 +70,12 @@ class GTextFormField extends HookWidget {
   /// Set max lines.
   final int? maxLines;
 
+  /// Enable or disable auto correct.
+  final bool autocorrect;
+
+  /// Enable or disable auto focus.
+  final bool autofocus;
+
   /// A widget to display after the input area.
   final Widget? suffixIcon;
 
@@ -86,6 +94,8 @@ class GTextFormField extends HookWidget {
 
     return TextFormField(
       controller: controller,
+      autocorrect: autocorrect,
+      autofocus: autofocus,
       initialValue: initialValue,
       keyboardType: keyboardType,
       textInputAction: textInputAction,

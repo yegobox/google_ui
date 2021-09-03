@@ -15,6 +15,7 @@ class TextFieldPage extends HookWidget {
           children: [
             const GTextFormField(
               labelText: "Username Field",
+              autofocus: true,
               prefixIcon: Icon(Icons.person),
             ),
             const SizedBox(height: 16),

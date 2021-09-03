@@ -16,6 +16,8 @@ class GDateTextFormField extends StatelessWidget {
     this.onSaved,
     this.onTap,
     this.readOnly = false,
+    this.autocorrect = true,
+    this.autofocus = false,
     this.suffixIcon,
     this.prefixIcon,
     this.validator,
@@ -46,6 +48,12 @@ class GDateTextFormField extends StatelessWidget {
   /// If true, set this field as read only.
   final bool readOnly;
 
+  /// Enable or disable auto correct.
+  final bool autocorrect;
+
+  /// Enable or disable auto focus.
+  final bool autofocus;
+
   /// A widget to display after the input area.
   final Widget? suffixIcon;
 
@@ -67,6 +75,8 @@ class GDateTextFormField extends StatelessWidget {
 
     return GTextFormField(
       labelText: labelText,
+      autocorrect: autocorrect,
+      autofocus: autofocus,
       hintText: "DD/MM/YYYY",
       initialValue: dateDefaultValue,
       keyboardType: TextInputType.datetime,

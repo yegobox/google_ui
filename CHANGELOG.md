@@ -1,3 +1,6 @@
+## [2.4.0]
+- Add `autocorrect` and `autofocus` property to `GTextFormField` and `GDateTextFormField`
+
 ## [2.3.0]
 - Add `GElevatedButton`
 - Add `GTextButton`
