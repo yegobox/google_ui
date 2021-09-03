@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import '../../g_text_selection_controls.dart';
 import '../g_text/g_text.dart';
 
 /// Create app bar with search bar.
@@ -24,6 +26,12 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
     this.onClosePressed,
     this.onActionPressed,
     this.open,
+    this.backgroundColor,
+    this.backgroundColorBuilder,
+    this.foregroundColor,
+    this.foregroundColorBuilder,
+    this.cursorColor,
+    this.cursorColorBuilder,
   }) : super(key: key);
 
   /// Text to display as title.
@@ -78,23 +86,105 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
   /// Whether the search bar open or not.
   final bool? open;
 
+  /// Set background color.
+  final Color? backgroundColor;
+
+  /// Set background color using colorBuilder
+  final Color? Function(ColorScheme)? backgroundColorBuilder;
+
+  /// The default color for [Text] and [Icon]s within the app bar.
+  final Color? foregroundColor;
+
+  /// Set foreground color using colorBuilder
+  final Color? Function(ColorScheme)? foregroundColorBuilder;
+
+  /// The default color for [cursorColor], [selectionHandleColor] and [selectionColor].
+  /// Note [selectionHandleColor] only changed on first build.
+  final Color? cursorColor;
+
+  /// Set cursor color using colorBuilder
+  final Color? Function(ColorScheme)? cursorColorBuilder;
+
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
+    final _backgroundColor =
+        backgroundColor ?? backgroundColorBuilder?.call(colorScheme);
+    final _foregroundColor = foregroundColor ??
+        foregroundColorBuilder?.call(colorScheme) ??
+        colorScheme.onSurface;
+    final _cursorColor = cursorColor ??
+        cursorColorBuilder?.call(colorScheme) ??
+        colorScheme.primary;
 
     final isOpen = useState(false);
     final textController = useState(controller ?? TextEditingController());
 
     return AppBar(
       title: (open ?? isOpen.value)
-          ? _createSearchBar(textController.value)
-          : _createTitle(colorScheme),
+          ? Theme(
+              data: theme.copyWith(
+                textSelectionTheme: TextSelectionThemeData(
+                  cursorColor: _cursorColor,
+                  selectionHandleColor: _cursorColor,
+                  selectionColor: _cursorColor.withOpacity(.40),
+                ),
+              ),
+              child: TextFormField(
+                controller: textController.value,
+                autofocus: true,
+                keyboardType: keyboardType,
+                textInputAction: TextInputAction.search,
+                selectionControls: GTextSelectionControls(_cursorColor),
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  errorBorder: InputBorder.none,
+                  disabledBorder: InputBorder.none,
+                  hintText: hintText,
+                  hintStyle: theme.textTheme.bodyText1?.copyWith(
+                    color: _foregroundColor.withOpacity(.5),
+                    decorationColor: _foregroundColor.withOpacity(.5),
+                  ),
+                ),
+                style: theme.textTheme.bodyText1?.copyWith(
+                  color: _foregroundColor,
+                  decorationColor: _foregroundColor,
+                ),
+                onChanged: onChanged,
+                onFieldSubmitted: onFieldSubmitted,
+              ),
+            )
+          : Column(
+              crossAxisAlignment: centerTitle != null && centerTitle!
+                  ? CrossAxisAlignment.center
+                  : CrossAxisAlignment.start,
+              children: [
+                GText(
+                  title,
+                  variant: GTextVariant.headline6,
+                  fontWeight: FontWeight.normal,
+                  color: _foregroundColor,
+                ),
+                if (subtitle != null)
+                  GText(
+                    subtitle!,
+                    fontWeight: FontWeight.normal,
+                    color: _foregroundColor,
+                  ),
+              ],
+            ),
       centerTitle: centerTitle,
       elevation: elevation,
       bottom: bottom,
       leading: leading,
       automaticallyImplyLeading: automaticallyImplyLeading,
       leadingWidth: leadingWidth,
+      backgroundColor: _backgroundColor,
+      iconTheme: IconThemeData(color: _foregroundColor),
       actions: [
         IconButton(
           icon: Icon((open ?? isOpen.value) ? Icons.close : Icons.search),
@@ -121,37 +211,6 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
             }
           },
         ),
-      ],
-    );
-  }
-
-  Widget _createSearchBar(TextEditingController textController) {
-    return TextFormField(
-      controller: textController,
-      autofocus: true,
-      keyboardType: keyboardType,
-      textInputAction: TextInputAction.search,
-      decoration: InputDecoration(
-        border: InputBorder.none,
-        focusedBorder: InputBorder.none,
-        enabledBorder: InputBorder.none,
-        errorBorder: InputBorder.none,
-        disabledBorder: InputBorder.none,
-        hintText: hintText,
-      ),
-      onChanged: onChanged,
-      onFieldSubmitted: onFieldSubmitted,
-    );
-  }
-
-  Widget _createTitle(ColorScheme colorScheme) {
-    return Column(
-      crossAxisAlignment: centerTitle != null && centerTitle!
-          ? CrossAxisAlignment.center
-          : CrossAxisAlignment.start,
-      children: [
-        Text(title),
-        if (subtitle != null) GText(subtitle!),
       ],
     );
   }

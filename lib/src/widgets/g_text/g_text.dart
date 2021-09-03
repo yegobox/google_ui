@@ -127,10 +127,8 @@ class GText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textColor = color ??
-        (colorBuilder != null
-            ? colorBuilder!(Theme.of(context).colorScheme)
-            : null);
+    final textColor =
+        color ?? colorBuilder?.call(Theme.of(context).colorScheme);
 
     return Text(
       text,

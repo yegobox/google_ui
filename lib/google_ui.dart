@@ -1,5 +1,6 @@
 library google_ui;
 
+export 'src/g_text_selection_controls.dart';
 export 'src/g_theme_generator.dart';
 export 'src/widgets/g_app_bar/g_app_bar.dart';
 export 'src/widgets/g_button/g_button.dart';
@@ -22,6 +23,7 @@ export 'src/widgets/g_outlined_button/g_outlined_button.dart';
 export 'src/widgets/g_popup_menu_button/g_popup_menu_button.dart';
 export 'src/widgets/g_popup_menu_button/g_popup_menu_item.dart';
 export 'src/widgets/g_radio/g_radio.dart';
+export 'src/widgets/g_scroll_color/g_scroll_color.dart';
 export 'src/widgets/g_search_app_bar/g_search_app_bar.dart';
 export 'src/widgets/g_section_title/g_section_title.dart';
 export 'src/widgets/g_select_box/g_multiple_select_box.dart';

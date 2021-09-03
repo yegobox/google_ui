@@ -15,6 +15,10 @@ class GAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.automaticallyImplyLeading = true,
     this.leadingWidth,
     this.actions,
+    this.backgroundColor,
+    this.backgroundColorBuilder,
+    this.foregroundColor,
+    this.foregroundColorBuilder,
   }) : super(key: key);
 
   /// Text to display as title.
@@ -44,12 +48,48 @@ class GAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// A list of Widgets to display in a row after the [title].
   final List<Widget>? actions;
 
+  /// Set background color.
+  final Color? backgroundColor;
+
+  /// Set background color using colorBuilder
+  final Color? Function(ColorScheme)? backgroundColorBuilder;
+
+  /// The default color for [Text] and [Icon]s within the app bar.
+  final Color? foregroundColor;
+
+  /// Set foreground color using colorBuilder
+  final Color? Function(ColorScheme)? foregroundColorBuilder;
+
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
+    final _backgroundColor =
+        backgroundColor ?? backgroundColorBuilder?.call(colorScheme);
+    final _foregroundColor = foregroundColor ??
+        foregroundColorBuilder?.call(colorScheme) ??
+        colorScheme.onSurface;
+
     return AppBar(
-      title: _createTitle(colorScheme),
+      title: Column(
+        crossAxisAlignment: centerTitle != null && centerTitle!
+            ? CrossAxisAlignment.center
+            : CrossAxisAlignment.start,
+        children: [
+          GText(
+            title,
+            variant: GTextVariant.headline6,
+            fontWeight: FontWeight.normal,
+            color: _foregroundColor,
+          ),
+          if (subtitle != null)
+            GText(
+              subtitle!,
+              fontWeight: FontWeight.normal,
+              color: _foregroundColor,
+            ),
+        ],
+      ),
       bottom: bottom,
       centerTitle: centerTitle,
       elevation: elevation,
@@ -57,22 +97,8 @@ class GAppBar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: automaticallyImplyLeading,
       leadingWidth: leadingWidth,
       actions: actions,
-    );
-  }
-
-  Widget _createTitle(ColorScheme colorScheme) {
-    return Column(
-      crossAxisAlignment: centerTitle != null && centerTitle!
-          ? CrossAxisAlignment.center
-          : CrossAxisAlignment.start,
-      children: [
-        Text(title),
-        if (subtitle != null)
-          GText(
-            subtitle!,
-            color: colorScheme.onSurface,
-          ),
-      ],
+      backgroundColor: _backgroundColor,
+      iconTheme: IconThemeData(color: _foregroundColor),
     );
   }
 

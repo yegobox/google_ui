@@ -1,5 +1,10 @@
 ## [2.4.0]
+- Add `GScrollColor`
+- Add `GTextSelectionControls`
 - Add `autocorrect` and `autofocus` property to `GTextFormField` and `GDateTextFormField`
+- Add `bottomSheetTheme` to `GThemeGenerator`
+- Add `dialogBackgroundColor` to `GThemeGenerator`
+- Add `backgroundColor` and `foregroundColor` to `GAppBar` and `GSearchAppBar`
 
 ## [2.3.0]
 - Add `GElevatedButton`

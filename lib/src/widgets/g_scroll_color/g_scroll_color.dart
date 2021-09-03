@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Change scroll glow color.
 class GScrollColor extends StatelessWidget {
   const GScrollColor({
     Key? key,
@@ -25,9 +26,16 @@ class GScrollColor extends StatelessWidget {
   })  : axisDirection = AxisDirection.down,
         super(key: key);
 
+  /// Set scroll glow color.
   final Color? color;
+
+  /// Set scroll glow color. using colorBuilder
   final Color? Function(ColorScheme)? colorBuilder;
+
+  /// A scroll direction along either the horizontal or vertical [Axis].
   final AxisDirection axisDirection;
+
+  /// The widget below this widget in the tree.
   final Widget child;
 
   @override
