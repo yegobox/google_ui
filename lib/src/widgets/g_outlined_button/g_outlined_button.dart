@@ -5,7 +5,7 @@ class GOutlinedButton extends StatelessWidget {
     this.label, {
     Key? key,
     this.icon,
-    this.onPressed,
+    required this.onPressed,
     this.color,
     this.colorBuilder,
   }) : super(key: key);

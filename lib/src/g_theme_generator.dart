@@ -123,6 +123,7 @@ class GThemeGenerator {
       toggleableActiveColor: colorScheme.primary,
       scaffoldBackgroundColor: colorScheme.background,
       popupMenuTheme: PopupMenuThemeData(color: colorScheme.surface),
+      dialogBackgroundColor: colorScheme.surface,
       iconTheme: IconThemeData(color: colorScheme.onBackground),
       textTheme: _textTheme.apply(
         displayColor: colorScheme.onBackground,
@@ -149,6 +150,9 @@ class GThemeGenerator {
         shadowColor: colorScheme.brightness == Brightness.light
             ? Colors.white70
             : Colors.black45,
+      ),
+      bottomSheetTheme: BottomSheetThemeData(
+        backgroundColor: colorScheme.surface,
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,

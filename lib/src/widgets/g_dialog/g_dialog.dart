@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../g_text/g_text.dart';
 import '../g_text_button/g_text_button.dart';
 
 /// Display a dialog.
@@ -18,8 +17,8 @@ class GDialog {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: GText(title, variant: GTextVariant.headline6),
-          content: GText(subtitle),
+          title: Text(title),
+          content: Text(subtitle),
           actions: <Widget>[
             GTextButton(
               confirmLabel,
@@ -48,8 +47,8 @@ class GDialog {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: GText(title, variant: GTextVariant.headline6),
-          content: GText(subtitle),
+          title: Text(title),
+          content: Text(subtitle),
           actions: <Widget>[
             GTextButton(
               confirmLabel,
