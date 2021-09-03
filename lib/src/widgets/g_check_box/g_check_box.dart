@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../g_text/g_text.dart';
+import '../g_text/g_text_variant.dart';
 
 /// Create switch.
 class GCheckBox extends StatelessWidget {

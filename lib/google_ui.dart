@@ -31,5 +31,6 @@ export 'src/widgets/g_select_box/g_select_box.dart';
 export 'src/widgets/g_select_box/g_select_box_item.dart';
 export 'src/widgets/g_switch/g_switch.dart';
 export 'src/widgets/g_text/g_text.dart';
+export 'src/widgets/g_text/g_text_variant.dart';
 export 'src/widgets/g_text_button/g_text_button.dart';
 export 'src/widgets/g_text_form_field/g_text_form_field.dart';

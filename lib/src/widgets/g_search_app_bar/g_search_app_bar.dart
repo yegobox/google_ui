@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../g_text_selection_controls.dart';
 import '../g_text/g_text.dart';
+import '../g_text/g_text_variant.dart';
 
 /// Create app bar with search bar.
 class GSearchAppBar extends HookWidget implements PreferredSizeWidget {

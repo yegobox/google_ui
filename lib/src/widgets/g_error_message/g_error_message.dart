@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../g_elevated_button/g_elevated_button.dart';
 import '../g_text/g_text.dart';
+import '../g_text/g_text_variant.dart';
 
 /// Create a error message,
 /// usually displayed on the page when an error occurs

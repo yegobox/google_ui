@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../g_text/g_text.dart';
+import '../g_text/g_text_variant.dart';
 
 /// Create an app bar.
 class GAppBar extends StatelessWidget implements PreferredSizeWidget {
