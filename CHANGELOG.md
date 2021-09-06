@@ -1,3 +1,6 @@
+## [2.4.1]
+- Fix [GTextFormField] hint color
+
 ## [2.4.0]
 - Add `GListTile`
 - Add `GScrollColor`

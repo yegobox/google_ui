@@ -124,7 +124,9 @@ class GTextFormField extends HookWidget {
 
     final _primaryColor =
         primaryColor ?? primaryColorBuilder?.call(colorScheme);
-    final _textColor = textColor ?? textColorBuilder?.call(colorScheme);
+    final _textColor = textColor ??
+        textColorBuilder?.call(colorScheme) ??
+        colorScheme.onBackground;
     final _cursorColor = cursorColor ??
         cursorColorBuilder?.call(colorScheme) ??
         colorScheme.primary;
@@ -163,8 +165,8 @@ class GTextFormField extends HookWidget {
               ? _TogglePasswordButton(isShowPassword: isShowPassword)
               : suffixIcon,
           hintStyle: theme.textTheme.bodyText1?.copyWith(
-            color: _textColor?.withOpacity(.5),
-            decorationColor: _textColor?.withOpacity(.5),
+            color: _textColor.withOpacity(.5),
+            decorationColor: _textColor.withOpacity(.5),
           ),
         ),
         style: theme.textTheme.bodyText1?.copyWith(
