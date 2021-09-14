@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'widgets/g_tab_bar/g_tab_bar_indicator.dart';
 
@@ -118,7 +119,6 @@ class GThemeGenerator {
       fontFamily: "Poppins",
       colorScheme: colorScheme,
       primaryColor: colorScheme.primary,
-      accentColor: colorScheme.primary,
       indicatorColor: colorScheme.primary,
       toggleableActiveColor: colorScheme.primary,
       scaffoldBackgroundColor: colorScheme.background,
@@ -138,14 +138,11 @@ class GThemeGenerator {
         ),
       ),
       appBarTheme: AppBarTheme(
-        textTheme: _textTheme.copyWith(
-          headline6: _textTheme.headline6?.copyWith(
-            fontWeight: FontWeight.normal,
-            color: colorScheme.onSurface,
-          ),
+        titleTextStyle: _textTheme.headline6?.copyWith(
+          fontWeight: FontWeight.normal,
+          color: colorScheme.onSurface,
         ),
         backgroundColor: colorScheme.surface,
-        brightness: colorScheme.brightness,
         iconTheme: IconThemeData(color: colorScheme.onSurface),
         shadowColor: colorScheme.brightness == Brightness.light
             ? Colors.white70

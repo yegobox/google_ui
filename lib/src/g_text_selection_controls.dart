@@ -17,8 +17,11 @@ class GTextSelectionControls extends TextSelectionControls {
   Widget buildHandle(
     BuildContext context,
     TextSelectionHandleType type,
-    double textLineHeight,
-  ) {
+    double textLineHeight, [
+    VoidCallback? onTap,
+    double? startGlyphHeight,
+    double? endGlyphHeight,
+  ]) {
     return TextSelectionTheme(
       data: TextSelectionThemeData(selectionHandleColor: handleColor),
       child: Builder(
@@ -53,7 +56,12 @@ class GTextSelectionControls extends TextSelectionControls {
   }
 
   @override
-  Offset getHandleAnchor(TextSelectionHandleType type, double textLineHeight) {
+  Offset getHandleAnchor(
+    TextSelectionHandleType type,
+    double textLineHeight, [
+    double? startGlyphHeight,
+    double? endGlyphHeight,
+  ]) {
     return _controls.getHandleAnchor(type, textLineHeight);
   }
 

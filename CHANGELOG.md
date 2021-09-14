@@ -1,3 +1,6 @@
+## [2.5.0]
+- Flutter 2.5 compatibility
+
 ## [2.4.1]
 - Fix [GTextFormField] hint color
 
