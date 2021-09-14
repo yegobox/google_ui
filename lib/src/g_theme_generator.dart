@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'widgets/g_tab_bar/g_tab_bar_indicator.dart';
 
