@@ -1,3 +1,6 @@
+## [2.6.1]
+- Fix `leading` property is missing on `GListTile`
+
 ## [2.6.0]
 - Fix `GTextFormField` and `GDateTextFormField` color not inherited from `ThemeData`
 - Add `GResponsive`
