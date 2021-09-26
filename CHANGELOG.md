@@ -1,5 +1,6 @@
-## [2.5.1]
+## [2.6.0]
 - Fix `GTextFormField` and `GDateTextFormField` color not inherited from `ThemeData`
+- Add `GResponsive`
 
 ## [2.5.0]
 - Flutter 2.5 compatibility

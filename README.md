@@ -2,21 +2,24 @@
 [![edsulaiman - google_ui](https://img.shields.io/static/v1?label=edsulaiman&message=google_ui&color=blue&logo=github)](https://github.com/edsulaiman/google_ui)
 [![stars - google_ui](https://img.shields.io/github/stars/edsulaiman/google_ui?style=social)](https://github.com/edsulaiman/google_ui)
 [![forks - google_ui](https://img.shields.io/github/forks/edsulaiman/google_ui?style=social)](https://github.com/edsulaiman/google_ui)
-[![GitHub release](https://img.shields.io/github/release/edsulaiman/google_ui?include_prereleases=&sort=semver)](https://github.com/edsulaiman/google_ui/releases/)
 [![License](https://img.shields.io/badge/License-MIT-blue)](#license)
 [![issues - google_ui](https://img.shields.io/github/issues/edsulaiman/google_ui)](https://github.com/edsulaiman/google_ui/issues)
-[![loc](https://tokei.rs/b1/github/edsulaiman/google_ui)](https://github.com/edsulaiman/google_ui)
 
 Flutter UI library using Material Design 2.0.
 
 [Google UI](https://pub.dev/packages/google_ui) is Flutter open-source UI library using [Material Design 2.0](https://uxdesign.cc/previewing-material-design-2-0-ec0215f0588f) with many pre-built widgets to make Flutter development easier and faster.
 
-## Some Screenshots
-|Light mode|Dark Mode|
-|:---:|:---:|
-|![](screenshots/button.jpg)|![](screenshots/button_d.jpg)|
-|![](screenshots/select_box.jpg)|![](screenshots/select_box_d.jpg)|
-|![](screenshots/text_form.jpg)|![](screenshots/text_form_d.jpg)|
+## Table of contents
+- [Screenshots](#screenshots)
+- [Get the package](#get-the-package)
+- [Font family](#font-family)
+- [Apply the theme to the app](#apply-the-theme-to-the-app)
+
+## Screenshots
+||||
+|:---:|:---:|:---:|
+|![](screenshots/button.jpg)|![](screenshots/button_d.jpg)|![](screenshots/select_box.jpg)|
+|![](screenshots/select_box_d.jpg)|![](screenshots/text_form.jpg)|![](screenshots/text_form_d.jpg)|
 
 ## Get the package
 To use this package as a library, [pub.dev](https://pub.dev/packages/google_ui/install)
