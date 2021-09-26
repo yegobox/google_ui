@@ -1,8 +1,11 @@
+## [2.5.1]
+- Fix `GTextFormField` and `GDateTextFormField` color not inherited from `ThemeData`
+
 ## [2.5.0]
 - Flutter 2.5 compatibility
 
 ## [2.4.1]
-- Fix [GTextFormField] hint color
+- Fix `GTextFormField` hint color
 
 ## [2.4.0]
 - Add `GListTile`
