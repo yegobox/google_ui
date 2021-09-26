@@ -1,5 +1,6 @@
 library google_ui;
 
+export 'src/g_responsive.dart';
 export 'src/g_text_selection_controls.dart';
 export 'src/g_theme_generator.dart';
 export 'src/widgets/g_app_bar/g_app_bar.dart';
