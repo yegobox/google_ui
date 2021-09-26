@@ -21,6 +21,7 @@ class AppBarPage extends HookWidget {
             const GSearchAppBar(
               title: "Search App Bar",
               hintText: "Search Item...",
+              cursorColor: Colors.red,
             ),
             const SizedBox(height: 16),
             GAppBar(

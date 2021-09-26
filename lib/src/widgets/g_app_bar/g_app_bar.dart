@@ -63,13 +63,15 @@ class GAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
 
-    final _backgroundColor =
-        backgroundColor ?? backgroundColorBuilder?.call(colorScheme);
+    final _backgroundColor = backgroundColor ??
+        backgroundColorBuilder?.call(colorScheme) ??
+        theme.appBarTheme.backgroundColor;
     final _foregroundColor = foregroundColor ??
         foregroundColorBuilder?.call(colorScheme) ??
-        colorScheme.onSurface;
+        theme.appBarTheme.titleTextStyle?.color;
 
     return AppBar(
       title: Column(

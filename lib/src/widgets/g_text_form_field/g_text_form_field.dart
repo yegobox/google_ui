@@ -129,7 +129,7 @@ class GTextFormField extends HookWidget {
         colorScheme.onBackground;
     final _cursorColor = cursorColor ??
         cursorColorBuilder?.call(colorScheme) ??
-        colorScheme.primary;
+        theme.textSelectionTheme.cursorColor;
 
     return Theme(
       data: theme.copyWith(
@@ -137,7 +137,7 @@ class GTextFormField extends HookWidget {
         textSelectionTheme: TextSelectionThemeData(
           cursorColor: _cursorColor,
           selectionHandleColor: _cursorColor,
-          selectionColor: _cursorColor.withOpacity(.40),
+          selectionColor: _cursorColor?.withOpacity(.40),
         ),
       ),
       child: TextFormField(
@@ -155,7 +155,8 @@ class GTextFormField extends HookWidget {
         readOnly: readOnly,
         maxLength: maxLength,
         maxLines: maxLines,
-        selectionControls: GTextSelectionControls(_cursorColor),
+        selectionControls:
+            _cursorColor != null ? GTextSelectionControls(_cursorColor) : null,
         decoration: InputDecoration(
           counterText: hideCounterText ? "" : null,
           labelText: labelText,

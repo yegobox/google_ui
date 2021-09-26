@@ -111,14 +111,15 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    final _backgroundColor =
-        backgroundColor ?? backgroundColorBuilder?.call(colorScheme);
+    final _backgroundColor = backgroundColor ??
+        backgroundColorBuilder?.call(colorScheme) ??
+        theme.appBarTheme.backgroundColor;
     final _foregroundColor = foregroundColor ??
         foregroundColorBuilder?.call(colorScheme) ??
-        colorScheme.onSurface;
+        theme.appBarTheme.titleTextStyle?.color;
     final _cursorColor = cursorColor ??
         cursorColorBuilder?.call(colorScheme) ??
-        colorScheme.primary;
+        theme.textSelectionTheme.cursorColor;
 
     final isOpen = useState(false);
     final textController = useState(controller ?? TextEditingController());
@@ -130,7 +131,7 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
                 textSelectionTheme: TextSelectionThemeData(
                   cursorColor: _cursorColor,
                   selectionHandleColor: _cursorColor,
-                  selectionColor: _cursorColor.withOpacity(.40),
+                  selectionColor: _cursorColor?.withOpacity(.40),
                 ),
               ),
               child: TextFormField(
@@ -138,7 +139,9 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
                 autofocus: true,
                 keyboardType: keyboardType,
                 textInputAction: TextInputAction.search,
-                selectionControls: GTextSelectionControls(_cursorColor),
+                selectionControls: _cursorColor != null
+                    ? GTextSelectionControls(_cursorColor)
+                    : null,
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   focusedBorder: InputBorder.none,
@@ -147,8 +150,8 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
                   disabledBorder: InputBorder.none,
                   hintText: hintText,
                   hintStyle: theme.textTheme.bodyText1?.copyWith(
-                    color: _foregroundColor.withOpacity(.5),
-                    decorationColor: _foregroundColor.withOpacity(.5),
+                    color: _foregroundColor?.withOpacity(.5),
+                    decorationColor: _foregroundColor?.withOpacity(.5),
                   ),
                 ),
                 style: theme.textTheme.bodyText1?.copyWith(
