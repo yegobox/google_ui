@@ -12,7 +12,7 @@ class GErrorMessage extends StatelessWidget {
     Key? key,
     required this.icon,
     required this.title,
-    required this.subtitle,
+    this.subtitle,
     this.buttonLabel,
     this.onPressed,
   }) : super(key: key);
@@ -24,7 +24,7 @@ class GErrorMessage extends StatelessWidget {
   final String title;
 
   /// A description to explain the error
-  final String subtitle;
+  final String? subtitle;
 
   /// Text that describes the button.
   final String? buttonLabel;
@@ -65,15 +65,20 @@ class GErrorMessage extends StatelessWidget {
                   title,
                   variant: GTextVariant.bodyText1,
                 ),
-                const SizedBox(height: 16),
-                GText(
-                  subtitle,
-                  color: colorScheme.onBackground.withOpacity(.75),
-                  textAlign: TextAlign.center,
-                ),
+                if (subtitle != null) ...[
+                  const SizedBox(height: 16),
+                  GText(
+                    subtitle!,
+                    color: colorScheme.onBackground.withOpacity(.75),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
                 if (onPressed != null) const SizedBox(height: 32),
                 if (onPressed != null)
-                  GElevatedButton(buttonLabel ?? "", onPressed: onPressed)
+                  GElevatedButton(
+                    buttonLabel ?? "Try again",
+                    onPressed: onPressed,
+                  ),
               ],
             ),
           ),

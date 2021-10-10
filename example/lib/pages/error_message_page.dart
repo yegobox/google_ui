@@ -13,7 +13,6 @@ class ErrorMessagePage extends StatelessWidget {
         subtitle:
             "Can't connect to the internet.\nPlease check your internet connection",
         icon: const Icon(Icons.wifi_off),
-        buttonLabel: "Try again",
         onPressed: () {},
       ),
     );

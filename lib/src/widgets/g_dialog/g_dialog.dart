@@ -21,13 +21,13 @@ class GDialog {
           content: Text(subtitle),
           actions: <Widget>[
             GTextButton(
+              cancelLabel,
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            GTextButton(
               confirmLabel,
               onPressed: onConfirm,
             ),
-            GTextButton(
-              cancelLabel,
-              onPressed: () => Navigator.of(context).pop(),
-            )
           ],
         );
       },
