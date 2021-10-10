@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../g_text_selection_controls.dart';
 
 /// Create text form field
-class GTextFormField extends HookWidget {
+class GTextFormField extends StatefulWidget {
   const GTextFormField({
     Key? key,
     this.labelText,
@@ -116,19 +115,24 @@ class GTextFormField extends HookWidget {
   final Color? Function(ColorScheme)? cursorColorBuilder;
 
   @override
-  Widget build(BuildContext context) {
-    final isShowPassword = useState(false);
+  State<GTextFormField> createState() => _GTextFormFieldState();
+}
 
+class _GTextFormFieldState extends State<GTextFormField> {
+  bool isShowPassword = false;
+
+  @override
+  Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
     final _primaryColor =
-        primaryColor ?? primaryColorBuilder?.call(colorScheme);
-    final _textColor = textColor ??
-        textColorBuilder?.call(colorScheme) ??
+        widget.primaryColor ?? widget.primaryColorBuilder?.call(colorScheme);
+    final _textColor = widget.textColor ??
+        widget.textColorBuilder?.call(colorScheme) ??
         colorScheme.onBackground;
-    final _cursorColor = cursorColor ??
-        cursorColorBuilder?.call(colorScheme) ??
+    final _cursorColor = widget.cursorColor ??
+        widget.cursorColorBuilder?.call(colorScheme) ??
         theme.textSelectionTheme.cursorColor;
 
     return Theme(
@@ -141,30 +145,30 @@ class GTextFormField extends HookWidget {
         ),
       ),
       child: TextFormField(
-        controller: controller,
-        autocorrect: autocorrect,
-        autofocus: autofocus,
-        initialValue: initialValue,
-        keyboardType: keyboardType,
-        textInputAction: textInputAction,
-        obscureText: passwordField && !isShowPassword.value,
-        validator: validator,
-        onChanged: onChanged,
-        onSaved: onSaved,
-        onTap: onTap,
-        readOnly: readOnly,
-        maxLength: maxLength,
-        maxLines: maxLines,
+        controller: widget.controller,
+        autocorrect: widget.autocorrect,
+        autofocus: widget.autofocus,
+        initialValue: widget.initialValue,
+        keyboardType: widget.keyboardType,
+        textInputAction: widget.textInputAction,
+        obscureText: widget.passwordField && !isShowPassword,
+        validator: widget.validator,
+        onChanged: widget.onChanged,
+        onSaved: widget.onSaved,
+        onTap: widget.onTap,
+        readOnly: widget.readOnly,
+        maxLength: widget.maxLength,
+        maxLines: widget.maxLines,
         selectionControls:
             _cursorColor != null ? GTextSelectionControls(_cursorColor) : null,
         decoration: InputDecoration(
-          counterText: hideCounterText ? "" : null,
-          labelText: labelText,
-          hintText: hintText,
-          prefixIcon: prefixIcon,
-          suffixIcon: passwordField
-              ? _TogglePasswordButton(isShowPassword: isShowPassword)
-              : suffixIcon,
+          counterText: widget.hideCounterText ? "" : null,
+          labelText: widget.labelText,
+          hintText: widget.hintText,
+          prefixIcon: widget.prefixIcon,
+          suffixIcon: widget.passwordField
+              ? _buildTogglePasswordButton()
+              : widget.suffixIcon,
           hintStyle: theme.textTheme.bodyText1?.copyWith(
             color: _textColor.withOpacity(.5),
             decorationColor: _textColor.withOpacity(.5),
@@ -174,25 +178,16 @@ class GTextFormField extends HookWidget {
           color: _textColor,
           decorationColor: _textColor,
         ),
-        inputFormatters: inputFormatters,
+        inputFormatters: widget.inputFormatters,
       ),
     );
   }
-}
 
-class _TogglePasswordButton extends StatelessWidget {
-  const _TogglePasswordButton({Key? key, required this.isShowPassword})
-      : super(key: key);
-
-  final ValueNotifier<bool> isShowPassword;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildTogglePasswordButton() {
     return IconButton(
-      icon:
-          Icon(isShowPassword.value ? Icons.visibility : Icons.visibility_off),
+      icon: Icon(isShowPassword ? Icons.visibility : Icons.visibility_off),
       onPressed: () {
-        isShowPassword.value = !isShowPassword.value;
+        setState(() => isShowPassword = !isShowPassword);
       },
     );
   }

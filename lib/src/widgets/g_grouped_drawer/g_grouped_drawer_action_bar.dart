@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'g_grouped_drawer_action.dart';
 
-class GGroupedDrawerActionBar extends HookWidget {
+class GGroupedDrawerActionBar extends StatelessWidget {
   const GGroupedDrawerActionBar({
     Key? key,
     required this.actionColor,

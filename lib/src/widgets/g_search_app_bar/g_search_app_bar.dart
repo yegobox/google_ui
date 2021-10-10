@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../g_text_selection_controls.dart';
 import '../g_text/g_text.dart';
 import '../g_text/g_text_variant.dart';
 
 /// Create app bar with search bar.
-class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
+class GSearchAppBar extends StatefulWidget implements PreferredSizeWidget {
   const GSearchAppBar({
     Key? key,
     required this.title,
@@ -102,25 +101,40 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
   final Color? Function(ColorScheme)? cursorColorBuilder;
 
   @override
+  State<GSearchAppBar> createState() => _GSearchAppBarState();
+
+  @override
+  Size get preferredSize =>
+      Size.fromHeight(kToolbarHeight + (bottom?.preferredSize.height ?? 0.0));
+}
+
+class _GSearchAppBarState extends State<GSearchAppBar> {
+  late final TextEditingController textController;
+  bool isOpen = false;
+
+  @override
+  void initState() {
+    textController = widget.controller ?? TextEditingController();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    final _backgroundColor = backgroundColor ??
-        backgroundColorBuilder?.call(colorScheme) ??
+    final _backgroundColor = widget.backgroundColor ??
+        widget.backgroundColorBuilder?.call(colorScheme) ??
         theme.appBarTheme.backgroundColor;
-    final _foregroundColor = foregroundColor ??
-        foregroundColorBuilder?.call(colorScheme) ??
+    final _foregroundColor = widget.foregroundColor ??
+        widget.foregroundColorBuilder?.call(colorScheme) ??
         theme.appBarTheme.titleTextStyle?.color;
-    final _cursorColor = cursorColor ??
-        cursorColorBuilder?.call(colorScheme) ??
+    final _cursorColor = widget.cursorColor ??
+        widget.cursorColorBuilder?.call(colorScheme) ??
         theme.textSelectionTheme.cursorColor;
 
-    final isOpen = useState(false);
-    final textController = useState(controller ?? TextEditingController());
-
     return AppBar(
-      title: (open ?? isOpen.value)
+      title: (widget.open ?? isOpen)
           ? Theme(
               data: theme.copyWith(
                 textSelectionTheme: TextSelectionThemeData(
@@ -130,9 +144,9 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
                 ),
               ),
               child: TextFormField(
-                controller: textController.value,
+                controller: textController,
                 autofocus: true,
-                keyboardType: keyboardType,
+                keyboardType: widget.keyboardType,
                 textInputAction: TextInputAction.search,
                 selectionControls: _cursorColor != null
                     ? GTextSelectionControls(_cursorColor)
@@ -143,7 +157,7 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
                   enabledBorder: InputBorder.none,
                   errorBorder: InputBorder.none,
                   disabledBorder: InputBorder.none,
-                  hintText: hintText,
+                  hintText: widget.hintText,
                   hintStyle: theme.textTheme.bodyText1?.copyWith(
                     color: _foregroundColor?.withOpacity(.5),
                     decorationColor: _foregroundColor?.withOpacity(.5),
@@ -153,65 +167,64 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
                   color: _foregroundColor,
                   decorationColor: _foregroundColor,
                 ),
-                onChanged: onChanged,
-                onFieldSubmitted: onFieldSubmitted,
+                onChanged: widget.onChanged,
+                onFieldSubmitted: widget.onFieldSubmitted,
               ),
             )
           : Column(
-              crossAxisAlignment: centerTitle != null && centerTitle!
-                  ? CrossAxisAlignment.center
-                  : CrossAxisAlignment.start,
+              crossAxisAlignment:
+                  widget.centerTitle != null && widget.centerTitle!
+                      ? CrossAxisAlignment.center
+                      : CrossAxisAlignment.start,
               children: [
                 GText(
-                  title,
+                  widget.title,
                   variant: GTextVariant.headline6,
                   fontWeight: FontWeight.normal,
                   color: _foregroundColor,
                 ),
-                if (subtitle != null)
+                if (widget.subtitle != null)
                   GText(
-                    subtitle!,
+                    widget.subtitle!,
                     fontWeight: FontWeight.normal,
                     color: _foregroundColor,
                   ),
               ],
             ),
-      centerTitle: centerTitle,
-      elevation: elevation,
-      bottom: bottom,
-      leading: leading,
-      automaticallyImplyLeading: automaticallyImplyLeading,
-      leadingWidth: leadingWidth,
+      centerTitle: widget.centerTitle,
+      elevation: widget.elevation,
+      bottom: widget.bottom,
+      leading: widget.leading,
+      automaticallyImplyLeading: widget.automaticallyImplyLeading,
+      leadingWidth: widget.leadingWidth,
       backgroundColor: _backgroundColor,
       iconTheme: IconThemeData(color: _foregroundColor),
       actions: [
         IconButton(
-          icon: Icon((open ?? isOpen.value) ? Icons.close : Icons.search),
+          icon: Icon((widget.open ?? isOpen) ? Icons.close : Icons.search),
           onPressed: () {
-            if (open == null) {
-              if (!isOpen.value) {
-                isOpen.value = true;
-                return;
+            setState(() {
+              if (widget.open == null) {
+                if (!isOpen) {
+                  isOpen = true;
+                  return;
+                }
+
+                if (textController.value.text.isNotEmpty) {
+                  textController.clear();
+                  if (widget.onChanged != null) widget.onChanged!("");
+
+                  return;
+                }
+
+                isOpen = false;
               }
 
-              if (textController.value.text.isNotEmpty) {
-                textController.value.clear();
-                if (onChanged != null) onChanged!("");
-
-                return;
-              }
-
-              isOpen.value = false;
-            }
-
-            onActionPressed?.call();
+              widget.onActionPressed?.call();
+            });
           },
         ),
       ],
     );
   }
-
-  @override
-  Size get preferredSize =>
-      Size.fromHeight(kToolbarHeight + (bottom?.preferredSize.height ?? 0.0));
 }

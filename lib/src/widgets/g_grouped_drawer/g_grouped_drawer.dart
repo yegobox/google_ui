@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:spring/spring.dart';
 
 import 'g_grouped_drawer_action_bar.dart';
 
 /// Create a grouped drawer.
-class GGroupedDrawer extends HookWidget {
+class GGroupedDrawer extends StatefulWidget {
   const GGroupedDrawer({
     Key? key,
     this.actionColor,
@@ -47,31 +46,44 @@ class GGroupedDrawer extends HookWidget {
   final List<Widget> children;
 
   @override
+  State<GGroupedDrawer> createState() => _GGroupedDrawerState();
+}
+
+class _GGroupedDrawerState extends State<GGroupedDrawer> {
+  final scrollController = ScrollController();
+  late int pageIndex;
+
+  @override
+  void initState() {
+    pageIndex = widget.initialIndex ?? 0;
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final backgroundColor = this.backgroundColor ?? colorScheme.surface;
-
-    final pageIndex = useState(initialIndex ?? 0);
-    final scrollController = useState(ScrollController());
+    final backgroundColor = widget.backgroundColor ?? colorScheme.surface;
 
     final List<Widget> drawerChildren = [
       GGroupedDrawerActionBar(
-        actionColor: actionColor,
-        actionSelectedColor: actionSelectedColor,
-        isSelected: (index) => index == pageIndex.value,
+        actionColor: widget.actionColor,
+        actionSelectedColor: widget.actionSelectedColor,
+        isSelected: (index) => index == pageIndex,
         onPressed: (index) {
-          pageIndex.value = index;
-          scrollController.value.jumpTo(0);
-          if (onPageChanged != null) onPageChanged!(index);
+          setState(() {
+            pageIndex = index;
+            scrollController.jumpTo(0);
+            if (widget.onPageChanged != null) widget.onPageChanged!(index);
+          });
         },
-        actions: actions,
-        secondaryActions: secondaryActions,
+        actions: widget.actions,
+        secondaryActions: widget.secondaryActions,
       ),
       const VerticalDivider(width: 0),
       Expanded(
         child: SafeArea(
           child: SingleChildScrollView(
-            controller: scrollController.value,
+            controller: scrollController,
             child: Spring.scale(
               start: 0.75,
               end: 1,
@@ -80,7 +92,7 @@ class GGroupedDrawer extends HookWidget {
               child: Spring.fadeIn(
                 curve: standardEasing,
                 animDuration: const Duration(milliseconds: 250),
-                child: children[pageIndex.value],
+                child: widget.children[pageIndex],
               ),
             ),
           ),
@@ -97,8 +109,9 @@ class GGroupedDrawer extends HookWidget {
         child: Drawer(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children:
-                !isEnd ? drawerChildren : drawerChildren.reversed.toList(),
+            children: !widget.isEnd
+                ? drawerChildren
+                : drawerChildren.reversed.toList(),
           ),
         ),
       ),
