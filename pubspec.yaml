@@ -1,5 +1,5 @@
 name: google_ui
-description: Google UI is Flutter open-source UI library using Material Design 2.0 with many pre-built widgets to make Flutter development easier and faster.
+description: Google UI is an open-source UI library for developing cross-platform apps using Flutter with "Material Design 2.0"
 version: 2.7.0
 homepage: https://github.com/edsulaiman/google_ui
 repository: https://github.com/edsulaiman/google_ui
