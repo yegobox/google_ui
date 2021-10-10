@@ -1,17 +1,29 @@
+## [2.7.0]
+
+- Remove `GImage`
+- Add `GSectionTitleTheme`
+- Add `GDrawerListTile`
+- Remove deprecated
+
 ## [2.6.1]
+
 - Fix `leading` property is missing on `GListTile`
 
 ## [2.6.0]
+
 - Fix `GTextFormField` and `GDateTextFormField` color not inherited from `ThemeData`
 - Add `GResponsive`
 
 ## [2.5.0]
+
 - Flutter 2.5 compatibility
 
 ## [2.4.1]
+
 - Fix `GTextFormField` hint color
 
 ## [2.4.0]
+
 - Add `GListTile`
 - Add `GScrollColor`
 - Add `GTextSelectionControls`
@@ -24,6 +36,7 @@
 - Add `cursorColor` and `cursorColorBuilder` to `GTextFormField` and `GDateTextFormField`
 
 ## [2.3.0]
+
 - Add `GElevatedButton`
 - Add `GTextButton`
 - Add `GOutlinedButton`
@@ -33,6 +46,7 @@
 - Add `BottomNavigationBarThemeData` to `GThemeGenerator`
 
 ## [2.2.0]
+
 - Add `controller` property to `GSearchAppBar`
 - Add `onChanged` property to `GSearchAppBar`
 - Add `onActionPressed` property to `GSearchAppBar`
@@ -40,17 +54,21 @@
 - Deprecating `onClosePressed` property to `GSearchAppBar`
 
 ## [2.1.2]
+
 - Fix all widgets affected by last update
 
 ## [2.1.1]
+
 - Fix `GText` wrong default `variant`
 
 ## [2.1.0]
+
 - Add `color` property to `GButton`
 - Add `colorBuilder` property to `GButton`
 - Add `colorBuilder` property to `GText`
 
 ## [2.0.0]
+
 - Change widget prefix name to G
 - Change default text color of `GSectionTitle` to primary
 - Change `label` property of `GSwitch` to `title`
@@ -73,6 +91,7 @@
 - Add transition to `GGroupedDrawer`
 
 ## [1.3.0]
+
 - Fix `visualDensity`
 - Fix Button `tapTargetSize`
 - Fix `GoogleTabBarIndicator` size on desktop
@@ -82,10 +101,12 @@
 - Wrap clickable widget with `MouseRegion`
 
 ## [1.2.1]
-- Fix `GoogleCalendarTimeline` `yearText` not updated 
+
+- Fix `GoogleCalendarTimeline` `yearText` not updated
 - Fix `GoogleGridBuilder` scroll too fast
 
 ## [1.2.0]
+
 - Add `GoogleCalendarTimelineController`
 - Change `GoogleCalendarTimelineDay` background color
 - Add `GoogleMultipleSelectBox`
@@ -96,6 +117,7 @@
 - Deprecating `GoogleBottomBar`
 
 ## [1.1.0]
+
 - Add `GoogleCalendarTimeline`
 - Add `GoogleThemeGenerator`
 - Add icon property to `GooglePopupMenuItem`
@@ -105,6 +127,7 @@
 - Remove `GoogleGroupedDrawer` action bar color
 
 ## [1.0.0]
+
 - Remove all page widget
 - Add `GoogleSearchAppBar`
 - Add `GoogleGroupedDrawer`
@@ -113,16 +136,19 @@
 - Change example app
 
 ## [0.1.2]
+
 - Remove required from `label` property `GoogleErrorPage`
 - Change dynamic return type to void
 - Change property name `GoogleDrawer`
-- Change `GoogleTextVariant` from `bodyText1` to `bodyText2` on `GoogleListPage` and `GoogleSearchPage` 
+- Change `GoogleTextVariant` from `bodyText1` to `bodyText2` on `GoogleListPage` and `GoogleSearchPage`
 
 ## [0.1.1]
+
 - Fix `flutter_hooks` version
 - Fix some `Google*Page` widget
 
 ## [0.1.0]
+
 - Add `GoogleSelectBox`
 - Add `GoogleConditional`
 - Add `GoogleSectionTitle`
@@ -132,7 +158,9 @@
 - Fix `popupMenuTheme`
 
 ## [0.0.2]
+
 Fix typo
 
 ## [0.0.1]
+
 Init release
