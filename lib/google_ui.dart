@@ -27,6 +27,9 @@ export 'src/widgets/g_radio/g_radio.dart';
 export 'src/widgets/g_scroll_color/g_scroll_color.dart';
 export 'src/widgets/g_search_app_bar/g_search_app_bar.dart';
 export 'src/widgets/g_section_title/g_section_title.dart';
+export 'src/widgets/g_section_title/g_section_title_theme.dart'
+    hide gSectionTitleThemeDataProvider;
+export 'src/widgets/g_section_title/g_section_title_theme_data.dart';
 export 'src/widgets/g_select_box/g_multiple_select_box.dart';
 export 'src/widgets/g_select_box/g_select_box.dart';
 export 'src/widgets/g_select_box/g_select_box_item.dart';
