@@ -4,7 +4,6 @@ export 'src/g_responsive.dart';
 export 'src/g_text_selection_controls.dart';
 export 'src/g_theme_generator.dart';
 export 'src/widgets/g_app_bar/g_app_bar.dart';
-export 'src/widgets/g_button/g_button.dart';
 export 'src/widgets/g_calendar_timeline/g_calendar_timeline.dart';
 export 'src/widgets/g_calendar_timeline/g_calendar_timeline_controller.dart';
 export 'src/widgets/g_calendar_timeline/g_calendar_timeline_day.dart';

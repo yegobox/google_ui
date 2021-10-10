@@ -24,7 +24,6 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
     this.keyboardType,
     this.onChanged,
     this.onFieldSubmitted,
-    this.onClosePressed,
     this.onActionPressed,
     this.open,
     this.backgroundColor,
@@ -76,10 +75,6 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
 
   /// A callback after this field submitted.
   final void Function(String)? onFieldSubmitted;
-
-  /// A callback after the user press the close button.
-  @Deprecated("use onActionPressed instead.")
-  final void Function()? onClosePressed;
 
   /// A callback after the user press the action button.
   final void Function()? onActionPressed;
@@ -209,10 +204,7 @@ class GSearchAppBar extends HookWidget implements PreferredSizeWidget {
               isOpen.value = false;
             }
 
-            if (onActionPressed != null || onClosePressed != null) {
-              final callback = onActionPressed ?? onClosePressed!;
-              callback();
-            }
+            onActionPressed?.call();
           },
         ),
       ],
