@@ -48,8 +48,9 @@ class GErrorMessage extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: colorScheme.primary.withOpacity(.2)),
+                    shape: BoxShape.circle,
+                    color: colorScheme.primary.withOpacity(.1),
+                  ),
                   child: Theme(
                     data: Theme.of(context).copyWith(
                       iconTheme: IconThemeData(

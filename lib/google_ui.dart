@@ -13,6 +13,7 @@ export 'src/widgets/g_conditional/g_conditional.dart';
 export 'src/widgets/g_date_text_form_field/g_date_text_form_field.dart';
 export 'src/widgets/g_dialog/g_dialog.dart';
 export 'src/widgets/g_drawer/g_drawer.dart';
+export 'src/widgets/g_drawer/g_drawer_list_tile.dart';
 export 'src/widgets/g_elevated_button/g_elevated_button.dart';
 export 'src/widgets/g_error_message/g_error_message.dart';
 export 'src/widgets/g_grid/g_grid.dart';
