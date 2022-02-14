@@ -1,6 +1,6 @@
 name: google_ui
 description: Google UI is an open-source UI library for developing cross-platform apps using Flutter with "Material Design 2.0"
-version: 2.7.0
+version: 2.7.1
 homepage: https://github.com/edsulaiman/google_ui
 repository: https://github.com/edsulaiman/google_ui
 
@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_riverpod: ^0.14.0+3
+  flutter_riverpod: ^1.0.1
   intl: ^0.17.0
   spring: ^2.0.2
 

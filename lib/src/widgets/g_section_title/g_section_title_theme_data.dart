@@ -33,7 +33,7 @@ class GSectionTitleThemeData {
   }
 
   /// Return current `GSectionTitleThemeData` of this context.
-  static GSectionTitleThemeData of(BuildContext context) {
-    return context.read(gSectionTitleThemeDataProvider);
+  static GSectionTitleThemeData of(BuildContext context, WidgetRef watch) {
+    return watch.read(gSectionTitleThemeDataProvider);
   }
 }

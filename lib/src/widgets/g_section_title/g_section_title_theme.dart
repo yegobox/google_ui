@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'g_section_title_theme_data.dart';
 
-final gSectionTitleThemeDataProvider = ScopedProvider(
+final gSectionTitleThemeDataProvider = Provider(
   (ref) => GSectionTitleThemeData(),
 );
 
