@@ -35,27 +35,6 @@ class GTextSelectionControls extends TextSelectionControls {
   }
 
   @override
-  Widget buildToolbar(
-      BuildContext context,
-      Rect globalEditableRegion,
-      double textLineHeight,
-      Offset position,
-      List<TextSelectionPoint> endpoints,
-      TextSelectionDelegate delegate,
-      ClipboardStatusNotifier clipboardStatus,
-      Offset? lastSecondaryTapDownPosition) {
-    return _controls.buildToolbar(
-        context,
-        globalEditableRegion,
-        textLineHeight,
-        position,
-        endpoints,
-        delegate,
-        clipboardStatus,
-        lastSecondaryTapDownPosition);
-  }
-
-  @override
   Offset getHandleAnchor(
     TextSelectionHandleType type,
     double textLineHeight, [
@@ -68,5 +47,26 @@ class GTextSelectionControls extends TextSelectionControls {
   @override
   Size getHandleSize(double textLineHeight) {
     return _controls.getHandleSize(textLineHeight);
+  }
+
+  @override
+  Widget buildToolbar(
+      BuildContext context,
+      Rect globalEditableRegion,
+      double textLineHeight,
+      Offset position,
+      List<TextSelectionPoint> endpoints,
+      TextSelectionDelegate delegate,
+      ClipboardStatusNotifier? clipboardStatus,
+      Offset? lastSecondaryTapDownPosition) {
+    return _controls.buildToolbar(
+        context,
+        globalEditableRegion,
+        textLineHeight,
+        position,
+        endpoints,
+        delegate,
+        clipboardStatus,
+        lastSecondaryTapDownPosition);
   }
 }
